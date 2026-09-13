@@ -1,0 +1,174 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.duesoon.app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+11-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:4:5-77
+11-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:4:22-74
+12    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+12-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:5:5-79
+12-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:5:22-76
+13    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+13-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:6:5-81
+13-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:6:22-78
+14
+15    <permission
+15-->[androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+16        android:name="com.duesoon.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+16-->[androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+17        android:protectionLevel="signature" />
+17-->[androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+18
+19    <uses-permission android:name="com.duesoon.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+19-->[androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+19-->[androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+20
+21    <application
+21-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:8:5-28:19
+22        android:name="com.duesoon.app.DueSoonApplication"
+22-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:9:9-43
+23        android:allowBackup="true"
+23-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:10:9-35
+24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+24-->[androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+25        android:debuggable="true"
+26        android:extractNativeLibs="false"
+27        android:label="DueSoon"
+27-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:11:9-32
+28        android:supportsRtl="true"
+28-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:12:9-35
+29        android:testOnly="true" >
+30        <activity
+30-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:13:9-20:20
+31            android:name="com.duesoon.app.MainActivity"
+31-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:14:13-41
+32            android:exported="true" >
+32-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:15:13-36
+33            <intent-filter>
+33-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:16:13-19:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:17:17-69
+34-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:17:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:18:17-77
+36-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:18:27-74
+37            </intent-filter>
+38        </activity>
+39
+40        <receiver
+40-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:22:9-92
+41            android:name="com.duesoon.app.notification.ReminderReceiver"
+41-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:22:19-64
+42            android:exported="false" />
+42-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:22:65-89
+43        <receiver
+43-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:23:9-27:20
+44            android:name="com.duesoon.app.notification.BootReceiver"
+44-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:23:19-60
+45            android:exported="true" >
+45-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:23:61-84
+46            <intent-filter>
+46-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:24:13-26:29
+47                <action android:name="android.intent.action.BOOT_COMPLETED" />
+47-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:25:17-79
+47-->D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:25:25-76
+48            </intent-filter>
+49        </receiver>
+50
+51        <service
+51-->[androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+52            android:name="androidx.room.MultiInstanceInvalidationService"
+52-->[androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+53            android:directBootAware="true"
+53-->[androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+54            android:exported="false" />
+54-->[androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+55
+56        <provider
+56-->[androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+57            android:name="androidx.startup.InitializationProvider"
+57-->[androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+58            android:authorities="com.duesoon.app.androidx-startup"
+58-->[androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+59            android:exported="false" >
+59-->[androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+60            <meta-data
+60-->[androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+61                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+61-->[androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+62                android:value="androidx.startup" />
+62-->[androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+63            <meta-data
+63-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+64                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+64-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+65                android:value="androidx.startup" />
+65-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+66            <meta-data
+66-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+67                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+67-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+68                android:value="androidx.startup" />
+68-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+69        </provider>
+70
+71        <activity
+71-->[androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:23:9-25:39
+72            android:name="androidx.activity.ComponentActivity"
+72-->[androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:24:13-63
+73            android:exported="true" />
+73-->[androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:25:13-36
+74        <activity
+74-->[androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+75            android:name="androidx.compose.ui.tooling.PreviewActivity"
+75-->[androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+76            android:exported="true" />
+76-->[androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+77
+78        <receiver
+78-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+79            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+79-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+80            android:directBootAware="false"
+80-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+81            android:enabled="true"
+81-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+82            android:exported="true"
+82-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+83            android:permission="android.permission.DUMP" >
+83-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+84            <intent-filter>
+84-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+85                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+85-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+85-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+86            </intent-filter>
+87            <intent-filter>
+87-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+88                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+89            </intent-filter>
+90            <intent-filter>
+90-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+91                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+92            </intent-filter>
+93            <intent-filter>
+93-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+94                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+95            </intent-filter>
+96        </receiver>
+97    </application>
+98
+99</manifest>

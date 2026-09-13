@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.duesoon.app-mergeDebugResources-54:/values-v16/values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\caches\\9.5.0\\transforms\\294bc97bc47a1fdba2b02098940fb698\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                }
+            ]
+        }
+    ]
+}

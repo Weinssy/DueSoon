@@ -1,10 +1,13 @@
 package com.duesoon.app
 
 import android.app.Application
+import com.duesoon.app.di.AppContainer
+import com.duesoon.app.di.DefaultAppContainer
 
 class DueSoonApplication : Application() {
+    lateinit var container: AppContainer
     override fun onCreate() {
         super.onCreate()
-        // Initialize application-level resources here (e.g. WorkManager, Room pre-population if needed)
+        container = DefaultAppContainer(this)
     }
 }

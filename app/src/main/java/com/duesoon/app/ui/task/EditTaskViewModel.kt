@@ -1,0 +1,74 @@
+package com.duesoon.app.ui.task
+
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.duesoon.app.data.repository.TaskRepository
+import com.duesoon.app.domain.model.Priority
+import com.duesoon.app.domain.model.ReminderType
+import com.duesoon.app.domain.model.Task
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+
+class EditTaskViewModel(
+    savedStateHandle: SavedStateHandle,
+    private val repository: TaskRepository
+) : ViewModel() {
+    private val taskId: Long = checkNotNull(savedStateHandle["taskId"])
+    
+    private val _uiState = MutableStateFlow(CreateTaskUiState())
+    val uiState: StateFlow<CreateTaskUiState> = _uiState.asStateFlow()
+    
+    private var originalTask: Task? = null
+
+    init {
+        viewModelScope.launch {
+            originalTask = repository.getTask(taskId)
+            originalTask?.let { task ->
+                _uiState.value = CreateTaskUiState(
+                    title = task.title,
+                    description = task.description ?: "",
+                    deadline = task.deadline,
+                    category = task.category ?: "",
+                    priority = task.priority,
+                    reminderType = task.reminderType
+                )
+            }
+        }
+    }
+
+    fun updateTitle(title: String) { _uiState.value = _uiState.value.copy(title = title, titleError = null) }
+    fun updateDescription(desc: String) { _uiState.value = _uiState.value.copy(description = desc) }
+    fun updateDeadline(deadline: Long?) { _uiState.value = _uiState.value.copy(deadline = deadline) }
+    fun updateCategory(category: String) { _uiState.value = _uiState.value.copy(category = category) }
+    fun updatePriority(priority: Priority) { _uiState.value = _uiState.value.copy(priority = priority) }
+    fun updateReminderType(type: ReminderType) { _uiState.value = _uiState.value.copy(reminderType = type) }
+
+    fun updateTask() {
+        val currentState = _uiState.value
+        if (currentState.title.isBlank()) {
+            _uiState.value = currentState.copy(titleError = "Title can't be empty.")
+            return
+        }
+        
+        val currentOriginal = originalTask ?: return
+
+        val task = currentOriginal.copy(
+            title = currentState.title,
+            description = currentState.description.ifBlank { null },
+            deadline = currentState.deadline,
+            category = currentState.category.ifBlank { null },
+            priority = currentState.priority,
+            reminderType = currentState.reminderType,
+            updatedAt = System.currentTimeMillis()
+        )
+
+        viewModelScope.launch {
+            repository.updateTask(task)
+            // TODO: Handle reminder rescheduling (Phase 6)
+            _uiState.value = currentState.copy(isSaved = true)
+        }
+    }
+}
