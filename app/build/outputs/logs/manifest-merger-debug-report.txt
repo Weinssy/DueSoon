@@ -4,62 +4,62 @@ ADDED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:2:1-29:12
 INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:2:1-29:12
 INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:2:1-29:12
 INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:2:1-29:12
-MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:17:1-31:12
-MERGED from [androidx.room:room-ktx:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ebfee4d4de2b584f225b8200a2c97361\transformed\room-ktx-2.6.1\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ee98f18b894493c80e51f113a34ca77b\transformed\navigation-common-2.7.7\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\9fb41f86261ff2df24aaa23e81d43a95\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6463e9716575106f54d3b462f1177288\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7c93e82be88c9e1038a9fbae19683d7e\transformed\navigation-runtime-ktx-2.7.7\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.navigation:navigation-compose:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\49d4e09f5963c87583da27c488158cb9\transformed\navigation-compose-2.7.7\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.material3:material3-android:1.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\4e3af374dad2182a144adf816deaf493\transformed\material3-release\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.compose.material:material-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6e2c2633dffca8f5a1cb52403dd7c642\transformed\material-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.material:material-icons-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\60777210a33c44192c2439a40d6a0752\transformed\material-icons-core-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.material:material-ripple-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\5df70dfb028c75e3fb66722dbcd8eca6\transformed\material-ripple-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.foundation:foundation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e713d7bcb8546bd45213a68193bb2c38\transformed\foundation-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\16b9bc41835300044f5211759f5942bb\transformed\foundation-layout-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.animation:animation-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\941b2686c69ba5f62b2c4f5988935d4d\transformed\animation-core-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.animation:animation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\48364a197caf5b5fe615c3d3e5eb67d7\transformed\animation-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\48675f6684ecef987ea60ac84a91023a\transformed\ui-tooling-data-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.ui:ui-unit-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3e572eb1cef148dd9f9779503c3215ec\transformed\ui-unit-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.ui:ui-geometry-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\43379ce0a37529f5b9f435d3e5c19434\transformed\ui-geometry-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.ui:ui-util-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\16667333a5796be756f9d5d3b61f45e7\transformed\ui-util-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\5e03741d4f39e1cd063a2dc1a6b8855c\transformed\ui-tooling-preview-release\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.compose.ui:ui-graphics-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\04c102b48eee472bc95aab21172058e2\transformed\ui-graphics-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.ui:ui-text-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e0cdbe2af8857c8ff7112766654120ec\transformed\ui-text-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:17:1-35:12
-MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:17:1-35:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\476c53286cfcac98a5fe053434625770\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\333169392bf296e522b411c2dbb2c1bb\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\04e64f69971821f495a01560765da070\transformed\savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\106cd8d0b8fe5e1c1dcd89aaa692968b\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f65887b94cd9e2dc8351268a6e6ffb49\transformed\lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\dc46b0fa1379bd7fb36e289f9ce17bdf\transformed\lifecycle-viewmodel-ktx-2.7.0\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\be9410dea2e527477d57b4d138bc15cc\transformed\lifecycle-runtime-2.7.0\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\db85dc0bf64fea5f41daf09ded67e795\transformed\lifecycle-runtime-ktx-2.7.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\68e3e6dfe6aa7e5e080254dd61bd1c66\transformed\lifecycle-viewmodel-compose-2.7.0\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.ui:ui-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\1a0fa3231c75b3d8b119afbc4e5205ac\transformed\ui-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:17:1-28:12
-MERGED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:17:1-28:12
-MERGED from [androidx.activity:activity-compose:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6bd6c99955b89d11391076c9ef4e7e87\transformed\activity-compose-1.8.2\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\487211b0286b5f163a76f864ddf3eecb\transformed\activity-ktx-1.8.2\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.activity:activity:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\67ba912ebca0a292e976f68ab3b3ab59\transformed\activity-1.8.2\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\97d8c23766fd012f274db478fe101615\transformed\autofill-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:17:1-30:12
-MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\360778d0dec9a4256b5e894997cc7a6b\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:17:1-23:12
-MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\96f486af3949f1708722910295b281c2\transformed\core-ktx-1.12.0\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.datastore:datastore-preferences:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\38dcdc4eb778979eee5a71f2c444452e\transformed\datastore-preferences-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7747eb1c08314f6ce776e13d8c5b2995\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ea928120576b3b03c43f3f3b562ab019\transformed\sqlite-2.4.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.datastore:datastore:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3c7503c75f358ab4cbccf54d0abf8a34\transformed\datastore-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3051e6e25c84e1d329b9d5010c13c83\transformed\runtime-saveable-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.runtime:runtime-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\c588a2ab862a7ad4c2d94f4e7ce5e24a\transformed\runtime-release\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\290ba41a87fa1945bdd2ac83ccb16007\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\2fd6d3d6758b2441967abae359e53502\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
-MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\30bf9a51b968b6337280a4698d724bc8\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7834c174bf16b3f90742e345363411c7\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:17:1-55:12
-MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3e35e68834d6549bfa2bec6f18ddfe25\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
-MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\0968b8c8a01b80a1676c5761e8c069d0\transformed\tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.room:room-runtime-android:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ba65431547ee3c840a419a24956661e0\transformed\room-runtime\AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.room:room-ktx:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\c6407f13cb2aed4c6969ab9eb9477dec\transformed\room-ktx-2.8.5\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\682360a2d336b1f1aceb13bb41cff902\transformed\navigation-common-2.7.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\efec001e5de339fdd37cb8d86ebb3fa1\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ee1161930e6fcd093806250343792451\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\85d7b362678a3c193d96e86e1ce94525\transformed\navigation-runtime-ktx-2.7.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-compose:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\0e45a0a8f0073bd569bead1f2d4e2c19\transformed\navigation-compose-2.7.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material3:material3-android:1.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\926effdc3aea890f5c3d3b38f5640cc5\transformed\material3-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.material:material-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e330326e8b7e38a340dc2e03e29d969d\transformed\material-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ac43c2548343c423002d6efbc5a0103c\transformed\material-icons-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\452121745eca71bbfc7d5530d58844bc\transformed\material-ripple-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d2329c5aba687caa374840c65655009d\transformed\foundation-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f9d72670a29a8e2dd14ad5eda9e3cc3f\transformed\foundation-layout-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\4ede64bcb3c67a39c4053736852f017c\transformed\animation-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d8f7747a7ed4f810deeb41c7b090fd74\transformed\animation-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b020204f09a91c986e08a0e9347442a\transformed\ui-tooling-data-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\dea4a27ed4ce2abd5b3de0fb78583fcb\transformed\ui-unit-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a9f8e50d5912906e53b0214d05f8e129\transformed\ui-geometry-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f8b95316e5f176f119df34d031ebf8f9\transformed\ui-util-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f9bba7594e5fac0929e289d0d503e23e\transformed\ui-tooling-preview-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\9afb4212ec2e569d462e9593482916d6\transformed\ui-graphics-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7daff7b8bb2293a4862975c8bb8cb3ef\transformed\ui-text-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\cbccc9989560a8a6841c4e3c49c89cef\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\92061ce5546acf2b9279bf53c5567d8a\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ce0956307180d77eef03d2e3d22c316d\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d2ce324f5634459b20fdd92d1e38ca15\transformed\savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8b48235e64b5c2c0e52daf3774c54c73\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\c7f1bfb18d897cdf2b771b0991914df2\transformed\lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\22266565a45d2b4c07046bc5b7d74626\transformed\lifecycle-viewmodel-ktx-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\0baecde96e950e25fb0650cc0eadd3e3\transformed\lifecycle-runtime-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e10730327f307b8b702a377f3519406a\transformed\lifecycle-runtime-ktx-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3102a1b4e54cd2c5b69196ec10ee29ab\transformed\lifecycle-viewmodel-compose-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3ad3a6ef6a74786ec432a54ad9e1ca1c\transformed\ui-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ccf9d350e731f85f73f3ca7a9f7537dc\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\787fd31c6d74c45f42a3848d13909cfb\transformed\ui-tooling-release\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.activity:activity-compose:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\54d06995b318e33d85c9eab766f82194\transformed\activity-compose-1.8.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e54dac4177029722828dbef7cd7792b9\transformed\activity-ktx-1.8.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3130e287434393b9e430fad412f06dca\transformed\activity-1.8.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3709bb6c046b0eb29acabec63947f2f1\transformed\autofill-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b5a1d23ddaa8881322c387abad2fccde\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3146d67540f6a388bb890ce525c7acc\transformed\core-ktx-1.12.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\085dcb742559243624bc51d63e7e0e07\transformed\datastore-preferences-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.datastore:datastore:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\04d28482d347aeed0f330801644095cb\transformed\datastore-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\5bb97c5daa3fdcb02ffb62078d2d0ac2\transformed\runtime-saveable-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\9cd8b9f7c976a77529062e0514617914\transformed\runtime-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.5.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\bd8fa2b5fe7384b0fee097f2d7fda6ca\transformed\annotation-experimental-1.5.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\47a8111e081760d0d45174d769119c62\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8676808beded6ba5a5979a69fdd8e79b\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\30596b8a3290fd208c1ba3e3cd450c4e\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.sqlite:sqlite-framework-android:2.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b097f2c4a5cc5cd1d1889c51659a8f9e\transformed\sqlite-framework\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-android:2.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e91f135782dad40e04d70e8d30cba237\transformed\sqlite\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3f4b500509a4daeb36d96455ea5642b\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\555aa7e4c0af8e1eec61ffacabe2ab38\transformed\tracing-1.0.0\AndroidManifest.xml:17:1-24:12
 	package
 		INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml
 	android:versionName
@@ -83,28 +83,28 @@ ADDED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:6:5-81
 application
 ADDED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:8:5-28:19
 INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:8:5-28:19
-MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
-MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
-MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
-MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
-MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:23:5-33:19
-MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:23:5-33:19
-MERGED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:22:5-26:19
-MERGED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:22:5-26:19
-MERGED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
-MERGED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
-MERGED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:28:5-89
-MERGED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:28:5-89
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\2fd6d3d6758b2441967abae359e53502\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\2fd6d3d6758b2441967abae359e53502\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
-MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3e35e68834d6549bfa2bec6f18ddfe25\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
-MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3e35e68834d6549bfa2bec6f18ddfe25\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.room:room-runtime-android:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ba65431547ee3c840a419a24956661e0\transformed\room-runtime\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime-android:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ba65431547ee3c840a419a24956661e0\transformed\room-runtime\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\cbccc9989560a8a6841c4e3c49c89cef\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\cbccc9989560a8a6841c4e3c49c89cef\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ccf9d350e731f85f73f3ca7a9f7537dc\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ccf9d350e731f85f73f3ca7a9f7537dc\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\787fd31c6d74c45f42a3848d13909cfb\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\787fd31c6d74c45f42a3848d13909cfb\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\30596b8a3290fd208c1ba3e3cd450c4e\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\30596b8a3290fd208c1ba3e3cd450c4e\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3f4b500509a4daeb36d96455ea5642b\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3f4b500509a4daeb36d96455ea5642b\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 	android:extractNativeLibs
 		INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
 		ADDED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml:12:9-35
 	android:label
@@ -151,231 +151,231 @@ uses-sdk
 INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml
 INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml
-MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:21:5-44
-MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:21:5-44
-MERGED from [androidx.room:room-ktx:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ebfee4d4de2b584f225b8200a2c97361\transformed\room-ktx-2.6.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.room:room-ktx:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ebfee4d4de2b584f225b8200a2c97361\transformed\room-ktx-2.6.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ee98f18b894493c80e51f113a34ca77b\transformed\navigation-common-2.7.7\AndroidManifest.xml:20:5-44
-MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ee98f18b894493c80e51f113a34ca77b\transformed\navigation-common-2.7.7\AndroidManifest.xml:20:5-44
-MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\9fb41f86261ff2df24aaa23e81d43a95\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:20:5-44
-MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\9fb41f86261ff2df24aaa23e81d43a95\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:20:5-44
-MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6463e9716575106f54d3b462f1177288\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:5:5-44
-MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6463e9716575106f54d3b462f1177288\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:5:5-44
-MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7c93e82be88c9e1038a9fbae19683d7e\transformed\navigation-runtime-ktx-2.7.7\AndroidManifest.xml:5:5-44
-MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7c93e82be88c9e1038a9fbae19683d7e\transformed\navigation-runtime-ktx-2.7.7\AndroidManifest.xml:5:5-44
-MERGED from [androidx.navigation:navigation-compose:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\49d4e09f5963c87583da27c488158cb9\transformed\navigation-compose-2.7.7\AndroidManifest.xml:5:5-44
-MERGED from [androidx.navigation:navigation-compose:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\49d4e09f5963c87583da27c488158cb9\transformed\navigation-compose-2.7.7\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material3:material3-android:1.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\4e3af374dad2182a144adf816deaf493\transformed\material3-release\AndroidManifest.xml:20:5-44
-MERGED from [androidx.compose.material3:material3-android:1.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\4e3af374dad2182a144adf816deaf493\transformed\material3-release\AndroidManifest.xml:20:5-44
-MERGED from [androidx.compose.material:material-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6e2c2633dffca8f5a1cb52403dd7c642\transformed\material-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material:material-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6e2c2633dffca8f5a1cb52403dd7c642\transformed\material-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material:material-icons-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\60777210a33c44192c2439a40d6a0752\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material:material-icons-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\60777210a33c44192c2439a40d6a0752\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material:material-ripple-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\5df70dfb028c75e3fb66722dbcd8eca6\transformed\material-ripple-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material:material-ripple-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\5df70dfb028c75e3fb66722dbcd8eca6\transformed\material-ripple-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.foundation:foundation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e713d7bcb8546bd45213a68193bb2c38\transformed\foundation-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.foundation:foundation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e713d7bcb8546bd45213a68193bb2c38\transformed\foundation-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\16b9bc41835300044f5211759f5942bb\transformed\foundation-layout-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\16b9bc41835300044f5211759f5942bb\transformed\foundation-layout-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.animation:animation-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\941b2686c69ba5f62b2c4f5988935d4d\transformed\animation-core-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.animation:animation-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\941b2686c69ba5f62b2c4f5988935d4d\transformed\animation-core-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.animation:animation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\48364a197caf5b5fe615c3d3e5eb67d7\transformed\animation-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.animation:animation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\48364a197caf5b5fe615c3d3e5eb67d7\transformed\animation-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\48675f6684ecef987ea60ac84a91023a\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\48675f6684ecef987ea60ac84a91023a\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-unit-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3e572eb1cef148dd9f9779503c3215ec\transformed\ui-unit-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-unit-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3e572eb1cef148dd9f9779503c3215ec\transformed\ui-unit-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-geometry-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\43379ce0a37529f5b9f435d3e5c19434\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-geometry-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\43379ce0a37529f5b9f435d3e5c19434\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-util-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\16667333a5796be756f9d5d3b61f45e7\transformed\ui-util-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-util-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\16667333a5796be756f9d5d3b61f45e7\transformed\ui-util-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\5e03741d4f39e1cd063a2dc1a6b8855c\transformed\ui-tooling-preview-release\AndroidManifest.xml:20:5-44
-MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\5e03741d4f39e1cd063a2dc1a6b8855c\transformed\ui-tooling-preview-release\AndroidManifest.xml:20:5-44
-MERGED from [androidx.compose.ui:ui-graphics-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\04c102b48eee472bc95aab21172058e2\transformed\ui-graphics-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-graphics-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\04c102b48eee472bc95aab21172058e2\transformed\ui-graphics-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-text-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e0cdbe2af8857c8ff7112766654120ec\transformed\ui-text-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-text-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e0cdbe2af8857c8ff7112766654120ec\transformed\ui-text-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
-MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
-MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:21:5-44
-MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:21:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\476c53286cfcac98a5fe053434625770\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\476c53286cfcac98a5fe053434625770\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\333169392bf296e522b411c2dbb2c1bb\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\333169392bf296e522b411c2dbb2c1bb\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\04e64f69971821f495a01560765da070\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\04e64f69971821f495a01560765da070\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\106cd8d0b8fe5e1c1dcd89aaa692968b\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\106cd8d0b8fe5e1c1dcd89aaa692968b\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f65887b94cd9e2dc8351268a6e6ffb49\transformed\lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f65887b94cd9e2dc8351268a6e6ffb49\transformed\lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\dc46b0fa1379bd7fb36e289f9ce17bdf\transformed\lifecycle-viewmodel-ktx-2.7.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\dc46b0fa1379bd7fb36e289f9ce17bdf\transformed\lifecycle-viewmodel-ktx-2.7.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\be9410dea2e527477d57b4d138bc15cc\transformed\lifecycle-runtime-2.7.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\be9410dea2e527477d57b4d138bc15cc\transformed\lifecycle-runtime-2.7.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\db85dc0bf64fea5f41daf09ded67e795\transformed\lifecycle-runtime-ktx-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\db85dc0bf64fea5f41daf09ded67e795\transformed\lifecycle-runtime-ktx-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\68e3e6dfe6aa7e5e080254dd61bd1c66\transformed\lifecycle-viewmodel-compose-2.7.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\68e3e6dfe6aa7e5e080254dd61bd1c66\transformed\lifecycle-viewmodel-compose-2.7.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\1a0fa3231c75b3d8b119afbc4e5205ac\transformed\ui-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\1a0fa3231c75b3d8b119afbc4e5205ac\transformed\ui-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:20:5-44
-MERGED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:20:5-44
-MERGED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:20:5-44
-MERGED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity-compose:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6bd6c99955b89d11391076c9ef4e7e87\transformed\activity-compose-1.8.2\AndroidManifest.xml:5:5-44
-MERGED from [androidx.activity:activity-compose:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6bd6c99955b89d11391076c9ef4e7e87\transformed\activity-compose-1.8.2\AndroidManifest.xml:5:5-44
-MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\487211b0286b5f163a76f864ddf3eecb\transformed\activity-ktx-1.8.2\AndroidManifest.xml:5:5-44
-MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\487211b0286b5f163a76f864ddf3eecb\transformed\activity-ktx-1.8.2\AndroidManifest.xml:5:5-44
-MERGED from [androidx.activity:activity:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\67ba912ebca0a292e976f68ab3b3ab59\transformed\activity-1.8.2\AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\67ba912ebca0a292e976f68ab3b3ab59\transformed\activity-1.8.2\AndroidManifest.xml:20:5-44
-MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\97d8c23766fd012f274db478fe101615\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\97d8c23766fd012f274db478fe101615\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\360778d0dec9a4256b5e894997cc7a6b\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
-MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\360778d0dec9a4256b5e894997cc7a6b\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
-MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\96f486af3949f1708722910295b281c2\transformed\core-ktx-1.12.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\96f486af3949f1708722910295b281c2\transformed\core-ktx-1.12.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.datastore:datastore-preferences:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\38dcdc4eb778979eee5a71f2c444452e\transformed\datastore-preferences-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.datastore:datastore-preferences:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\38dcdc4eb778979eee5a71f2c444452e\transformed\datastore-preferences-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7747eb1c08314f6ce776e13d8c5b2995\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7747eb1c08314f6ce776e13d8c5b2995\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ea928120576b3b03c43f3f3b562ab019\transformed\sqlite-2.4.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ea928120576b3b03c43f3f3b562ab019\transformed\sqlite-2.4.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.datastore:datastore:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3c7503c75f358ab4cbccf54d0abf8a34\transformed\datastore-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.datastore:datastore:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3c7503c75f358ab4cbccf54d0abf8a34\transformed\datastore-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3051e6e25c84e1d329b9d5010c13c83\transformed\runtime-saveable-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3051e6e25c84e1d329b9d5010c13c83\transformed\runtime-saveable-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.runtime:runtime-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\c588a2ab862a7ad4c2d94f4e7ce5e24a\transformed\runtime-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.runtime:runtime-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\c588a2ab862a7ad4c2d94f4e7ce5e24a\transformed\runtime-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\290ba41a87fa1945bdd2ac83ccb16007\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\290ba41a87fa1945bdd2ac83ccb16007\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\2fd6d3d6758b2441967abae359e53502\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\2fd6d3d6758b2441967abae359e53502\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\30bf9a51b968b6337280a4698d724bc8\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\30bf9a51b968b6337280a4698d724bc8\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7834c174bf16b3f90742e345363411c7\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7834c174bf16b3f90742e345363411c7\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
-MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3e35e68834d6549bfa2bec6f18ddfe25\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3e35e68834d6549bfa2bec6f18ddfe25\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\0968b8c8a01b80a1676c5761e8c069d0\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\0968b8c8a01b80a1676c5761e8c069d0\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime-android:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ba65431547ee3c840a419a24956661e0\transformed\room-runtime\AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime-android:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ba65431547ee3c840a419a24956661e0\transformed\room-runtime\AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-ktx:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\c6407f13cb2aed4c6969ab9eb9477dec\transformed\room-ktx-2.8.5\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\c6407f13cb2aed4c6969ab9eb9477dec\transformed\room-ktx-2.8.5\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\682360a2d336b1f1aceb13bb41cff902\transformed\navigation-common-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\682360a2d336b1f1aceb13bb41cff902\transformed\navigation-common-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\efec001e5de339fdd37cb8d86ebb3fa1\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\efec001e5de339fdd37cb8d86ebb3fa1\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ee1161930e6fcd093806250343792451\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ee1161930e6fcd093806250343792451\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\85d7b362678a3c193d96e86e1ce94525\transformed\navigation-runtime-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\85d7b362678a3c193d96e86e1ce94525\transformed\navigation-runtime-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\0e45a0a8f0073bd569bead1f2d4e2c19\transformed\navigation-compose-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.7.7] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\0e45a0a8f0073bd569bead1f2d4e2c19\transformed\navigation-compose-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material3:material3-android:1.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\926effdc3aea890f5c3d3b38f5640cc5\transformed\material3-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\926effdc3aea890f5c3d3b38f5640cc5\transformed\material3-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material:material-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e330326e8b7e38a340dc2e03e29d969d\transformed\material-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e330326e8b7e38a340dc2e03e29d969d\transformed\material-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ac43c2548343c423002d6efbc5a0103c\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ac43c2548343c423002d6efbc5a0103c\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\452121745eca71bbfc7d5530d58844bc\transformed\material-ripple-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\452121745eca71bbfc7d5530d58844bc\transformed\material-ripple-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d2329c5aba687caa374840c65655009d\transformed\foundation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d2329c5aba687caa374840c65655009d\transformed\foundation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f9d72670a29a8e2dd14ad5eda9e3cc3f\transformed\foundation-layout-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f9d72670a29a8e2dd14ad5eda9e3cc3f\transformed\foundation-layout-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\4ede64bcb3c67a39c4053736852f017c\transformed\animation-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\4ede64bcb3c67a39c4053736852f017c\transformed\animation-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d8f7747a7ed4f810deeb41c7b090fd74\transformed\animation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d8f7747a7ed4f810deeb41c7b090fd74\transformed\animation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b020204f09a91c986e08a0e9347442a\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b020204f09a91c986e08a0e9347442a\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\dea4a27ed4ce2abd5b3de0fb78583fcb\transformed\ui-unit-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\dea4a27ed4ce2abd5b3de0fb78583fcb\transformed\ui-unit-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a9f8e50d5912906e53b0214d05f8e129\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a9f8e50d5912906e53b0214d05f8e129\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f8b95316e5f176f119df34d031ebf8f9\transformed\ui-util-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f8b95316e5f176f119df34d031ebf8f9\transformed\ui-util-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f9bba7594e5fac0929e289d0d503e23e\transformed\ui-tooling-preview-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f9bba7594e5fac0929e289d0d503e23e\transformed\ui-tooling-preview-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\9afb4212ec2e569d462e9593482916d6\transformed\ui-graphics-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\9afb4212ec2e569d462e9593482916d6\transformed\ui-graphics-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7daff7b8bb2293a4862975c8bb8cb3ef\transformed\ui-text-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\7daff7b8bb2293a4862975c8bb8cb3ef\transformed\ui-text-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\cbccc9989560a8a6841c4e3c49c89cef\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\cbccc9989560a8a6841c4e3c49c89cef\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\92061ce5546acf2b9279bf53c5567d8a\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\92061ce5546acf2b9279bf53c5567d8a\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ce0956307180d77eef03d2e3d22c316d\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ce0956307180d77eef03d2e3d22c316d\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d2ce324f5634459b20fdd92d1e38ca15\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d2ce324f5634459b20fdd92d1e38ca15\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8b48235e64b5c2c0e52daf3774c54c73\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8b48235e64b5c2c0e52daf3774c54c73\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\c7f1bfb18d897cdf2b771b0991914df2\transformed\lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\c7f1bfb18d897cdf2b771b0991914df2\transformed\lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\22266565a45d2b4c07046bc5b7d74626\transformed\lifecycle-viewmodel-ktx-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\22266565a45d2b4c07046bc5b7d74626\transformed\lifecycle-viewmodel-ktx-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\0baecde96e950e25fb0650cc0eadd3e3\transformed\lifecycle-runtime-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\0baecde96e950e25fb0650cc0eadd3e3\transformed\lifecycle-runtime-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e10730327f307b8b702a377f3519406a\transformed\lifecycle-runtime-ktx-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e10730327f307b8b702a377f3519406a\transformed\lifecycle-runtime-ktx-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3102a1b4e54cd2c5b69196ec10ee29ab\transformed\lifecycle-viewmodel-compose-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3102a1b4e54cd2c5b69196ec10ee29ab\transformed\lifecycle-viewmodel-compose-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3ad3a6ef6a74786ec432a54ad9e1ca1c\transformed\ui-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3ad3a6ef6a74786ec432a54ad9e1ca1c\transformed\ui-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ccf9d350e731f85f73f3ca7a9f7537dc\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ccf9d350e731f85f73f3ca7a9f7537dc\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\787fd31c6d74c45f42a3848d13909cfb\transformed\ui-tooling-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\787fd31c6d74c45f42a3848d13909cfb\transformed\ui-tooling-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\54d06995b318e33d85c9eab766f82194\transformed\activity-compose-1.8.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\54d06995b318e33d85c9eab766f82194\transformed\activity-compose-1.8.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e54dac4177029722828dbef7cd7792b9\transformed\activity-ktx-1.8.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e54dac4177029722828dbef7cd7792b9\transformed\activity-ktx-1.8.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3130e287434393b9e430fad412f06dca\transformed\activity-1.8.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3130e287434393b9e430fad412f06dca\transformed\activity-1.8.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3709bb6c046b0eb29acabec63947f2f1\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3709bb6c046b0eb29acabec63947f2f1\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b5a1d23ddaa8881322c387abad2fccde\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b5a1d23ddaa8881322c387abad2fccde\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3146d67540f6a388bb890ce525c7acc\transformed\core-ktx-1.12.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3146d67540f6a388bb890ce525c7acc\transformed\core-ktx-1.12.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\085dcb742559243624bc51d63e7e0e07\transformed\datastore-preferences-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\085dcb742559243624bc51d63e7e0e07\transformed\datastore-preferences-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\04d28482d347aeed0f330801644095cb\transformed\datastore-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\04d28482d347aeed0f330801644095cb\transformed\datastore-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\5bb97c5daa3fdcb02ffb62078d2d0ac2\transformed\runtime-saveable-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\5bb97c5daa3fdcb02ffb62078d2d0ac2\transformed\runtime-saveable-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\9cd8b9f7c976a77529062e0514617914\transformed\runtime-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\9cd8b9f7c976a77529062e0514617914\transformed\runtime-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.5.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\bd8fa2b5fe7384b0fee097f2d7fda6ca\transformed\annotation-experimental-1.5.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.5.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\bd8fa2b5fe7384b0fee097f2d7fda6ca\transformed\annotation-experimental-1.5.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\47a8111e081760d0d45174d769119c62\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\47a8111e081760d0d45174d769119c62\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8676808beded6ba5a5979a69fdd8e79b\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8676808beded6ba5a5979a69fdd8e79b\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\30596b8a3290fd208c1ba3e3cd450c4e\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\30596b8a3290fd208c1ba3e3cd450c4e\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.sqlite:sqlite-framework-android:2.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b097f2c4a5cc5cd1d1889c51659a8f9e\transformed\sqlite-framework\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework-android:2.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b097f2c4a5cc5cd1d1889c51659a8f9e\transformed\sqlite-framework\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-android:2.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e91f135782dad40e04d70e8d30cba237\transformed\sqlite\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-android:2.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e91f135782dad40e04d70e8d30cba237\transformed\sqlite\AndroidManifest.xml:20:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3f4b500509a4daeb36d96455ea5642b\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3f4b500509a4daeb36d96455ea5642b\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\555aa7e4c0af8e1eec61ffacabe2ab38\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\555aa7e4c0af8e1eec61ffacabe2ab38\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
 	android:targetSdkVersion
 		INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from D:\Project Wein\Native APP\app\src\main\AndroidManifest.xml
 service#androidx.room.MultiInstanceInvalidationService
-ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+ADDED from [androidx.room:room-runtime-android:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ba65431547ee3c840a419a24956661e0\transformed\room-runtime\AndroidManifest.xml:24:9-28:63
 	android:exported
-		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+		ADDED from [androidx.room:room-runtime-android:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ba65431547ee3c840a419a24956661e0\transformed\room-runtime\AndroidManifest.xml:27:13-37
 	tools:ignore
-		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:28:13-60
+		ADDED from [androidx.room:room-runtime-android:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ba65431547ee3c840a419a24956661e0\transformed\room-runtime\AndroidManifest.xml:28:13-60
 	android:directBootAware
-		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+		ADDED from [androidx.room:room-runtime-android:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ba65431547ee3c840a419a24956661e0\transformed\room-runtime\AndroidManifest.xml:26:13-43
 	android:name
-		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3b2fab9ac7a3e1b407e45a336b9122fc\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+		ADDED from [androidx.room:room-runtime-android:2.8.5] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ba65431547ee3c840a419a24956661e0\transformed\room-runtime\AndroidManifest.xml:25:13-74
 provider#androidx.startup.InitializationProvider
-ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3e35e68834d6549bfa2bec6f18ddfe25\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
-MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3e35e68834d6549bfa2bec6f18ddfe25\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\cbccc9989560a8a6841c4e3c49c89cef\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\cbccc9989560a8a6841c4e3c49c89cef\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3f4b500509a4daeb36d96455ea5642b\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\a3f4b500509a4daeb36d96455ea5642b\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
 	tools:node
-		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:28:13-31
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:28:13-31
 	android:authorities
-		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
 	android:exported
-		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
 	android:name
-		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
 meta-data#androidx.emoji2.text.EmojiCompatInitializer
-ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
 	android:value
-		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
 	android:name
-		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\d5e3a3d3a47b1ca317f1887ca624a237\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f880721db7c70e51e77e956c0ea582c5\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
 meta-data#androidx.lifecycle.ProcessLifecycleInitializer
-ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\cbccc9989560a8a6841c4e3c49c89cef\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
 	android:value
-		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\cbccc9989560a8a6841c4e3c49c89cef\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
 	android:name
-		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\e6f59b7a7cca38ff89ac9d8dbb364203\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\cbccc9989560a8a6841c4e3c49c89cef\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
 activity#androidx.activity.ComponentActivity
-ADDED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:23:9-25:39
+ADDED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ccf9d350e731f85f73f3ca7a9f7537dc\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:23:9-25:39
 	android:exported
-		ADDED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:25:13-36
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ccf9d350e731f85f73f3ca7a9f7537dc\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:25:13-36
 	android:name
-		ADDED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\f17356cbc382f16f81e3f36d7243478e\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:24:13-63
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\ccf9d350e731f85f73f3ca7a9f7537dc\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:24:13-63
 activity#androidx.compose.ui.tooling.PreviewActivity
-ADDED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+ADDED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\787fd31c6d74c45f42a3848d13909cfb\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
 	android:exported
-		ADDED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\787fd31c6d74c45f42a3848d13909cfb\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
 	android:name
-		ADDED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\b8992688ef3275556841b0a17137d924\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\787fd31c6d74c45f42a3848d13909cfb\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
 permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
-		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
 	android:name
-		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
 permission#com.duesoon.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
-		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
 	android:name
-		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
 uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
 	android:name
-		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
 uses-permission#com.duesoon.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
 	android:name
-		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\294bc97bc47a1fdba2b02098940fb698\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+		ADDED from [androidx.core:core:1.12.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\8700c092607e1461c289b1257ea71332\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
 meta-data#androidx.profileinstaller.ProfileInstallerInitializer
-ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
 	android:value
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
 	android:name
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
 receiver#androidx.profileinstaller.ProfileInstallReceiver
-ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
 	android:enabled
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
 	android:exported
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
 	android:permission
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
 	android:directBootAware
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
 	android:name
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
 intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
-ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
 action#androidx.profileinstaller.action.INSTALL_PROFILE
-ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
 	android:name
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
 intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
-ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
 action#androidx.profileinstaller.action.SKIP_FILE
-ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
 	android:name
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
 intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
-ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
 action#androidx.profileinstaller.action.SAVE_PROFILE
-ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
 	android:name
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
 intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
-ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
 action#androidx.profileinstaller.action.BENCHMARK_OPERATION
-ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
 	android:name
-		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\3d477f17cd02f46d2a5153b139303fb4\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\MyBook Hype AMD\.gradle\caches\9.5.0\transforms\6175de365dcbd9c7cd478d6dd3a496b1\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
