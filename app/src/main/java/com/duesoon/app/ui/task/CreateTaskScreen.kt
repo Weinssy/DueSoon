@@ -20,6 +20,7 @@ import java.util.Locale
 @Composable
 fun CreateTaskScreen(
     navigateBack: () -> Unit,
+    onTaskSaved: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: CreateTaskViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -28,7 +29,7 @@ fun CreateTaskScreen(
 
     LaunchedEffect(uiState.isSaved) {
         if (uiState.isSaved) {
-            navigateBack()
+            onTaskSaved()
         }
     }
 

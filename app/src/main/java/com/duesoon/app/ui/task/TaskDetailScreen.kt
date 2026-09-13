@@ -11,6 +11,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.duesoon.app.ui.AppViewModelProvider
@@ -24,6 +25,7 @@ import kotlinx.coroutines.launch
 fun TaskDetailScreen(
     navigateBack: () -> Unit,
     navigateToEdit: (Long) -> Unit,
+    onTaskDeleted: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TaskDetailViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -42,7 +44,7 @@ fun TaskDetailScreen(
             confirmButton = {
                 TextButton(onClick = {
                     showDeleteDialog = false
-                    viewModel.deleteTask(onDeleted = navigateBack)
+                    viewModel.deleteTask(onDeleted = onTaskDeleted)
                 }) { Text("Delete", color = MaterialTheme.colorScheme.error) }
             },
             dismissButton = {
@@ -89,7 +91,9 @@ fun TaskDetailScreen(
         ) {
             Text(
                 text = currentTask.title,
-                style = MaterialTheme.typography.headlineSmall,
+                style = MaterialTheme.typography.headlineSmall.copy(
+                    textDecoration = if (currentTask.completed) TextDecoration.LineThrough else TextDecoration.None
+                ),
                 color = MaterialTheme.colorScheme.onSurface
             )
 

@@ -14,6 +14,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.duesoon.app.domain.model.Task
 
@@ -33,13 +35,16 @@ fun TaskCard(
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
+        val alpha = if (task.completed) 0.6f else 1f
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(16.dp).alpha(alpha),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
                 text = task.title,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    textDecoration = if (task.completed) TextDecoration.LineThrough else TextDecoration.None
+                ),
                 color = MaterialTheme.colorScheme.onSurface
             )
             
@@ -55,6 +60,11 @@ fun TaskCard(
                     )
                 }
                 PriorityIndicator(priority = task.priority)
+                Text(
+                    text = " Priority",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
         }
     }

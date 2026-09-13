@@ -10,9 +10,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
@@ -63,10 +67,21 @@ val bottomNavItems = listOf(
 fun AppNavigation(navController: NavHostController = rememberNavController()) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+    
+    val snackbarHostState = remember { SnackbarHostState() }
+    val snackbarMessage by navBackStackEntry?.savedStateHandle?.getStateFlow<String?>("snackbar_message", null)?.collectAsState(initial = null) ?: remember { mutableStateOf(null) }
+
+    LaunchedEffect(snackbarMessage) {
+        snackbarMessage?.let { msg ->
+            snackbarHostState.showSnackbar(msg)
+            navBackStackEntry?.savedStateHandle?.remove<String>("snackbar_message")
+        }
+    }
 
     val showBottomBar = bottomNavItems.any { it.route == currentDestination?.route }
 
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         bottomBar = {
             if (showBottomBar) {
                 NavigationBar {
@@ -120,7 +135,11 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
             }
             composable(Destinations.CREATE_TASK) {
                 CreateTaskScreen(
-                    navigateBack = { navController.popBackStack() }
+                    navigateBack = { navController.popBackStack() },
+                    onTaskSaved = {
+                        navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", "Task created")
+                        navController.popBackStack()
+                    }
                 )
             }
             composable(
@@ -129,7 +148,11 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
             ) {
                 TaskDetailScreen(
                     navigateBack = { navController.popBackStack() },
-                    navigateToEdit = { navController.navigate(Destinations.editTaskRoute(it)) }
+                    navigateToEdit = { navController.navigate(Destinations.editTaskRoute(it)) },
+                    onTaskDeleted = {
+                        navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", "Task deleted")
+                        navController.popBackStack()
+                    }
                 )
             }
             composable(
@@ -137,7 +160,11 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
                 arguments = listOf(navArgument("taskId") { type = NavType.LongType })
             ) {
                 EditTaskScreen(
-                    navigateBack = { navController.popBackStack() }
+                    navigateBack = { navController.popBackStack() },
+                    onTaskSaved = {
+                        navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", "Task updated")
+                        navController.popBackStack()
+                    }
                 )
             }
         }
