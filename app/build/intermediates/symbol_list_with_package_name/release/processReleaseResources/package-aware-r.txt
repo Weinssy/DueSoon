@@ -48,6 +48,7 @@ color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
 color call_notification_answer_color
 color call_notification_decline_color
+color ic_launcher_background
 color notification_action_color_filter
 color notification_icon_bg_color
 color vector_tint_color
@@ -205,6 +206,7 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout splash_screen_view
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 string androidx_startup
 string call_notification_answer_action

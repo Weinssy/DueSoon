@@ -11,9 +11,10 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import java.util.Calendar
 import java.util.TimeZone
+import kotlinx.coroutines.launch
 
 class CalendarViewModel(
-    repository: TaskRepository
+    private val repository: TaskRepository
 ) : ViewModel() {
 
     private val _selectedDateMillis = MutableStateFlow<Long>(System.currentTimeMillis())
@@ -43,6 +44,12 @@ class CalendarViewModel(
     fun selectDate(millis: Long?) {
         if (millis != null) {
             _selectedDateMillis.value = millis
+        }
+    }
+
+    fun toggleTaskCompletion(task: Task, isComplete: Boolean) {
+        viewModelScope.launch {
+            repository.updateTask(task.copy(completed = isComplete, updatedAt = System.currentTimeMillis()))
         }
     }
 }

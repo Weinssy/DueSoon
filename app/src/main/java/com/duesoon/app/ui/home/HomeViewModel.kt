@@ -48,9 +48,9 @@ class HomeViewModel(
         }.sortedBy { it.deadline }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     
-    fun completeTask(task: Task) {
+    fun toggleTaskCompletion(task: Task, isComplete: Boolean) {
         viewModelScope.launch {
-            repository.updateTask(task.copy(completed = true, updatedAt = System.currentTimeMillis()))
+            repository.updateTask(task.copy(completed = isComplete, updatedAt = System.currentTimeMillis()))
             // TODO: Cancel remaining notifications (Phase 6)
         }
     }

@@ -80,7 +80,10 @@ fun HomeScreen(
                     items(needsAttentionTasks, key = { it.id }) { task ->
                         TaskCard(
                             task = task,
-                            onClick = { navigateToTaskDetail(task.id) }
+                            onClick = { navigateToTaskDetail(task.id) },
+                            onCompleteToggle = { isComplete ->
+                                viewModel.toggleTaskCompletion(task, isComplete)
+                            }
                         )
                     }
                 }

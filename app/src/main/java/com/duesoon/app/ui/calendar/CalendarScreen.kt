@@ -59,7 +59,14 @@ fun CalendarScreen(
                     modifier = Modifier.weight(1f)
                 ) {
                     items(tasks, key = { it.id }) { task ->
-                        TaskCard(task = task, onClick = { navigateToTaskDetail(task.id) })
+                        TaskCard(
+                            task = task, 
+                            onClick = { navigateToTaskDetail(task.id) },
+                            onCompleteToggle = { isComplete ->
+                                // CalendarViewModel needs a toggleTaskCompletion method
+                                viewModel.toggleTaskCompletion(task, isComplete)
+                            }
+                        )
                     }
                 }
             }

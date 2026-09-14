@@ -3,7 +3,8 @@ package com.duesoon.app.ui.theme
 import androidx.compose.ui.graphics.Color
 
 // Primary Colors
-val Primary = Color(0xFF4F46E5)
+val LightPrimary = Color(0xFF4F46E5)
+val DarkPrimary = Color(0xFF818CF8) // Lighter pastel indigo for dark mode
 
 // Semantic Colors
 val Success = Color(0xFF16A34A)

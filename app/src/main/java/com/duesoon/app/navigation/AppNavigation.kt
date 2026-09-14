@@ -2,7 +2,6 @@ package com.duesoon.app.navigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
@@ -37,11 +36,9 @@ import com.duesoon.app.ui.settings.SettingsScreen
 import com.duesoon.app.ui.task.CreateTaskScreen
 import com.duesoon.app.ui.task.EditTaskScreen
 import com.duesoon.app.ui.task.TaskDetailScreen
-import com.duesoon.app.ui.tasks.TasksScreen
 
 object Destinations {
     const val HOME = "home"
-    const val TASKS = "tasks"
     const val CALENDAR = "calendar"
     const val SETTINGS = "settings"
     const val CREATE_TASK = "create_task"
@@ -59,8 +56,7 @@ data class BottomNavItem(
 )
 
 val bottomNavItems = listOf(
-    BottomNavItem(Destinations.HOME, "Home", Icons.Filled.Home),
-    BottomNavItem(Destinations.TASKS, "Tasks", Icons.AutoMirrored.Filled.List),
+    BottomNavItem(Destinations.HOME, "Focus", Icons.Filled.Home),
     BottomNavItem(Destinations.CALENDAR, "Calendar", Icons.Filled.DateRange),
     BottomNavItem(Destinations.SETTINGS, "Settings", Icons.Filled.Settings)
 )
@@ -117,12 +113,6 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
         ) {
             composable(Destinations.HOME) {
                 HomeScreen(
-                    navigateToCreateTask = { navController.navigate(Destinations.CREATE_TASK) },
-                    navigateToTaskDetail = { taskId -> navController.navigate(Destinations.taskDetailRoute(taskId)) }
-                )
-            }
-            composable(Destinations.TASKS) {
-                TasksScreen(
                     navigateToCreateTask = { navController.navigate(Destinations.CREATE_TASK) },
                     navigateToTaskDetail = { taskId -> navController.navigate(Destinations.taskDetailRoute(taskId)) }
                 )

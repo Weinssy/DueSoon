@@ -54,7 +54,8 @@ fun DeadlineLabel(task: Task, modifier: Modifier = Modifier) {
         Text(
             text = text,
             color = color,
-            style = MaterialTheme.typography.labelSmall
+            style = MaterialTheme.typography.labelMedium,
+            fontWeight = androidx.compose.ui.text.font.FontWeight.Medium
         )
     }
 }

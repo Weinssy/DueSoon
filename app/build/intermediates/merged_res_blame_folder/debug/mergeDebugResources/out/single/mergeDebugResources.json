@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-hdpi_ic_launcher.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-hdpi/ic_launcher.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-xxhdpi_ic_launcher_round.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-xxhdpi/ic_launcher_round.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-xxxhdpi_ic_launcher_round.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-xxxhdpi/ic_launcher_round.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-xhdpi_ic_launcher_round.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-xhdpi/ic_launcher_round.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-xxxhdpi_ic_launcher.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-xxxhdpi/ic_launcher.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-xhdpi_ic_launcher.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-xhdpi/ic_launcher.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-xxhdpi_ic_launcher.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-xxhdpi/ic_launcher.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-mdpi_ic_launcher_round.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-mdpi/ic_launcher_round.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-anydpi-v26_ic_launcher_round.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-anydpi-v26/ic_launcher_round.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-hdpi_ic_launcher_round.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-hdpi/ic_launcher_round.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-mdpi_ic_launcher.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-mdpi/ic_launcher.jpg"
+    },
+    {
+        "merged": "com.duesoon.app-debug-57:/mipmap-anydpi-v26_ic_launcher.jpg.flat",
+        "source": "com.duesoon.app-main-59:/mipmap-anydpi-v26/ic_launcher.jpg"
+    }
+]

@@ -1,27 +1,33 @@
 Marking string:tab:2131296336 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking string:switch_role:2131296335 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_snackbar_dismiss:2131296311 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_input_invalid_for_pattern:2131296278 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_input_invalid_year_range:2131296280 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_input_invalid_not_allowed:2131296279 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_input_label:2131296281 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking string:default_popup_window_title:2131296267 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:view_tree_view_model_store_owner:2131034199 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:compose_view_saveable_id_tag:2131034154 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_range_picker_scroll_to_previous_month:2131296304 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_range_picker_scroll_to_next_month:2131296303 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:tag_on_apply_window_listener:2131034183 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:tag_window_insets_animation_callback:2131034191 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_switch_to_day_selection:2131296291 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_switch_to_year_selection:2131296295 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking attr:windowSplashScreenBackground:2130772011 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking attr:windowSplashScreenAnimatedIcon:2130772009 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking attr:splashScreenIconSize:2130772004 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking attr:postSplashScreenTheme:2130771999 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_switch_to_previous_month:2131296294 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_year_picker_pane_title:2131296298 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_scroll_to_earlier_years:2131296288 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_scroll_to_later_years:2131296289 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:hide_in_inspector_tag:2131034160 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:default_error_message:2131296266 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_switch_to_next_month:2131296293 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_switch_to_input_mode:2131296292 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:pooling_container_listener_holder_tag:2131034174 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:view_tree_lifecycle_owner:2131034196 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:tag_unhandled_key_event_manager:2131034189 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:tag_unhandled_key_listeners:2131034190 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:view_tree_saved_state_registry_owner:2131034198 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:default_error_message:2131296266 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_range_input_invalid_range_input:2131296299 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_range_picker_start_headline:2131296305 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_range_picker_end_headline:2131296302 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:inspection_slot_table_set:2131034164 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:tag_screen_reader_focusable:2131034186 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:tag_accessibility_heading:2131034181 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
@@ -30,38 +36,24 @@ Marking id:tag_state_description:2131034187 reachable: referenced from D:\Projec
 Marking id:tag_accessibility_actions:2131034179 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:accessibility_action_clickable_span:2131034112 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:tag_accessibility_clickable_spans:2131034180 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_snackbar_dismiss:2131296311 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:androidx_compose_ui_view_composition_context:2131034150 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_no_selection_description:2131296287 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_input_no_input_description:2131296282 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_range_picker_start_headline:2131296305 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_range_picker_end_headline:2131296302 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_range_picker_title:2131296306 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_range_input_title:2131296300 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_range_picker_day_in_range:2131296301 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_today_description:2131296297 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_headline:2131296284 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_input_headline:2131296276 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_headline_description:2131296285 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_input_headline_description:2131296277 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_title:2131296296 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_input_title:2131296283 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_navigate_to_year_description:2131296286 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_switch_to_calendar_mode:2131296290 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_range_picker_scroll_to_previous_month:2131296304 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_range_picker_scroll_to_next_month:2131296303 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_switch_to_day_selection:2131296291 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_switch_to_year_selection:2131296295 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:view_tree_on_back_pressed_dispatcher_owner:2131034197 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:wrapped_composition_tag:2131034200 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_switch_to_previous_month:2131296294 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking string:androidx_startup:2131296256 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_input_invalid_for_pattern:2131296278 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_input_invalid_year_range:2131296280 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_input_invalid_not_allowed:2131296279 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_input_label:2131296281 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:report_drawn:2131034175 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking string:m3c_dialog:2131296307 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_switch_to_next_month:2131296293 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking style:DialogWindowTheme:2131361799 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_range_input_invalid_range_input:2131296299 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_year_picker_pane_title:2131296298 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_scroll_to_earlier_years:2131296288 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_scroll_to_later_years:2131296289 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_navigate_to_year_description:2131296286 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_no_selection_description:2131296287 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_input_no_input_description:2131296282 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_range_picker_title:2131296306 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_range_input_title:2131296300 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:consume_window_insets_tag:2131034155 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:accessibility_custom_action_0:2131034113 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:accessibility_custom_action_1:2131034114 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
@@ -103,7 +95,15 @@ Marking string:not_selected:2131296328 reachable: referenced from D:\Project Wei
 Marking string:template_percent:2131296337 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking string:in_progress:2131296269 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 Marking id:is_pooling_container_tag:2131034165 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
-Marking string:m3c_date_picker_switch_to_input_mode:2131296292 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_headline:2131296284 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_input_headline:2131296276 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_headline_description:2131296285 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_input_headline_description:2131296277 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_title:2131296296 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_input_title:2131296283 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_range_picker_day_in_range:2131296301 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_today_description:2131296297 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
+Marking string:m3c_date_picker_switch_to_calendar_mode:2131296290 reachable: referenced from D:\Project Wein\Native APP\app\build\intermediates\dex\release\minifyReleaseWithR8\classes.dex
 @attr/action : reachable=false
 @attr/alpha : reachable=false
 @attr/argType : reachable=false
@@ -153,6 +153,7 @@ Marking string:m3c_date_picker_switch_to_input_mode:2131296292 reachable: refere
 @color/androidx_core_secondary_text_default_material_light : reachable=false
 @color/call_notification_answer_color : reachable=false
 @color/call_notification_decline_color : reachable=false
+@color/ic_launcher_background : reachable=false
 @color/notification_action_color_filter : reachable=false
     @color/androidx_core_secondary_text_default_material_light
 @color/notification_icon_bg_color : reachable=false
@@ -356,7 +357,12 @@ Marking string:m3c_date_picker_switch_to_input_mode:2131296292 reachable: refere
 @layout/splash_screen_view : reachable=false
     @attr/splashScreenIconSize
 @mipmap/ic_launcher : reachable=true
+    @color/ic_launcher_background
+    @mipmap/ic_launcher_foreground
+@mipmap/ic_launcher_foreground : reachable=false
 @mipmap/ic_launcher_round : reachable=true
+    @color/ic_launcher_background
+    @mipmap/ic_launcher_foreground
 @string/androidx_startup : reachable=true
 @string/call_notification_answer_action : reachable=false
 @string/call_notification_answer_video_action : reachable=false
@@ -560,7 +566,7 @@ The root reachable resources are:
  id:view_tree_view_model_store_owner:2131034199
  id:wrapped_composition_tag:2131034200
  mipmap:ic_launcher:2131230720
- mipmap:ic_launcher_round:2131230721
+ mipmap:ic_launcher_round:2131230722
  string:androidx_startup:2131296256
  string:default_error_message:2131296266
  string:default_popup_window_title:2131296267
@@ -613,10 +619,10 @@ Unused resources are:
  color:androidx_core_secondary_text_default_material_light:2130837505
  color:call_notification_answer_color:2130837506
  color:call_notification_decline_color:2130837507
- color:notification_action_color_filter:2130837508
- color:notification_icon_bg_color:2130837509
- color:vector_tint_color:2130837510
- color:vector_tint_theme_color:2130837511
+ color:notification_action_color_filter:2130837509
+ color:notification_icon_bg_color:2130837510
+ color:vector_tint_color:2130837511
+ color:vector_tint_theme_color:2130837512
  dimen:compat_button_inset_horizontal_material:2130903040
  dimen:compat_button_inset_vertical_material:2130903041
  dimen:compat_button_padding_horizontal_material:2130903042
