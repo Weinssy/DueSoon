@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DueSoon</string>
+    <string name="widget_name">DueSoon Deadlines</string>
+    <string name="widget_description">Lihat deadline terdekat langsung di layar utama</string>
+</resources>
