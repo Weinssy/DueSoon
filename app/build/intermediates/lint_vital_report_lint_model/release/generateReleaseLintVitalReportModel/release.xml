@@ -28,6 +28,6 @@
       applicationId="com.duesoon.app"
       generatedSourceFolders="build\generated\ksp\release\java;build\generated\ksp\release\kotlin;build\generated\ap_generated_sources\release\out"
       generatedResourceFolders="build\generated\res\resValues\release"
-      desugaredMethodsFiles="C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\3489314b2192f988ed36c80710b99fb6\transformed\D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\a5c24f7a46cd8c1497aa0ad741c0618b\transformed\D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

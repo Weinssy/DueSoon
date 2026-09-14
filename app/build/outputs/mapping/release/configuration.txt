@@ -113,22 +113,74 @@
 # End of content from D:\Project Wein\Native APP\app\proguard-rules.pro
 # The proguard configuration file for the following section is D:\Project Wein\Native APP\app\build\intermediates\aapt_proguard_file\release\processReleaseResources\aapt_rules.txt
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
+-keep class androidx.core.widget.RemoteViewsCompatService { <init>(); }
+-keep class androidx.glance.appwidget.GlanceRemoteViewsService { <init>(); }
+-keep class androidx.glance.appwidget.MyPackageReplacedReceiver { <init>(); }
+-keep class androidx.glance.appwidget.action.ActionCallbackBroadcastReceiver { <init>(); }
+-keep class androidx.glance.appwidget.action.ActionTrampolineActivity { <init>(); }
+-keep class androidx.glance.appwidget.action.InvisibleActionTrampolineActivity { <init>(); }
 -keep class androidx.profileinstaller.ProfileInstallReceiver { <init>(); }
 -keep class androidx.room.MultiInstanceInvalidationService { <init>(); }
 -keep class androidx.startup.InitializationProvider { <init>(); }
+-keep class androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy { <init>(); }
+-keep class androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy { <init>(); }
+-keep class androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy { <init>(); }
+-keep class androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy { <init>(); }
+-keep class androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver { <init>(); }
+-keep class androidx.work.impl.background.systemalarm.RescheduleReceiver { <init>(); }
+-keep class androidx.work.impl.background.systemalarm.SystemAlarmService { <init>(); }
+-keep class androidx.work.impl.background.systemjob.SystemJobService { <init>(); }
+-keep class androidx.work.impl.diagnostics.DiagnosticsReceiver { <init>(); }
+-keep class androidx.work.impl.foreground.SystemForegroundService { <init>(); }
+-keep class androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver { <init>(); }
 -keep class com.duesoon.app.DueSoonApplication { <init>(); }
 -keep class com.duesoon.app.MainActivity { <init>(); }
 -keep class com.duesoon.app.notification.BootReceiver { <init>(); }
 -keep class com.duesoon.app.notification.ReminderReceiver { <init>(); }
+-keep class com.duesoon.app.widget.DueSoonWidgetReceiver { <init>(); }
 
 # End of content from D:\Project Wein\Native APP\app\build\intermediates\aapt_proguard_file\release\processReleaseResources\aapt_rules.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\935e7b952de26cbd41d15ca893c0ed29\transformed\room-runtime-2.6.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\ddee2a8d9857a54981e9e4bc7069b102\transformed\glance-appwidget-1.0.0\proguard.txt
+#  Copyright (C) 2021 The Android Open Source Project
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+
+# libproto uses reflection to deserialize a Proto, which Proguard can't accurately detect.
+# Keep all the class members of any generated messages to ensure we can deserialize properly inside
+# these classes.
+-keepclassmembers class * extends androidx.glance.appwidget.protobuf.GeneratedMessageLite {
+  <fields>;
+}
+-keep public class * extends androidx.glance.appwidget.action.ActionCallback
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\ddee2a8d9857a54981e9e4bc7069b102\transformed\glance-appwidget-1.0.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\0cb2e016997607a57517f0d536ae8f41\transformed\work-runtime-2.7.1\proguard.txt
+-keep class * extends androidx.work.Worker
+-keep class * extends androidx.work.InputMerger
+# Keep all constructors on ListenableWorker, Worker (also marked with @Keep)
+-keep public class * extends androidx.work.ListenableWorker {
+    public <init>(...);
+}
+# We need to keep WorkerParameters for the ListenableWorker constructor
+-keep class androidx.work.WorkerParameters
+
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\0cb2e016997607a57517f0d536ae8f41\transformed\work-runtime-2.7.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\847cc06a8747afe36b04806df0f5e8a8\transformed\room-runtime-2.6.1\proguard.txt
 -keep class * extends androidx.room.RoomDatabase
 -dontwarn androidx.room.paging.**
 -dontwarn androidx.lifecycle.LiveData
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\935e7b952de26cbd41d15ca893c0ed29\transformed\room-runtime-2.6.1\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\b2d406854f1e90c0462efc0048dfb25b\transformed\navigation-common-2.7.7\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\847cc06a8747afe36b04806df0f5e8a8\transformed\room-runtime-2.6.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\482d3a14b458cfd08442eadf8795dafd\transformed\navigation-common-2.7.7\proguard.txt
 # Copyright (C) 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -158,12 +210,12 @@
 -keepattributes RuntimeVisibleAnnotations
 -keep,allowobfuscation,allowshrinking class * extends androidx.navigation.Navigator
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\b2d406854f1e90c0462efc0048dfb25b\transformed\navigation-common-2.7.7\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\502ec096ebf75c49e2e510aa61b43e02\transformed\lifecycle-process-2.7.0\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\482d3a14b458cfd08442eadf8795dafd\transformed\navigation-common-2.7.7\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\63d926dbb825b563c54b9db2c986e167\transformed\lifecycle-process-2.7.0\proguard.txt
 # this rule is need to work properly when app is compiled with api 28, see b/142778206
 -keepclassmembers class * extends androidx.lifecycle.EmptyActivityLifecycleCallbacks { *; }
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\502ec096ebf75c49e2e510aa61b43e02\transformed\lifecycle-process-2.7.0\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\43b75f28fa79118eab435cb7d9b30333\transformed\savedstate-1.2.1\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\63d926dbb825b563c54b9db2c986e167\transformed\lifecycle-process-2.7.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\14ebd5a6cbd80a7e20aef44da934654c\transformed\savedstate-1.2.1\proguard.txt
 # Copyright (C) 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -182,8 +234,8 @@
     <init>();
 }
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\43b75f28fa79118eab435cb7d9b30333\transformed\savedstate-1.2.1\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\e1bbefbee2b135e307b897065ab255b0\transformed\lifecycle-viewmodel-2.7.0\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\14ebd5a6cbd80a7e20aef44da934654c\transformed\savedstate-1.2.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\fd93c1b4d29c8b548837cdb443dac4eb\transformed\lifecycle-viewmodel-2.7.0\proguard.txt
 -keepclassmembers,allowobfuscation class * extends androidx.lifecycle.ViewModel {
     <init>();
 }
@@ -192,8 +244,8 @@
     <init>(android.app.Application);
 }
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\e1bbefbee2b135e307b897065ab255b0\transformed\lifecycle-viewmodel-2.7.0\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\1e9e19c81564519e0d045e9d49538ea5\transformed\lifecycle-viewmodel-savedstate-2.7.0\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\fd93c1b4d29c8b548837cdb443dac4eb\transformed\lifecycle-viewmodel-2.7.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\e05556277f9ea28f3d338b6465106c2b\transformed\lifecycle-viewmodel-savedstate-2.7.0\proguard.txt
 -keepclassmembers,allowobfuscation class * extends androidx.lifecycle.ViewModel {
     <init>(androidx.lifecycle.SavedStateHandle);
 }
@@ -202,8 +254,8 @@
     <init>(android.app.Application,androidx.lifecycle.SavedStateHandle);
 }
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\1e9e19c81564519e0d045e9d49538ea5\transformed\lifecycle-viewmodel-savedstate-2.7.0\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\5812aa2a261756a1370da03b58238f95\transformed\lifecycle-runtime-2.7.0\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\e05556277f9ea28f3d338b6465106c2b\transformed\lifecycle-viewmodel-savedstate-2.7.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\dda93121a1ca9fdaafbf5ac859cc3b6f\transformed\lifecycle-runtime-2.7.0\proguard.txt
 -keepattributes AnnotationDefault,
                 RuntimeVisibleAnnotations,
                 RuntimeVisibleParameterAnnotations,
@@ -224,8 +276,8 @@
 # this rule is need to work properly when app is compiled with api 28, see b/142778206
 # Also this rule prevents registerIn from being inlined.
 -keepclassmembers class androidx.lifecycle.ReportFragment$LifecycleCallbacks { *; }
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\5812aa2a261756a1370da03b58238f95\transformed\lifecycle-runtime-2.7.0\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\8908e615a50002ed0a3bbaeb129394ef\transformed\ui-release\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\dda93121a1ca9fdaafbf5ac859cc3b6f\transformed\lifecycle-runtime-2.7.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\7c43901a4a3e26687801eae12e9f16e7\transformed\ui-release\proguard.txt
 # Copyright (C) 2020 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -259,8 +311,8 @@
 # reflection to determine the class type. See b/265188224 for more context.
 -keep,allowshrinking class * extends androidx.compose.ui.node.ModifierNodeElement
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\8908e615a50002ed0a3bbaeb129394ef\transformed\ui-release\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\27691ad04312630addebeecea0a082cd\transformed\core-1.12.0\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\7c43901a4a3e26687801eae12e9f16e7\transformed\ui-release\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\8c4abed2fe04e8b21b652d71ee660206\transformed\core-1.12.0\proguard.txt
 # Never inline methods, but allow shrinking and obfuscation.
 -keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.view.ViewCompat$Api* {
   <methods>;
@@ -278,13 +330,13 @@
   <methods>;
 }
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\27691ad04312630addebeecea0a082cd\transformed\core-1.12.0\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\0bfa3ab30bb59b24e3f72e1a50671b09\transformed\datastore-preferences-1.0.0\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\8c4abed2fe04e8b21b652d71ee660206\transformed\core-1.12.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\0aceff844498760e9dc383275164e001\transformed\datastore-preferences-1.0.0\proguard.txt
 -keepclassmembers class * extends androidx.datastore.preferences.protobuf.GeneratedMessageLite {
     <fields>;
 }
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\0bfa3ab30bb59b24e3f72e1a50671b09\transformed\datastore-preferences-1.0.0\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\eed82d85f6219a7b9087bad84d2df781\transformed\runtime-release\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\0aceff844498760e9dc383275164e001\transformed\datastore-preferences-1.0.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\d41e7c5a7da7a4ec3253971f3ff5d532\transformed\runtime-release\proguard.txt
 -assumenosideeffects public class androidx.compose.runtime.ComposerKt {
     void sourceInformation(androidx.compose.runtime.Composer,java.lang.String);
     void sourceInformationMarkerStart(androidx.compose.runtime.Composer,int,java.lang.String);
@@ -300,8 +352,8 @@
 -assumenosideeffects public class androidx.compose.runtime.ComposerImpl {
     void <clinit>();
 }
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\eed82d85f6219a7b9087bad84d2df781\transformed\runtime-release\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\efa3f1bf7ebe943594c306e0c3c55e3c\transformed\rules\lib\META-INF\com.android.tools\r8\coroutines.pro
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\d41e7c5a7da7a4ec3253971f3ff5d532\transformed\runtime-release\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\9b3476278c77c4e82b44cf477cbbd4cb\transformed\rules\lib\META-INF\com.android.tools\r8\coroutines.pro
 # When editing this file, update the following files as well:
 # - META-INF/proguard/coroutines.pro
 # - META-INF/com.android.tools/proguard/coroutines.pro
@@ -329,8 +381,8 @@
 
 # An annotation used for build tooling, won't be directly accessed.
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\efa3f1bf7ebe943594c306e0c3c55e3c\transformed\rules\lib\META-INF\com.android.tools\r8\coroutines.pro
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\b26efce08a1b11635c417a994132d69a\transformed\rules\lib\META-INF\com.android.tools\r8-from-1.6.0\coroutines.pro
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\9b3476278c77c4e82b44cf477cbbd4cb\transformed\rules\lib\META-INF\com.android.tools\r8\coroutines.pro
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\e9512c8492fc37aec7818a09b1406f04\transformed\rules\lib\META-INF\com.android.tools\r8-from-1.6.0\coroutines.pro
 # Allow R8 to optimize away the FastServiceLoader.
 # Together with ServiceLoader optimization in R8
 # this results in direct instantiation when loading Dispatchers.Main
@@ -354,15 +406,15 @@
     boolean getRECOVER_STACK_TRACES() return false;
 }
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\b26efce08a1b11635c417a994132d69a\transformed\rules\lib\META-INF\com.android.tools\r8-from-1.6.0\coroutines.pro
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\2ca51007cfce60e8285f68ecc69c9aa8\transformed\versionedparcelable-1.1.1\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\e9512c8492fc37aec7818a09b1406f04\transformed\rules\lib\META-INF\com.android.tools\r8-from-1.6.0\coroutines.pro
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\3776249806b3b5f57ba1afda97c98c64\transformed\versionedparcelable-1.1.1\proguard.txt
 -keep class * implements androidx.versionedparcelable.VersionedParcelable
 -keep public class android.support.**Parcelizer { *; }
 -keep public class androidx.**Parcelizer { *; }
 -keep public class androidx.versionedparcelable.ParcelImpl
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\2ca51007cfce60e8285f68ecc69c9aa8\transformed\versionedparcelable-1.1.1\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\88b1e28a29a8c6127aff821a96153162\transformed\startup-runtime-1.1.1\proguard.txt
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\3776249806b3b5f57ba1afda97c98c64\transformed\versionedparcelable-1.1.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\9e3da2ae48d564cffa59449b2390a32e\transformed\startup-runtime-1.1.1\proguard.txt
 # It's important that we preserve initializer names, given they are used in the AndroidManifest.xml.
 -keepnames class * extends androidx.startup.Initializer
 
@@ -376,8 +428,8 @@
 
 -assumenosideeffects class androidx.startup.StartupLogger { public static <methods>; }
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\88b1e28a29a8c6127aff821a96153162\transformed\startup-runtime-1.1.1\proguard.txt
-# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\3024b3cee3b9aad9e6f9bb04c4ee2519\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\9e3da2ae48d564cffa59449b2390a32e\transformed\startup-runtime-1.1.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\0e8fbee86ab33470e6d2bb40de8d6a29\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
 -keep,allowobfuscation @interface androidx.annotation.Keep
 -keep @androidx.annotation.Keep class * {*;}
 
@@ -397,7 +449,7 @@
   @androidx.annotation.DoNotInline <methods>;
 }
 
-# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\3024b3cee3b9aad9e6f9bb04c4ee2519\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
+# End of content from C:\Users\MyBook Hype AMD\.gradle\caches\transforms-4\0e8fbee86ab33470e6d2bb40de8d6a29\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
 # The proguard configuration file for the following section is <unknown>
 
 # End of content from <unknown>

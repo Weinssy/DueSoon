@@ -23,6 +23,6 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
     }
 
     override val taskRepository: TaskRepository by lazy {
-        TaskRepository(AppDatabase.getDatabase(context).taskDao(), notificationScheduler, userPreferencesRepository)
+        TaskRepository(AppDatabase.getDatabase(context).taskDao(), notificationScheduler, userPreferencesRepository, context)
     }
 }

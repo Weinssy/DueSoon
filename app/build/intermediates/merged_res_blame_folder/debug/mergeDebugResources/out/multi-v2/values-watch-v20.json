@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.duesoon.app-mergeDebugResources-55:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.duesoon.app-mergeDebugResources-64:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\caches\\transforms-4\\80d737242f35561ba6fe573468977fd2\\transformed\\core-splashscreen-1.0.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\caches\\transforms-4\\70c92d9cf4be96594b581aaa2e6adc38\\transformed\\core-splashscreen-1.0.1\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

@@ -45,7 +45,7 @@ public final class TaskDao_Impl implements TaskDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `tasks` (`id`,`title`,`description`,`deadline`,`category`,`priority`,`reminderType`,`completed`,`createdAt`,`updatedAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `tasks` (`id`,`title`,`description`,`deadline`,`category`,`priority`,`reminderType`,`isRecurring`,`recurrenceInterval`,`completed`,`createdAt`,`updatedAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -70,10 +70,17 @@ public final class TaskDao_Impl implements TaskDao {
         }
         statement.bindString(6, entity.getPriority());
         statement.bindString(7, entity.getReminderType());
-        final int _tmp = entity.getCompleted() ? 1 : 0;
+        final int _tmp = entity.isRecurring() ? 1 : 0;
         statement.bindLong(8, _tmp);
-        statement.bindLong(9, entity.getCreatedAt());
-        statement.bindLong(10, entity.getUpdatedAt());
+        if (entity.getRecurrenceInterval() == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindString(9, entity.getRecurrenceInterval());
+        }
+        final int _tmp_1 = entity.getCompleted() ? 1 : 0;
+        statement.bindLong(10, _tmp_1);
+        statement.bindLong(11, entity.getCreatedAt());
+        statement.bindLong(12, entity.getUpdatedAt());
       }
     };
     this.__deletionAdapterOfTaskEntity = new EntityDeletionOrUpdateAdapter<TaskEntity>(__db) {
@@ -93,7 +100,7 @@ public final class TaskDao_Impl implements TaskDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `tasks` SET `id` = ?,`title` = ?,`description` = ?,`deadline` = ?,`category` = ?,`priority` = ?,`reminderType` = ?,`completed` = ?,`createdAt` = ?,`updatedAt` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `tasks` SET `id` = ?,`title` = ?,`description` = ?,`deadline` = ?,`category` = ?,`priority` = ?,`reminderType` = ?,`isRecurring` = ?,`recurrenceInterval` = ?,`completed` = ?,`createdAt` = ?,`updatedAt` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -118,11 +125,18 @@ public final class TaskDao_Impl implements TaskDao {
         }
         statement.bindString(6, entity.getPriority());
         statement.bindString(7, entity.getReminderType());
-        final int _tmp = entity.getCompleted() ? 1 : 0;
+        final int _tmp = entity.isRecurring() ? 1 : 0;
         statement.bindLong(8, _tmp);
-        statement.bindLong(9, entity.getCreatedAt());
-        statement.bindLong(10, entity.getUpdatedAt());
-        statement.bindLong(11, entity.getId());
+        if (entity.getRecurrenceInterval() == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindString(9, entity.getRecurrenceInterval());
+        }
+        final int _tmp_1 = entity.getCompleted() ? 1 : 0;
+        statement.bindLong(10, _tmp_1);
+        statement.bindLong(11, entity.getCreatedAt());
+        statement.bindLong(12, entity.getUpdatedAt());
+        statement.bindLong(13, entity.getId());
       }
     };
   }
@@ -198,6 +212,8 @@ public final class TaskDao_Impl implements TaskDao {
           final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
           final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
           final int _cursorIndexOfReminderType = CursorUtil.getColumnIndexOrThrow(_cursor, "reminderType");
+          final int _cursorIndexOfIsRecurring = CursorUtil.getColumnIndexOrThrow(_cursor, "isRecurring");
+          final int _cursorIndexOfRecurrenceInterval = CursorUtil.getColumnIndexOrThrow(_cursor, "recurrenceInterval");
           final int _cursorIndexOfCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "completed");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
@@ -230,15 +246,25 @@ public final class TaskDao_Impl implements TaskDao {
             _tmpPriority = _cursor.getString(_cursorIndexOfPriority);
             final String _tmpReminderType;
             _tmpReminderType = _cursor.getString(_cursorIndexOfReminderType);
-            final boolean _tmpCompleted;
+            final boolean _tmpIsRecurring;
             final int _tmp;
-            _tmp = _cursor.getInt(_cursorIndexOfCompleted);
-            _tmpCompleted = _tmp != 0;
+            _tmp = _cursor.getInt(_cursorIndexOfIsRecurring);
+            _tmpIsRecurring = _tmp != 0;
+            final String _tmpRecurrenceInterval;
+            if (_cursor.isNull(_cursorIndexOfRecurrenceInterval)) {
+              _tmpRecurrenceInterval = null;
+            } else {
+              _tmpRecurrenceInterval = _cursor.getString(_cursorIndexOfRecurrenceInterval);
+            }
+            final boolean _tmpCompleted;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfCompleted);
+            _tmpCompleted = _tmp_1 != 0;
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
             final long _tmpUpdatedAt;
             _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
-            _item = new TaskEntity(_tmpId,_tmpTitle,_tmpDescription,_tmpDeadline,_tmpCategory,_tmpPriority,_tmpReminderType,_tmpCompleted,_tmpCreatedAt,_tmpUpdatedAt);
+            _item = new TaskEntity(_tmpId,_tmpTitle,_tmpDescription,_tmpDeadline,_tmpCategory,_tmpPriority,_tmpReminderType,_tmpIsRecurring,_tmpRecurrenceInterval,_tmpCompleted,_tmpCreatedAt,_tmpUpdatedAt);
             _result.add(_item);
           }
           return _result;
@@ -274,6 +300,8 @@ public final class TaskDao_Impl implements TaskDao {
           final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
           final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
           final int _cursorIndexOfReminderType = CursorUtil.getColumnIndexOrThrow(_cursor, "reminderType");
+          final int _cursorIndexOfIsRecurring = CursorUtil.getColumnIndexOrThrow(_cursor, "isRecurring");
+          final int _cursorIndexOfRecurrenceInterval = CursorUtil.getColumnIndexOrThrow(_cursor, "recurrenceInterval");
           final int _cursorIndexOfCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "completed");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
@@ -305,15 +333,25 @@ public final class TaskDao_Impl implements TaskDao {
             _tmpPriority = _cursor.getString(_cursorIndexOfPriority);
             final String _tmpReminderType;
             _tmpReminderType = _cursor.getString(_cursorIndexOfReminderType);
-            final boolean _tmpCompleted;
+            final boolean _tmpIsRecurring;
             final int _tmp;
-            _tmp = _cursor.getInt(_cursorIndexOfCompleted);
-            _tmpCompleted = _tmp != 0;
+            _tmp = _cursor.getInt(_cursorIndexOfIsRecurring);
+            _tmpIsRecurring = _tmp != 0;
+            final String _tmpRecurrenceInterval;
+            if (_cursor.isNull(_cursorIndexOfRecurrenceInterval)) {
+              _tmpRecurrenceInterval = null;
+            } else {
+              _tmpRecurrenceInterval = _cursor.getString(_cursorIndexOfRecurrenceInterval);
+            }
+            final boolean _tmpCompleted;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfCompleted);
+            _tmpCompleted = _tmp_1 != 0;
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
             final long _tmpUpdatedAt;
             _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
-            _result = new TaskEntity(_tmpId,_tmpTitle,_tmpDescription,_tmpDeadline,_tmpCategory,_tmpPriority,_tmpReminderType,_tmpCompleted,_tmpCreatedAt,_tmpUpdatedAt);
+            _result = new TaskEntity(_tmpId,_tmpTitle,_tmpDescription,_tmpDeadline,_tmpCategory,_tmpPriority,_tmpReminderType,_tmpIsRecurring,_tmpRecurrenceInterval,_tmpCompleted,_tmpCreatedAt,_tmpUpdatedAt);
           } else {
             _result = null;
           }

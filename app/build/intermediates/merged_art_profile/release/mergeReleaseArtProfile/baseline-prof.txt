@@ -433,12 +433,6 @@ HSPLandroidx/compose/foundation/text/selection/TextFieldSelectionManager;->**(**
 # Include all of foundation
 Landroidx/compose/foundation/**;
 
-# Baseline profile rules for androidx.compose.ui.unit
-# =============================================
-# everything in unit is relatively small and in the hot path, so we just add everything
-HSPLandroidx/compose/ui/unit/**->**(**)**
-Landroidx/compose/ui/unit/**
-
 # Baseline profile rules for androidx.compose.ui.geometry
 # =============================================
 # All of geometry is highly used, small, and mathy, so we include everything
@@ -448,6 +442,12 @@ Landroidx/compose/ui/geometry/*;
 # =============================================
 HSPLandroidx/compose/ui/util/MathHelpersKt;->lerp(FFF)F
 Landroidx/compose/ui/util/MathHelpersKt;
+
+# Baseline profile rules for androidx.compose.ui.unit
+# =============================================
+# everything in unit is relatively small and in the hot path, so we just add everything
+HSPLandroidx/compose/ui/unit/**->**(**)**
+Landroidx/compose/ui/unit/**
 
 # Baseline profile rules for androidx.compose.ui.graphics
 # =============================================
@@ -706,6 +706,32 @@ PLandroidx/lifecycle/ProcessLifecycleOwner;->activityPaused()V
 PLandroidx/lifecycle/ProcessLifecycleOwner;->activityStopped()V
 PLandroidx/lifecycle/ProcessLifecycleOwner;->dispatchPauseIfNeeded()V
 PLandroidx/lifecycle/ProcessLifecycleOwner;->dispatchStopIfNeeded()V
+
+# Baseline profiles for lifecycle-livedata
+
+HSPLandroidx/lifecycle/MediatorLiveData$Source;-><init>(Landroidx/lifecycle/LiveData;Landroidx/lifecycle/Observer;)V
+HSPLandroidx/lifecycle/MediatorLiveData$Source;->onChanged(Ljava/lang/Object;)V
+HSPLandroidx/lifecycle/MediatorLiveData$Source;->plug()V
+HSPLandroidx/lifecycle/MediatorLiveData$Source;->unplug()V
+HSPLandroidx/lifecycle/MediatorLiveData;-><init>()V
+HSPLandroidx/lifecycle/MediatorLiveData;->addSource(Landroidx/lifecycle/LiveData;Landroidx/lifecycle/Observer;)V
+HSPLandroidx/lifecycle/MediatorLiveData;->onActive()V
+HSPLandroidx/lifecycle/MediatorLiveData;->onInactive()V
+HSPLandroidx/lifecycle/MediatorLiveData;->removeSource(Landroidx/lifecycle/LiveData;)V
+HSPLandroidx/lifecycle/Transformations$1;-><init>(Landroidx/lifecycle/MediatorLiveData;Landroidx/arch/core/util/Function;)V
+HSPLandroidx/lifecycle/Transformations$1;->onChanged(Ljava/lang/Object;)V
+HSPLandroidx/lifecycle/Transformations$2$1;-><init>(Landroidx/lifecycle/Transformations$2;)V
+HSPLandroidx/lifecycle/Transformations$2$1;->onChanged(Ljava/lang/Object;)V
+HSPLandroidx/lifecycle/Transformations$2;-><init>(Landroidx/arch/core/util/Function;Landroidx/lifecycle/MediatorLiveData;)V
+HSPLandroidx/lifecycle/Transformations$2;->onChanged(Ljava/lang/Object;)V
+HSPLandroidx/lifecycle/Transformations;->map(Landroidx/lifecycle/LiveData;Landroidx/arch/core/util/Function;)Landroidx/lifecycle/LiveData;
+HSPLandroidx/lifecycle/Transformations;->switchMap(Landroidx/lifecycle/LiveData;Landroidx/arch/core/util/Function;)Landroidx/lifecycle/LiveData;
+Landroidx/lifecycle/MediatorLiveData$Source;
+Landroidx/lifecycle/MediatorLiveData;
+Landroidx/lifecycle/Transformations$1;
+Landroidx/lifecycle/Transformations$2$1;
+Landroidx/lifecycle/Transformations$2;
+Landroidx/lifecycle/Transformations;
 
 # Baseline profiles for lifecycle-livedata-core
 

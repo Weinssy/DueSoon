@@ -12,6 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.duesoon.app.ui.AppViewModelProvider
+import com.duesoon.app.ui.components.CategorySelector
+import com.duesoon.app.ui.components.RecurrenceSelector
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -112,12 +114,18 @@ fun CreateTaskScreen(
                 )
             }
 
-            OutlinedTextField(
-                value = uiState.category,
-                onValueChange = viewModel::updateCategory,
-                label = { Text("Category (Optional)") },
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true
+            CategorySelector(
+                selectedCategory = uiState.category,
+                onCategorySelected = viewModel::updateCategory,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            RecurrenceSelector(
+                isRecurring = uiState.isRecurring,
+                onIsRecurringChange = viewModel::updateIsRecurring,
+                selectedInterval = uiState.recurrenceInterval,
+                onIntervalSelected = viewModel::updateRecurrenceInterval,
+                modifier = Modifier.fillMaxWidth()
             )
 
             Button(

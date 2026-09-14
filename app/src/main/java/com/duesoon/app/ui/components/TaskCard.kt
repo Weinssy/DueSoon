@@ -111,6 +111,13 @@ fun TaskCard(
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                if (task.isRecurring && task.recurrenceInterval != null) {
+                    Text(
+                        text = " · 🔄 ${task.recurrenceInterval.label}",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
             }
         }
     }

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.duesoon.app.data.repository.TaskRepository
 import com.duesoon.app.domain.model.Priority
+import com.duesoon.app.domain.model.RecurrenceInterval
 import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.domain.model.Task
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,6 +19,8 @@ data class CreateTaskUiState(
     val category: String = "",
     val priority: Priority = Priority.NORMAL,
     val reminderType: ReminderType = ReminderType.SMART,
+    val isRecurring: Boolean = false,
+    val recurrenceInterval: RecurrenceInterval = RecurrenceInterval.DAILY,
     val isSaved: Boolean = false,
     val titleError: String? = null
 )
@@ -34,6 +37,8 @@ class CreateTaskViewModel(
     fun updateCategory(category: String) { _uiState.value = _uiState.value.copy(category = category) }
     fun updatePriority(priority: Priority) { _uiState.value = _uiState.value.copy(priority = priority) }
     fun updateReminderType(type: ReminderType) { _uiState.value = _uiState.value.copy(reminderType = type) }
+    fun updateIsRecurring(isRecurring: Boolean) { _uiState.value = _uiState.value.copy(isRecurring = isRecurring) }
+    fun updateRecurrenceInterval(interval: RecurrenceInterval) { _uiState.value = _uiState.value.copy(recurrenceInterval = interval) }
 
     fun saveTask() {
         val currentState = _uiState.value
@@ -48,7 +53,9 @@ class CreateTaskViewModel(
             deadline = currentState.deadline,
             category = currentState.category.ifBlank { null },
             priority = currentState.priority,
-            reminderType = currentState.reminderType
+            reminderType = currentState.reminderType,
+            isRecurring = currentState.isRecurring,
+            recurrenceInterval = if (currentState.isRecurring) currentState.recurrenceInterval else null
         )
 
         viewModelScope.launch {
@@ -57,3 +64,4 @@ class CreateTaskViewModel(
         }
     }
 }
+

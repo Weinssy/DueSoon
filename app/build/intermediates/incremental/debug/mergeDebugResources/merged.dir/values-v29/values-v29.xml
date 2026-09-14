@@ -7,4 +7,19 @@
     </style>
     <style name="Base.Theme.SplashScreen.Light" parent="Base.Theme.SplashScreen">
     </style>
+    <style name="Glance.AppWidget.TextAppearance.Bold" parent="">
+        <item name="android:textFontWeight">700</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Glance.AppWidget.TextAppearance.Medium" parent="">
+        <item name="android:textFontWeight">500</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Glance.AppWidget.TextAppearance.Normal" parent="">
+        <item name="android:textFontWeight">400</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Glance.AppWidget.Theme" parent="android:Theme.DeviceDefault.DayNight"/>
+    <style name="Glance.AppWidget.Theme.GridChildren" parent=""/>
+    <style name="Glance.AppWidget.Theme.ListChildren" parent=""/>
 </resources>
