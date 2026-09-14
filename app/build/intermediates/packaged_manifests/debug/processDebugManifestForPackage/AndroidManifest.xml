@@ -25,8 +25,7 @@
         android:debuggable="true"
         android:extractNativeLibs="false"
         android:label="DueSoon"
-        android:supportsRtl="true"
-        android:testOnly="true" >
+        android:supportsRtl="true" >
         <activity
             android:name="com.duesoon.app.MainActivity"
             android:exported="true" >
