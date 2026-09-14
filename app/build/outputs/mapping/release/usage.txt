@@ -17933,6 +17933,7 @@ androidx.versionedparcelable.VersionedParcelize
 com.duesoon.app.MainActivity:
     public static final int $stable
 com.duesoon.app.R$color
+com.duesoon.app.R$drawable
 com.duesoon.app.R$mipmap
 com.duesoon.app.R$style
 com.duesoon.app.R

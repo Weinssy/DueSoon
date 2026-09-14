@@ -12,20 +12,16 @@
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-xxhdpi\\ic_launcher_round.jpg"
     },
     {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-anydpi-v21_ic_call_decline_low.xml.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-anydpi-v21\\ic_call_decline_low.xml"
-    },
-    {
-        "merged": "com.duesoon.app-release-54:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-xhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "com.duesoon.app-release-54:/mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-mdpi/ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-xhdpi-v4_ic_call_answer_video.png.flat",
@@ -38,6 +34,14 @@
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-ldpi-v4_ic_call_answer.png.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-ldpi-v4\\ic_call_answer.png"
+    },
+    {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-hdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
@@ -60,16 +64,12 @@
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
-        "merged": "com.duesoon.app-release-54:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-mdpi/ic_launcher.png"
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-xhdpi-v4_ic_call_decline_low.png.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-xhdpi-v4\\ic_call_decline_low.png"
-    },
-    {
-        "merged": "com.duesoon.app-release-54:/mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\layout_ime_secondary_split_test_activity.xml.flat",
@@ -108,6 +108,10 @@
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-xxhdpi\\ic_launcher.jpg"
     },
     {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-hdpi-v4_ic_call_decline.png.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-hdpi-v4\\ic_call_decline.png"
     },
@@ -126,6 +130,14 @@
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-xhdpi-v4_ic_call_answer_low.png.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-xhdpi-v4\\ic_call_answer_low.png"
+    },
+    {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
@@ -148,16 +160,12 @@
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable\\notification_tile_bg.xml"
     },
     {
-        "merged": "com.duesoon.app-release-54:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\layout_splash_screen_view.xml.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-splashscreen-1.0.1-23:\\layout\\splash_screen_view.xml"
-    },
-    {
-        "merged": "com.duesoon.app-release-54:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-xhdpi_ic_launcher_round.jpg.flat",
@@ -172,10 +180,6 @@
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-xhdpi-v4\\ic_call_answer_video_low.png"
     },
     {
-        "merged": "com.duesoon.app-release-54:/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-hdpi/ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-hdpi_ic_launcher.jpg.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-hdpi\\ic_launcher.jpg"
     },
@@ -188,16 +192,28 @@
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-ldpi-v4\\ic_call_answer_video_low.png"
     },
     {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-xxxhdpi_logo_due_soon.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-xxxhdpi\\logo_due_soon.png"
+    },
+    {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
-        "merged": "com.duesoon.app-release-54:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-xxxhdpi/ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\layout_notification_template_part_chronometer.xml.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\drawable\\ic_launcher_background.xml"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
@@ -214,6 +230,10 @@
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-hdpi_ic_launcher_round.jpg.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-hdpi\\ic_launcher_round.jpg"
+    },
+    {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-hdpi-v4_ic_call_answer_video_low.png.flat",
@@ -240,12 +260,16 @@
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
-        "merged": "com.duesoon.app-release-54:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-xxxhdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\drawable\\ic_launcher_foreground.xml"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-xxxhdpi_ic_launcher.jpg.flat",
@@ -274,10 +298,6 @@
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-mdpi_ic_launcher_round.jpg.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-mdpi\\ic_launcher_round.jpg"
-    },
-    {
-        "merged": "com.duesoon.app-release-54:/mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-hdpi-v4_ic_call_answer_low.png.flat",
@@ -324,10 +344,6 @@
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-xxhdpi-v4\\ic_call_answer_low.png"
     },
     {
-        "merged": "com.duesoon.app-release-54:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-xxxhdpi/ic_launcher_foreground.png"
-    },
-    {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-mdpi-v4\\notification_bg_low_normal.9.png"
     },
@@ -372,8 +388,8 @@
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-anydpi-v26\\ic_launcher.jpg"
     },
     {
-        "merged": "com.duesoon.app-release-54:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-main-55:\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\color_vector_tint_theme_color.xml.flat",
@@ -386,10 +402,6 @@
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
         "source": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-core-1.12.0-9:\\drawable-mdpi-v4\\notification_bg_normal.9.png"
-    },
-    {
-        "merged": "com.duesoon.app-release-54:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.duesoon.app-main-55:/mipmap-hdpi/ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\MyBook Hype AMD\\.gradle\\daemon\\8.6\\com.duesoon.app-release-54:\\mipmap-anydpi-v26_ic_launcher_round.jpg.flat",

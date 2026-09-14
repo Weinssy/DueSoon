@@ -208,6 +208,10 @@ Marking string:m3c_date_picker_switch_to_calendar_mode:2131296290 reachable: ref
 @drawable/ic_call_answer_video_low : reachable=false
 @drawable/ic_call_decline : reachable=false
 @drawable/ic_call_decline_low : reachable=false
+@drawable/ic_launcher_background : reachable=false
+    @color/ic_launcher_background
+@drawable/ic_launcher_foreground : reachable=false
+    @mipmap/logo_due_soon
 @drawable/icon_background : reachable=false
     @attr/windowSplashScreenIconBackgroundColor
 @drawable/notification_action_background : reachable=false
@@ -357,12 +361,8 @@ Marking string:m3c_date_picker_switch_to_calendar_mode:2131296290 reachable: ref
 @layout/splash_screen_view : reachable=false
     @attr/splashScreenIconSize
 @mipmap/ic_launcher : reachable=true
-    @color/ic_launcher_background
-    @mipmap/ic_launcher_foreground
-@mipmap/ic_launcher_foreground : reachable=false
 @mipmap/ic_launcher_round : reachable=true
-    @color/ic_launcher_background
-    @mipmap/ic_launcher_foreground
+@mipmap/logo_due_soon : reachable=false
 @string/androidx_startup : reachable=true
 @string/call_notification_answer_action : reachable=false
 @string/call_notification_answer_video_action : reachable=false
@@ -566,7 +566,7 @@ The root reachable resources are:
  id:view_tree_view_model_store_owner:2131034199
  id:wrapped_composition_tag:2131034200
  mipmap:ic_launcher:2131230720
- mipmap:ic_launcher_round:2131230722
+ mipmap:ic_launcher_round:2131230721
  string:androidx_startup:2131296256
  string:default_error_message:2131296266
  string:default_popup_window_title:2131296267
@@ -619,6 +619,7 @@ Unused resources are:
  color:androidx_core_secondary_text_default_material_light:2130837505
  color:call_notification_answer_color:2130837506
  color:call_notification_decline_color:2130837507
+ color:ic_launcher_background:2130837508
  color:notification_action_color_filter:2130837509
  color:notification_icon_bg_color:2130837510
  color:vector_tint_color:2130837511
@@ -656,20 +657,22 @@ Unused resources are:
  drawable:ic_call_answer_video_low:2130968581
  drawable:ic_call_decline:2130968582
  drawable:ic_call_decline_low:2130968583
- drawable:icon_background:2130968584
- drawable:notification_action_background:2130968585
- drawable:notification_bg:2130968586
- drawable:notification_bg_low:2130968587
- drawable:notification_bg_low_normal:2130968588
- drawable:notification_bg_low_pressed:2130968589
- drawable:notification_bg_normal:2130968590
- drawable:notification_bg_normal_pressed:2130968591
- drawable:notification_icon_background:2130968592
- drawable:notification_oversize_large_icon_bg:2130968593
- drawable:notification_template_icon_bg:2130968594
- drawable:notification_template_icon_low_bg:2130968595
- drawable:notification_tile_bg:2130968596
- drawable:notify_panel_notification_icon_bg:2130968597
+ drawable:ic_launcher_background:2130968584
+ drawable:ic_launcher_foreground:2130968585
+ drawable:icon_background:2130968586
+ drawable:notification_action_background:2130968587
+ drawable:notification_bg:2130968588
+ drawable:notification_bg_low:2130968589
+ drawable:notification_bg_low_normal:2130968590
+ drawable:notification_bg_low_pressed:2130968591
+ drawable:notification_bg_normal:2130968592
+ drawable:notification_bg_normal_pressed:2130968593
+ drawable:notification_icon_background:2130968594
+ drawable:notification_oversize_large_icon_bg:2130968595
+ drawable:notification_template_icon_bg:2130968596
+ drawable:notification_template_icon_low_bg:2130968597
+ drawable:notification_tile_bg:2130968598
+ drawable:notify_panel_notification_icon_bg:2130968599
  id:action_container:2131034145
  id:action_divider:2131034146
  id:action_image:2131034147
@@ -714,6 +717,7 @@ Unused resources are:
  layout:notification_template_part_chronometer:2131165191
  layout:notification_template_part_time:2131165192
  layout:splash_screen_view:2131165193
+ mipmap:logo_due_soon:2131230722
  string:call_notification_answer_action:2131296257
  string:call_notification_answer_video_action:2131296258
  string:call_notification_decline_action:2131296259

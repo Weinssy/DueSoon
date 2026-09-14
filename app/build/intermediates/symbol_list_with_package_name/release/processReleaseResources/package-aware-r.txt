@@ -90,6 +90,8 @@ drawable ic_call_answer_video
 drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
+drawable ic_launcher_background
+drawable ic_launcher_foreground
 drawable icon_background
 drawable notification_action_background
 drawable notification_bg
@@ -206,8 +208,8 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout splash_screen_view
 mipmap ic_launcher
-mipmap ic_launcher_foreground
 mipmap ic_launcher_round
+mipmap logo_due_soon
 string androidx_startup
 string call_notification_answer_action
 string call_notification_answer_video_action
