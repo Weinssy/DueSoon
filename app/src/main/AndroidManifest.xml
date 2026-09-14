@@ -8,6 +8,9 @@
     <application
         android:name=".DueSoonApplication"
         android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.App.Starting"
         android:label="DueSoon"
         android:supportsRtl="true">
         <activity
