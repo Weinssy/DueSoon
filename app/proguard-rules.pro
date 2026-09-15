@@ -9,8 +9,12 @@
 # DataStore
 -keep class androidx.datastore.** { *; }
 
-# Models
--keep class com.duesoon.app.data.model.** { *; }
+# Models and Entities
+-keep class com.duesoon.app.data.local.** { *; }
+-keep class com.duesoon.app.domain.model.** { *; }
+
+# Glance Widget
+-keep class com.duesoon.app.widget.** { *; }
 
 # Compose
 -keepclassmembers class * {

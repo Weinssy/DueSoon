@@ -14,12 +14,17 @@ of traditional project management tools.
 - Smart reminders
 - Custom reminders
 - Local notifications
+- Home screen widget (Jetpack Glance)
 - Calendar view
 - Search and task filtering
 - Dark mode
 - Local data persistence
 - No account required
 - Offline-first
+
+## Installation
+
+Download the latest `app-release.apk` from the [GitHub Releases](https://github.com/Weinssy/DueSoon/releases) page and install it on your Android device (Android 8.0 Oreo or higher, API 26+).
 
 ## Tech Stack
 
@@ -33,6 +38,7 @@ of traditional project management tools.
 - Flow / StateFlow
 - Navigation Compose
 - DataStore
+- Glance (App Widgets)
 - Android Notification APIs
 - Gradle Kotlin DSL
 
@@ -55,10 +61,7 @@ project management features in the MVP.
 
 ## Status
 
-MVP v1.0 — Release Candidate
-
-The current MVP has completed static verification, build verification,
-final UX polish, and manual runtime testing.
+v1.0.0 — Production Release
 
 ## Roadmap
 
@@ -69,11 +72,11 @@ final UX polish, and manual runtime testing.
 - Improved notification actions
 
 ### v1.2
-- Home screen widget
 - Natural language input
 - Improved smart reminders
+- Export / Import backup
 
-### v2
+### v2.0
 - AI assistance
 - Calendar integration
 - Cloud sync
@@ -81,4 +84,4 @@ final UX polish, and manual runtime testing.
 
 ## License
 
-[Choose a license]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
