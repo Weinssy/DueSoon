@@ -13,7 +13,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.duesoon.app.R
 import com.duesoon.app.domain.model.CategoryPreset
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -25,7 +27,7 @@ fun CategorySelector(
 ) {
     Column(modifier = modifier) {
         Text(
-            text = "Category (Optional)",
+            text = stringResource(R.string.label_category_optional),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(bottom = 8.dp)
@@ -42,7 +44,7 @@ fun CategorySelector(
                     onClick = {
                         onCategorySelected(if (isSelected) "" else preset.label)
                     },
-                    label = { Text(preset.label, style = MaterialTheme.typography.labelMedium) },
+                    label = { Text(stringResource(preset.labelResId), style = MaterialTheme.typography.labelMedium) },
                     colors = FilterChipDefaults.filterChipColors(
                         selectedContainerColor = preset.color.copy(alpha = 0.85f),
                         selectedLabelColor = Color.White,

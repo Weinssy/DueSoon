@@ -13,7 +13,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.duesoon.app.R
 import com.duesoon.app.domain.model.RecurrenceInterval
 
 @Composable
@@ -34,12 +36,12 @@ fun RecurrenceSelector(
         ) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "Ulangi Deadline",
+                    text = stringResource(R.string.recurrence_switch_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Buat deadline baru otomatis saat selesai",
+                    text = stringResource(R.string.recurrence_switch_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -58,10 +60,15 @@ fun RecurrenceSelector(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 RecurrenceInterval.entries.forEach { interval ->
+                    val label = when (interval) {
+                        RecurrenceInterval.DAILY -> stringResource(R.string.recurrence_daily)
+                        RecurrenceInterval.WEEKLY -> stringResource(R.string.recurrence_weekly)
+                        RecurrenceInterval.MONTHLY -> stringResource(R.string.recurrence_monthly)
+                    }
                     FilterChip(
                         selected = selectedInterval == interval,
                         onClick = { onIntervalSelected(interval) },
-                        label = { Text(interval.label) }
+                        label = { Text(label) }
                     )
                 }
             }

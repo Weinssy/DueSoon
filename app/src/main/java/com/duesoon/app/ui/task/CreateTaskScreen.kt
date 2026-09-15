@@ -9,14 +9,15 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.duesoon.app.R
+import com.duesoon.app.domain.util.DateTimeUtils
 import com.duesoon.app.ui.AppViewModelProvider
 import com.duesoon.app.ui.components.CategorySelector
+import com.duesoon.app.ui.components.DateTimePickerDialog
 import com.duesoon.app.ui.components.RecurrenceSelector
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,7 +28,7 @@ fun CreateTaskScreen(
     viewModel: CreateTaskViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    var showDatePicker by remember { mutableStateOf(false) }
+    var showDateTimePicker by remember { mutableStateOf(false) }
 
     LaunchedEffect(uiState.isSaved) {
         if (uiState.isSaved) {
@@ -35,35 +36,24 @@ fun CreateTaskScreen(
         }
     }
 
-    if (showDatePicker) {
-        val datePickerState = rememberDatePickerState()
-        DatePickerDialog(
-            onDismissRequest = { showDatePicker = false },
-            confirmButton = {
-                TextButton(onClick = {
-                    showDatePicker = false
-                    viewModel.updateDeadline(datePickerState.selectedDateMillis)
-                }) {
-                    Text("OK")
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showDatePicker = false }) {
-                    Text("Cancel")
-                }
+    if (showDateTimePicker) {
+        DateTimePickerDialog(
+            initialDeadline = uiState.deadline,
+            onDismiss = { showDateTimePicker = false },
+            onConfirm = { newDeadline ->
+                viewModel.updateDeadline(newDeadline)
+                showDateTimePicker = false
             }
-        ) {
-            DatePicker(state = datePickerState)
-        }
+        )
     }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Create Task") },
+                title = { Text(stringResource(R.string.title_create_task)) },
                 navigationIcon = {
                     IconButton(onClick = navigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
                 }
             )
@@ -81,10 +71,10 @@ fun CreateTaskScreen(
             OutlinedTextField(
                 value = uiState.title,
                 onValueChange = viewModel::updateTitle,
-                label = { Text("Title") },
+                label = { Text(stringResource(R.string.label_title)) },
                 isError = uiState.titleError != null,
                 supportingText = {
-                    if (uiState.titleError != null) Text(uiState.titleError!!)
+                    if (uiState.titleError != null) Text(stringResource(R.string.error_title_empty))
                 },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
@@ -93,18 +83,18 @@ fun CreateTaskScreen(
             OutlinedTextField(
                 value = uiState.description,
                 onValueChange = viewModel::updateDescription,
-                label = { Text("Description (Optional)") },
+                label = { Text(stringResource(R.string.label_description_optional)) },
                 modifier = Modifier.fillMaxWidth(),
                 minLines = 3
             )
             
-            Box(modifier = Modifier.fillMaxWidth().clickable { showDatePicker = true }) {
+            Box(modifier = Modifier.fillMaxWidth().clickable { showDateTimePicker = true }) {
                 OutlinedTextField(
-                    value = uiState.deadline?.let { SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(it)) } ?: "No deadline",
+                    value = DateTimeUtils.formatDeadline(uiState.deadline) ?: stringResource(R.string.deadline_no_deadline),
                     onValueChange = {},
                     readOnly = true,
                     enabled = false,
-                    label = { Text("Deadline") },
+                    label = { Text(stringResource(R.string.label_deadline)) },
                     modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(
                         disabledTextColor = MaterialTheme.colorScheme.onSurface,
@@ -134,7 +124,7 @@ fun CreateTaskScreen(
                     .fillMaxWidth()
                     .height(48.dp)
             ) {
-                Text("Save Task")
+                Text(stringResource(R.string.action_save_task))
             }
         }
     }

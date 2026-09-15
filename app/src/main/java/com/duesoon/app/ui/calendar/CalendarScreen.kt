@@ -6,8 +6,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.duesoon.app.R
 import com.duesoon.app.ui.AppViewModelProvider
 import com.duesoon.app.ui.components.EmptyState
 import com.duesoon.app.ui.components.TaskCard
@@ -31,7 +33,7 @@ fun CalendarScreen(
     }
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Calendar") }) },
+        topBar = { TopAppBar(title = { Text(stringResource(R.string.nav_calendar)) }) },
         modifier = modifier
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding).fillMaxSize()) {
@@ -48,8 +50,8 @@ fun CalendarScreen(
 
             if (tasks.isEmpty()) {
                 EmptyState(
-                    title = "Free day",
-                    message = "No deadlines on this date.",
+                    title = stringResource(R.string.empty_calendar_title),
+                    message = stringResource(R.string.empty_calendar_message),
                     modifier = Modifier.weight(1f)
                 )
             } else {

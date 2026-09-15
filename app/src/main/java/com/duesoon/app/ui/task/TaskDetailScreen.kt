@@ -11,9 +11,13 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.duesoon.app.R
+import com.duesoon.app.domain.model.Priority
+import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.ui.AppViewModelProvider
 import com.duesoon.app.ui.components.CategoryChip
 import com.duesoon.app.ui.components.DeadlineLabel
@@ -34,21 +38,24 @@ fun TaskDetailScreen(
     val coroutineScope = rememberCoroutineScope()
     var showDeleteDialog by remember { mutableStateOf(false) }
 
+    val msgTaskCompleted = stringResource(R.string.msg_task_completed)
+    val actionUndo = stringResource(R.string.action_undo)
+
     val currentTask = task
 
     if (showDeleteDialog && currentTask != null) {
         AlertDialog(
             onDismissRequest = { showDeleteDialog = false },
-            title = { Text("Delete task?") },
-            text = { Text("This task and its reminders\nwill be permanently removed.") },
+            title = { Text(stringResource(R.string.dialog_delete_task_title)) },
+            text = { Text(stringResource(R.string.dialog_delete_task_message)) },
             confirmButton = {
                 TextButton(onClick = {
                     showDeleteDialog = false
                     viewModel.deleteTask(onDeleted = onTaskDeleted)
-                }) { Text("Delete", color = MaterialTheme.colorScheme.error) }
+                }) { Text(stringResource(R.string.action_delete), color = MaterialTheme.colorScheme.error) }
             },
             dismissButton = {
-                TextButton(onClick = { showDeleteDialog = false }) { Text("Cancel") }
+                TextButton(onClick = { showDeleteDialog = false }) { Text(stringResource(R.string.action_cancel)) }
             }
         )
     }
@@ -58,20 +65,20 @@ fun TaskDetailScreen(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = { Text("Task Detail") },
+                title = { Text(stringResource(R.string.title_task_detail)) },
                 navigationIcon = {
                     IconButton(onClick = navigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
                 },
                 actions = {
                     if (currentTask != null && !currentTask.completed) {
                         IconButton(onClick = { navigateToEdit(currentTask.id) }) {
-                            Icon(Icons.Filled.Edit, contentDescription = "Edit Task")
+                            Icon(Icons.Filled.Edit, contentDescription = stringResource(R.string.cd_edit_task))
                         }
                     }
                     IconButton(onClick = { showDeleteDialog = true }) {
-                        Icon(Icons.Filled.Delete, contentDescription = "Delete Task")
+                        Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.cd_delete_task))
                     }
                 }
             )
@@ -105,14 +112,24 @@ fun TaskDetailScreen(
                     Text("·", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
                 PriorityIndicator(priority = currentTask.priority)
+                val priorityName = when (currentTask.priority) {
+                    Priority.LOW -> stringResource(R.string.priority_low)
+                    Priority.NORMAL -> stringResource(R.string.priority_normal)
+                    Priority.HIGH -> stringResource(R.string.priority_high)
+                }
                 Text(
-                    text = "${currentTask.priority.name.lowercase().replaceFirstChar { it.uppercase() }} Priority",
+                    text = stringResource(R.string.label_priority_format, priorityName),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Text("·", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                val reminderName = when (currentTask.reminderType) {
+                    ReminderType.SMART -> stringResource(R.string.reminder_smart)
+                    ReminderType.CUSTOM -> stringResource(R.string.reminder_custom)
+                    ReminderType.NONE -> stringResource(R.string.reminder_none)
+                }
                 Text(
-                    text = "Reminder: ${currentTask.reminderType.name}",
+                    text = stringResource(R.string.label_reminder_format, reminderName),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -135,8 +152,8 @@ fun TaskDetailScreen(
                         viewModel.completeTask()
                         coroutineScope.launch {
                             val result = snackbarHostState.showSnackbar(
-                                message = "Task completed",
-                                actionLabel = "UNDO",
+                                message = msgTaskCompleted,
+                                actionLabel = actionUndo,
                                 duration = SnackbarDuration.Short
                             )
                             if (result == SnackbarResult.ActionPerformed) {
@@ -146,14 +163,14 @@ fun TaskDetailScreen(
                     },
                     modifier = Modifier.fillMaxWidth().height(48.dp)
                 ) {
-                    Text("Complete Task")
+                    Text(stringResource(R.string.action_complete_task))
                 }
             } else {
                 Button(
                     onClick = { viewModel.undoComplete() },
                     modifier = Modifier.fillMaxWidth().height(48.dp)
                 ) {
-                    Text("Undo Complete")
+                    Text(stringResource(R.string.action_undo_complete))
                 }
             }
         }

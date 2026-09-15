@@ -22,8 +22,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import com.duesoon.app.R
+import com.duesoon.app.domain.model.RecurrenceInterval
 import com.duesoon.app.domain.model.Task
 
 @Composable
@@ -65,13 +70,15 @@ fun TaskCard(
                 }
                 
                 if (onCompleteToggle != null) {
+                    val markIncompleteDesc = stringResource(R.string.cd_mark_incomplete)
+                    val markCompleteDesc = stringResource(R.string.cd_mark_complete)
                     androidx.compose.material3.IconButton(
                         onClick = { onCompleteToggle(!task.completed) }
                     ) {
                         if (task.completed) {
                             androidx.compose.material3.Icon(
                                 imageVector = Icons.Filled.Check,
-                                contentDescription = "Mark incomplete",
+                                contentDescription = markIncompleteDesc,
                                 tint = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier
                                     .size(24.dp)
@@ -90,6 +97,7 @@ fun TaskCard(
                                         MaterialTheme.colorScheme.onSurfaceVariant,
                                         CircleShape
                                     )
+                                    .semantics { contentDescription = markCompleteDesc }
                             )
                         }
                     }
@@ -107,13 +115,18 @@ fun TaskCard(
                 }
                 PriorityIndicator(priority = task.priority)
                 Text(
-                    text = " Priority",
+                    text = " " + stringResource(R.string.priority_label),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 if (task.isRecurring && task.recurrenceInterval != null) {
+                    val intervalText = when (task.recurrenceInterval) {
+                        RecurrenceInterval.DAILY -> stringResource(R.string.recurrence_daily)
+                        RecurrenceInterval.WEEKLY -> stringResource(R.string.recurrence_weekly)
+                        RecurrenceInterval.MONTHLY -> stringResource(R.string.recurrence_monthly)
+                    }
                     Text(
-                        text = " · 🔄 ${task.recurrenceInterval.label}",
+                        text = stringResource(R.string.recurrence_tag, intervalText),
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.primary
                     )

@@ -1,5 +1,6 @@
 package com.duesoon.app.navigation
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
@@ -20,6 +21,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -30,6 +33,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.duesoon.app.R
 import com.duesoon.app.ui.calendar.CalendarScreen
 import com.duesoon.app.ui.home.HomeScreen
 import com.duesoon.app.ui.settings.SettingsScreen
@@ -51,20 +55,21 @@ object Destinations {
 
 data class BottomNavItem(
     val route: String,
-    val title: String,
+    @StringRes val titleResId: Int,
     val icon: ImageVector
 )
 
 val bottomNavItems = listOf(
-    BottomNavItem(Destinations.HOME, "Focus", Icons.Filled.Home),
-    BottomNavItem(Destinations.CALENDAR, "Calendar", Icons.Filled.DateRange),
-    BottomNavItem(Destinations.SETTINGS, "Settings", Icons.Filled.Settings)
+    BottomNavItem(Destinations.HOME, R.string.nav_home, Icons.Filled.Home),
+    BottomNavItem(Destinations.CALENDAR, R.string.nav_calendar, Icons.Filled.DateRange),
+    BottomNavItem(Destinations.SETTINGS, R.string.nav_settings, Icons.Filled.Settings)
 )
 
 @Composable
 fun AppNavigation(navController: NavHostController = rememberNavController()) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+    val context = LocalContext.current
     
     val snackbarHostState = remember { SnackbarHostState() }
     val snackbarMessage by navBackStackEntry?.savedStateHandle?.getStateFlow<String?>("snackbar_message", null)?.collectAsState(initial = null) ?: remember { mutableStateOf(null) }
@@ -85,9 +90,10 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
                 NavigationBar {
                     bottomNavItems.forEach { item ->
                         val selected = currentDestination?.hierarchy?.any { it.route == item.route } == true
+                        val title = stringResource(item.titleResId)
                         NavigationBarItem(
-                            icon = { Icon(item.icon, contentDescription = item.title) },
-                            label = { Text(item.title) },
+                            icon = { Icon(item.icon, contentDescription = title) },
+                            label = { Text(title) },
                             selected = selected,
                             onClick = {
                                 navController.navigate(item.route) {
@@ -129,7 +135,7 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
                 CreateTaskScreen(
                     navigateBack = { navController.popBackStack() },
                     onTaskSaved = {
-                        navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", "Task created")
+                        navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", context.getString(R.string.msg_task_created))
                         navController.popBackStack()
                     }
                 )
@@ -142,7 +148,7 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
                     navigateBack = { navController.popBackStack() },
                     navigateToEdit = { navController.navigate(Destinations.editTaskRoute(it)) },
                     onTaskDeleted = {
-                        navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", "Task deleted")
+                        navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", context.getString(R.string.msg_task_deleted))
                         navController.popBackStack()
                     }
                 )
@@ -154,7 +160,7 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
                 EditTaskScreen(
                     navigateBack = { navController.popBackStack() },
                     onTaskSaved = {
-                        navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", "Task updated")
+                        navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", context.getString(R.string.msg_task_updated))
                         navController.popBackStack()
                     }
                 )

@@ -1,5 +1,147 @@
 <resources>
+    <!-- App & Navigation -->
     <string name="app_name">DueSoon</string>
+    <string name="nav_home">Beranda</string>
+    <string name="nav_focus">Fokus</string>
+    <string name="nav_tasks">Tugas</string>
+    <string name="nav_calendar">Kalender</string>
+    <string name="nav_settings">Pengaturan</string>
+
+    <!-- Common Actions -->
+    <string name="action_save">Simpan</string>
+    <string name="action_cancel">Batal</string>
+    <string name="action_delete">Hapus</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_back">Kembali</string>
+    <string name="action_next">Lanjut</string>
+    <string name="action_clear">Hapus</string>
+    <string name="action_clear_all">Hapus Semua</string>
+    <string name="action_undo">Urungkan</string>
+    <string name="action_change">Ubah</string>
+    <string name="action_save_task">Simpan Tugas</string>
+    <string name="action_save_changes">Simpan Perubahan</string>
+    <string name="action_complete_task">Selesaikan Tugas</string>
+    <string name="action_undo_complete">Batalkan Selesai</string>
+
+    <!-- Screen Titles -->
+    <string name="title_create_task">Tambah Tugas</string>
+    <string name="title_edit_task">Edit Tugas</string>
+    <string name="title_task_detail">Detail Tugas</string>
+
+    <!-- Task Form Labels & Validation -->
+    <string name="label_title">Judul</string>
+    <string name="label_description_optional">Deskripsi (Opsional)</string>
+    <string name="label_deadline">Tenggat</string>
+    <string name="label_category_optional">Kategori (Opsional)</string>
+    <string name="error_title_empty">Judul tidak boleh kosong.</string>
+
+    <!-- Filters (Status & Category) -->
+    <string name="filter_status_all">Semua</string>
+    <string name="filter_status_active">Aktif</string>
+    <string name="filter_status_completed">Selesai</string>
+    <string name="filter_category_all">Semua</string>
+
+    <!-- Categories -->
+    <string name="category_kuliah">Kuliah</string>
+    <string name="category_kerja">Kerja</string>
+    <string name="category_pribadi">Pribadi</string>
+    <string name="category_lainnya">Lainnya</string>
+
+    <!-- Priority -->
+    <string name="priority_low">Rendah</string>
+    <string name="priority_normal">Normal</string>
+    <string name="priority_high">Tinggi</string>
+    <string name="priority_label">Prioritas</string>
+    <string name="priority_display">%1$s Prioritas</string>
+    <string name="label_priority_format">Prioritas: %1$s</string>
+    <string name="priority_low_cd">Prioritas rendah</string>
+    <string name="priority_normal_cd">Prioritas normal</string>
+    <string name="priority_high_cd">Prioritas tinggi</string>
+
+    <!-- Reminders -->
+    <string name="label_reminder_format">Pengingat: %1$s</string>
+    <string name="reminder_smart">Pintar</string>
+    <string name="reminder_custom">Kustom</string>
+    <string name="reminder_none">Tidak ada</string>
+
+    <!-- Deadline & Urgency States -->
+    <string name="deadline_no_deadline">Tidak ada tenggat</string>
+    <string name="deadline_completed">Selesai</string>
+    <string name="deadline_overdue">Terlambat · %1$s</string>
+    <string name="deadline_due_today">Jatuh tempo hari ini · %1$s</string>
+    <string name="deadline_due_in_days">%1$d hari lagi</string>
+    <string name="deadline_due_tomorrow">Besok</string>
+
+    <!-- Recurrence -->
+    <string name="recurrence_switch_title">Ulangi Tenggat</string>
+    <string name="recurrence_switch_subtitle">Buat tenggat baru otomatis saat selesai</string>
+    <string name="recurrence_indicator">🔄 %1$s</string>
+    <string name="recurrence_tag">· 🔄 %1$s</string>
+    <string name="recurrence_daily">Harian</string>
+    <string name="recurrence_weekly">Mingguan</string>
+    <string name="recurrence_monthly">Bulanan</string>
+
+    <!-- Section Headings -->
+    <string name="section_needs_attention">Perlu Perhatian</string>
+    <string name="section_upcoming">Mendatang</string>
+    <string name="section_completed_tasks">Tugas Selesai</string>
+    <string name="section_completed_count">Selesai (%1$d)</string>
+
+    <!-- Empty States -->
+    <string name="empty_home_title">Semua tugas selesai!</string>
+    <string name="empty_home_message">Tidak ada tenggat yang perlu diperhatikan.</string>
+    <string name="empty_calendar_title">Hari Bebas</string>
+    <string name="empty_calendar_message">Tidak ada tenggat pada tanggal ini.</string>
+    <string name="empty_tasks_title">Tidak ada tugas ditemukan</string>
+    <string name="empty_tasks_category_message">Coba pilih kategori yang berbeda.</string>
+    <string name="empty_tasks_free_message">Nikmati waktu luang Anda!</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_delete_task_title">Hapus tugas?</string>
+    <string name="dialog_delete_task_message">Tugas ini beserta pengingatnya akan dihapus permanen.</string>
+    <string name="dialog_clear_completed_title">Hapus semua tugas selesai?</string>
+    <string name="dialog_clear_completed_message">Tindakan ini tidak dapat dibatalkan. Semua tugas yang selesai akan dihapus permanen.</string>
+    <string name="dialog_set_time_title">Atur Waktu (24 Jam)</string>
+
+    <!-- Snackbars -->
+    <string name="msg_task_created">Tugas berhasil dibuat</string>
+    <string name="msg_task_updated">Tugas berhasil diperbarui</string>
+    <string name="msg_task_deleted">Tugas berhasil dihapus</string>
+    <string name="msg_task_completed">Tugas diselesaikan</string>
+
+    <!-- Settings -->
+    <string name="settings_theme_title">Tema Aplikasi</string>
+    <string name="settings_theme_change">Ubah</string>
+    <string name="theme_system">Mengikuti Sistem</string>
+    <string name="theme_light">Terang</string>
+    <string name="theme_dark">Gelap</string>
+    <string name="settings_notifications_title">Notifikasi</string>
+    <string name="settings_notifications_subtitle">Aktifkan atau nonaktifkan semua pengingat</string>
+    <string name="settings_clear_completed_title">Hapus Tugas Selesai</string>
+    <string name="settings_clear_completed_subtitle">Hapus permanen semua tugas yang telah diselesaikan</string>
+    <string name="settings_about_title">Tentang DueSoon</string>
+    <string name="settings_about_subtitle">MVP v1.0</string>
+
+    <!-- Notifications -->
+    <string name="notif_channel_name">Pengingat Tugas</string>
+    <string name="notif_channel_description">Notifikasi pengingat tenggat waktu DueSoon</string>
+    <string name="notif_title_format">DueSoon: %1$s</string>
+    <string name="notif_body_with_deadline">Tenggat: %1$s</string>
+    <string name="notif_body_due_soon">Tenggat waktu tugas sudah dekat</string>
+
+    <!-- Accessibility & Content Descriptions -->
+    <string name="cd_back">Kembali</string>
+    <string name="cd_add_task">Tambah Tugas</string>
+    <string name="cd_edit_task">Edit Tugas</string>
+    <string name="cd_delete_task">Hapus Tugas</string>
+    <string name="cd_clear_deadline">Hapus tenggat waktu</string>
+    <string name="cd_mark_complete">Tandai selesai</string>
+    <string name="cd_mark_incomplete">Tandai belum selesai</string>
+    <string name="cd_toggle_completed">Buka/tutup tugas selesai</string>
+
+    <!-- Widget -->
     <string name="widget_name">DueSoon Deadlines</string>
-    <string name="widget_description">Lihat deadline terdekat langsung di layar utama</string>
+    <string name="widget_description">Lihat tenggat terdekat langsung di layar utama</string>
+    <string name="widget_deadline_count">%1$d Tenggat</string>
+    <string name="widget_empty_message">Tidak ada tenggat terdekat ✨</string>
 </resources>

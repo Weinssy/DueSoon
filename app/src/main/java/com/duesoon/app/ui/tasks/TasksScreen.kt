@@ -13,8 +13,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.duesoon.app.R
 import com.duesoon.app.domain.model.Task
 import com.duesoon.app.ui.AppViewModelProvider
 import com.duesoon.app.ui.components.EmptyState
@@ -35,13 +37,13 @@ fun TasksScreen(
     var showCompleted by remember { mutableStateOf(false) }
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Tasks") }) },
+        topBar = { TopAppBar(title = { Text(stringResource(R.string.nav_tasks)) }) },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = navigateToCreateTask,
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
-                Icon(Icons.Filled.Add, contentDescription = "Add Task")
+                Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.cd_add_task))
             }
         },
         modifier = modifier
@@ -58,7 +60,7 @@ fun TasksScreen(
                         FilterChip(
                             selected = selectedCategory == null,
                             onClick = { viewModel.selectCategory(null) },
-                            label = { Text("All") }
+                            label = { Text(stringResource(R.string.filter_category_all)) }
                         )
                     }
                     items(categories) { category ->
@@ -73,8 +75,12 @@ fun TasksScreen(
 
             if (groupedTasks.all { it.value.isEmpty() }) {
                 EmptyState(
-                    title = "No tasks found",
-                    message = if (selectedCategory != null) "Try selecting a different category." else "Enjoy your free time!",
+                    title = stringResource(R.string.empty_tasks_title),
+                    message = if (selectedCategory != null) {
+                        stringResource(R.string.empty_tasks_category_message)
+                    } else {
+                        stringResource(R.string.empty_tasks_free_message)
+                    },
                     modifier = Modifier.weight(1f)
                 )
             } else {
@@ -87,7 +93,7 @@ fun TasksScreen(
                     if (needsAttention.isNotEmpty()) {
                         item {
                             Text(
-                                text = "Needs Attention",
+                                text = stringResource(R.string.section_needs_attention),
                                 style = MaterialTheme.typography.titleMedium,
                                 color = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier.padding(bottom = 8.dp)
@@ -102,7 +108,7 @@ fun TasksScreen(
                     if (upcoming.isNotEmpty()) {
                         item {
                             Text(
-                                text = "Upcoming",
+                                text = stringResource(R.string.section_upcoming),
                                 style = MaterialTheme.typography.titleMedium,
                                 color = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
@@ -125,13 +131,13 @@ fun TasksScreen(
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Text(
-                                    text = "Completed (${completed.size})",
+                                    text = stringResource(R.string.section_completed_count, completed.size),
                                     style = MaterialTheme.typography.titleMedium,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                                 Icon(
                                     imageVector = if (showCompleted) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
-                                    contentDescription = "Toggle completed",
+                                    contentDescription = stringResource(R.string.cd_toggle_completed),
                                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                             }

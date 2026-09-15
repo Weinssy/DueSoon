@@ -9,9 +9,8 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.duesoon.app.MainActivity
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import com.duesoon.app.R
+import com.duesoon.app.domain.util.DateTimeUtils
 
 class ReminderReceiver : BroadcastReceiver() {
 
@@ -26,8 +25,10 @@ class ReminderReceiver : BroadcastReceiver() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
-                CHANNEL_ID, "Task Reminders", NotificationManager.IMPORTANCE_HIGH
-            ).apply { description = "Notifications for DueSoon tasks" }
+                CHANNEL_ID,
+                context.getString(R.string.notif_channel_name),
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply { description = context.getString(R.string.notif_channel_description) }
             notificationManager.createNotificationChannel(channel)
         }
 
@@ -41,13 +42,19 @@ class ReminderReceiver : BroadcastReceiver() {
         )
 
         val deadlineStr = if (deadline != -1L) {
-            SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date(deadline))
+            DateTimeUtils.formatDeadline(deadline) ?: ""
         } else ""
+
+        val contentText = if (deadlineStr.isNotEmpty()) {
+            context.getString(R.string.notif_body_with_deadline, deadlineStr)
+        } else {
+            context.getString(R.string.notif_body_due_soon)
+        }
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_popup_reminder)
-            .setContentTitle("DueSoon: $title")
-            .setContentText(if (deadlineStr.isNotEmpty()) "Due: $deadlineStr" else "Task is due soon")
+            .setContentTitle(context.getString(R.string.notif_title_format, title))
+            .setContentText(contentText)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)

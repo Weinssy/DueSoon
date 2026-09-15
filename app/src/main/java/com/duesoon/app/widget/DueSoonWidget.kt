@@ -27,13 +27,12 @@ import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 import com.duesoon.app.DueSoonApplication
 import com.duesoon.app.MainActivity
+import com.duesoon.app.R
 import com.duesoon.app.domain.model.DeadlineState
 import com.duesoon.app.domain.model.Task
+import com.duesoon.app.domain.util.DateTimeUtils
 import com.duesoon.app.domain.util.DeadlineStateCalculator
 import kotlinx.coroutines.flow.first
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class DueSoonWidget : GlanceAppWidget() {
 
@@ -72,7 +71,7 @@ class DueSoonWidget : GlanceAppWidget() {
                         )
                         Spacer(modifier = GlanceModifier.defaultWeight())
                         Text(
-                            text = "${upcomingTasks.size} Deadline",
+                            text = context.getString(R.string.widget_deadline_count, upcomingTasks.size),
                             style = TextStyle(
                                 color = ColorProvider(Color(0xFF94A3B8)),
                                 fontSize = 12.sp
@@ -88,7 +87,7 @@ class DueSoonWidget : GlanceAppWidget() {
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
-                                text = "Tidak ada deadline terdekat ✨",
+                                text = context.getString(R.string.widget_empty_message),
                                 style = TextStyle(
                                     color = ColorProvider(Color(0xFF94A3B8)),
                                     fontSize = 12.sp
@@ -118,7 +117,7 @@ class DueSoonWidget : GlanceAppWidget() {
         }
 
         val deadlineText = task.deadline?.let {
-            SimpleDateFormat("dd MMM, HH:mm", Locale.getDefault()).format(Date(it))
+            DateTimeUtils.formatDeadline(it)
         } ?: ""
 
         Row(
