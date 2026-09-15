@@ -59,9 +59,22 @@ The app intentionally avoids unnecessary complexity such as
 cloud accounts, collaboration, AI, gamification, and advanced
 project management features in the MVP.
 
+
 ## Status
 
-v1.0.0 — Production Release
+**Latest stable release: v1.1.0**
+
+DueSoon is a minimal, deadline-first reminder app designed to answer one question:
+
+> What needs my attention next?
+
+### v1.1.0 highlights
+
+- Status & category filters
+- Complete Bahasa Indonesia localization
+- Precise date & time deadline selection
+- 24-hour deadline format
+- Improved deadline editing experience
 
 ## Roadmap
 
