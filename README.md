@@ -24,7 +24,7 @@ of traditional project management tools.
 
 ## Installation
 
-Download the latest `app-release.apk` from the [GitHub Releases](https://github.com/Weinssy/DueSoon/releases) page and install it on your Android device (Android 8.0 Oreo or higher, API 26+).
+Download the latest `DueSoon-v1.2.0-release.apk` from the [GitHub Releases](https://github.com/Weinssy/DueSoon/releases) page and install it on your Android device (Android 8.0 Oreo or higher, API 26+).
 
 ## Tech Stack
 
@@ -62,31 +62,24 @@ project management features in the MVP.
 
 ## Status
 
-**Latest stable release: v1.1.0**
+**Latest stable release: v1.2.0**
 
 DueSoon is a minimal, deadline-first reminder app designed to answer one question:
 
 > What needs my attention next?
 
-### v1.1.0 highlights
+### v1.2.0 highlights
 
-- Status & category filters
-- Complete Bahasa Indonesia localization
-- Precise date & time deadline selection
-- 24-hour deadline format
-- Improved deadline editing experience
+- Home Search
+- Sorting (Deadline, Priority, Title, Created)
+- Recurring tasks UI polish
+- Snooze notifications (10m, 1h, Tomorrow)
 
 ## Roadmap
 
-### v1.1
-- Snooze
-- Recurring tasks
-- Subtasks
-- Improved notification actions
-
-### v1.2
-- Natural language input
-- Improved smart reminders
+### v1.3
+- Archive
+- Statistics
 - Export / Import backup
 
 ### v2.0
