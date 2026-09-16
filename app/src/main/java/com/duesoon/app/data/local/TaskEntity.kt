@@ -20,6 +20,7 @@ data class TaskEntity(
     val isRecurring: Boolean = false,
     val recurrenceInterval: String? = null,
     val completed: Boolean,
+    val snoozedUntil: Long? = null,
     val createdAt: Long,
     val updatedAt: Long
 )
@@ -36,6 +37,7 @@ fun TaskEntity.toDomainModel(): Task {
         isRecurring = isRecurring,
         recurrenceInterval = recurrenceInterval?.let { RecurrenceInterval.valueOf(it) },
         completed = completed,
+        snoozedUntil = snoozedUntil,
         createdAt = createdAt,
         updatedAt = updatedAt
     )
@@ -53,6 +55,7 @@ fun Task.toEntity(): TaskEntity {
         isRecurring = isRecurring,
         recurrenceInterval = recurrenceInterval?.name,
         completed = completed,
+        snoozedUntil = snoozedUntil,
         createdAt = createdAt,
         updatedAt = updatedAt
     )

@@ -44,7 +44,7 @@ class EditTaskViewModel(
 
     fun updateTitle(title: String) { _uiState.value = _uiState.value.copy(title = title, titleError = null) }
     fun updateDescription(desc: String) { _uiState.value = _uiState.value.copy(description = desc) }
-    fun updateDeadline(deadline: Long?) { _uiState.value = _uiState.value.copy(deadline = deadline) }
+    fun updateDeadline(deadline: Long?) { _uiState.value = _uiState.value.copy(deadline = deadline, isRecurring = if (deadline == null) false else _uiState.value.isRecurring) }
     fun updateCategory(category: String) { _uiState.value = _uiState.value.copy(category = category) }
     fun updatePriority(priority: Priority) { _uiState.value = _uiState.value.copy(priority = priority) }
     fun updateReminderType(type: ReminderType) { _uiState.value = _uiState.value.copy(reminderType = type) }
@@ -78,4 +78,5 @@ class EditTaskViewModel(
         }
     }
 }
+
 

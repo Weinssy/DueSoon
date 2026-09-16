@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.duesoon.app.R
+import com.duesoon.app.BuildConfig
 import com.duesoon.app.ui.AppViewModelProvider
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -107,7 +108,7 @@ fun SettingsScreen(
 
             ListItem(
                 headlineContent = { Text(stringResource(R.string.settings_about_title)) },
-                supportingContent = { Text(stringResource(R.string.settings_about_subtitle)) },
+                supportingContent = { Text(stringResource(R.string.settings_about_subtitle, BuildConfig.VERSION_NAME)) },
                 leadingContent = { Icon(Icons.Filled.Info, contentDescription = null) }
             )
         }

@@ -73,13 +73,14 @@
     <string name="deadline_due_tomorrow">Besok</string>
 
     <!-- Recurrence -->
-    <string name="recurrence_switch_title">Ulangi Tenggat</string>
-    <string name="recurrence_switch_subtitle">Buat tenggat baru otomatis saat selesai</string>
-    <string name="recurrence_indicator">🔄 %1$s</string>
-    <string name="recurrence_tag">· 🔄 %1$s</string>
-    <string name="recurrence_daily">Harian</string>
-    <string name="recurrence_weekly">Mingguan</string>
-    <string name="recurrence_monthly">Bulanan</string>
+    <string name="recurrence_switch_title">Berulang</string>
+    <string name="recurrence_switch_subtitle">Tugas akan dibuat ulang saat selesai</string>
+    <string name="recurrence_requires_deadline">Membutuhkan tenggat</string>
+    <string name="recurrence_indicator">Berulang: %1$s</string>
+    <string name="recurrence_tag"> • 🔄 %1$s</string>
+    <string name="recurrence_daily">Setiap hari</string>
+    <string name="recurrence_weekly">Setiap minggu</string>
+    <string name="recurrence_monthly">Setiap bulan</string>
 
     <!-- Section Headings -->
     <string name="section_needs_attention">Perlu Perhatian</string>
@@ -120,7 +121,7 @@
     <string name="settings_clear_completed_title">Hapus Tugas Selesai</string>
     <string name="settings_clear_completed_subtitle">Hapus permanen semua tugas yang telah diselesaikan</string>
     <string name="settings_about_title">Tentang DueSoon</string>
-    <string name="settings_about_subtitle">MVP v1.0</string>
+    <string name="settings_about_subtitle">v%1$s</string>
 
     <!-- Notifications -->
     <string name="notif_channel_name">Pengingat Tugas</string>
@@ -144,4 +145,23 @@
     <string name="widget_description">Lihat tenggat terdekat langsung di layar utama</string>
     <string name="widget_deadline_count">%1$d Tenggat</string>
     <string name="widget_empty_message">Tidak ada tenggat terdekat ✨</string>
+    <!-- Search -->
+    <string name="search_hint">Cari tugas...</string>
+    <string name="cd_search">Cari</string>
+    <string name="cd_clear_search">Hapus pencarian</string>
+
+    <!-- Sorting -->
+    <string name="sort_title_label">Urutkan</string>
+    <string name="sort_deadline">Tenggat</string>
+    <string name="sort_priority">Prioritas</string>
+    <string name="sort_title">Judul A-Z</string>
+    <string name="sort_created">Terbaru dibuat</string>
+    <string name="cd_sort">Urutkan</string>
+    <string name="snooze_10m">10 mnt</string>
+    <string name="snooze_1h">1 jam</string>
+    <string name="snooze_tomorrow">Besok</string>
 </resources>
+
+
+
+

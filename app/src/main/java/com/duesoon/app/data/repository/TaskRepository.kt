@@ -66,6 +66,21 @@ class TaskRepository(
         DueSoonWidgetUpdater.update(context)
     }
 
+    suspend fun snoozeTask(taskId: Long, snoozedUntil: Long) {
+        val task = getTask(taskId) ?: return
+        if (task.completed) return
+        val updatedTask = task.copy(snoozedUntil = snoozedUntil, updatedAt = System.currentTimeMillis())
+        taskDao.update(updatedTask.toEntity())
+        notificationScheduler.scheduleSnooze(updatedTask, snoozedUntil)
+    }
+
+    suspend fun clearSnooze(taskId: Long) {
+        val task = getTask(taskId) ?: return
+        val updatedTask = task.copy(snoozedUntil = null, updatedAt = System.currentTimeMillis())
+        taskDao.update(updatedTask.toEntity())
+        notificationScheduler.cancelSnooze(updatedTask)
+    }
+
     suspend fun deleteTask(task: Task) {
         taskDao.delete(task.toEntity())
         notificationScheduler.cancelAll(task)
@@ -82,3 +97,4 @@ class TaskRepository(
         return calendar.timeInMillis
     }
 }
+

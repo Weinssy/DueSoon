@@ -23,9 +23,27 @@ class BootReceiver : BroadcastReceiver() {
             
             CoroutineScope(Dispatchers.IO).launch {
                 val tasks = repository.observeTasks().first()
+                val now = System.currentTimeMillis()
                 tasks.forEach { task ->
-                    if (!task.completed && task.deadline != null) {
-                        scheduler.schedule(task)
+                    if (!task.completed) {
+                        if (task.deadline != null) {
+                            scheduler.schedule(task)
+                        }
+                        if (task.snoozedUntil != null) {
+                            if (task.snoozedUntil > now) {
+                                scheduler.scheduleSnooze(task, task.snoozedUntil)
+                            } else {
+                                repository.clearSnooze(task.id)
+                                // Past snooze - fire immediately
+                                val snoozeIntent = Intent(context, ReminderReceiver::class.java).apply {
+                                    putExtra(ReminderReceiver.EXTRA_TASK_ID, task.id)
+                                    putExtra(ReminderReceiver.EXTRA_TASK_TITLE, task.title)
+                                    putExtra(ReminderReceiver.EXTRA_TASK_DEADLINE, task.deadline ?: -1L)
+                                    // Don't set EXTRA_IS_SNOOZE because we already cleared it and want to force show
+                                }
+                                context.sendBroadcast(snoozeIntent)
+                            }
+                        }
                     }
                 }
             }

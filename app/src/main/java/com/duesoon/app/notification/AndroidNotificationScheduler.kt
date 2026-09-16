@@ -44,8 +44,8 @@ class AndroidNotificationScheduler(
     }
 
     override fun cancelAll(task: Task) {
-        for (i in 0..9) {
-            val requestCode = (task.id * 100 + i).toInt()
+        val requestCodes = (0..9).map { (task.id * 100 + it).toInt() } + (task.id * 100 + 99).toInt()
+        for (requestCode in requestCodes) {
             val intent = Intent(context, ReminderReceiver::class.java)
             val pendingIntent = PendingIntent.getBroadcast(
                 context, requestCode, intent,
@@ -53,6 +53,41 @@ class AndroidNotificationScheduler(
             )
             alarmManager.cancel(pendingIntent)
         }
+    }
+
+    override fun scheduleSnooze(task: Task, snoozedUntil: Long) {
+        val intent = Intent(context, ReminderReceiver::class.java).apply {
+            putExtra(ReminderReceiver.EXTRA_TASK_ID, task.id)
+            putExtra(ReminderReceiver.EXTRA_TASK_TITLE, task.title)
+            putExtra(ReminderReceiver.EXTRA_TASK_DEADLINE, task.deadline)
+            putExtra(ReminderReceiver.EXTRA_IS_SNOOZE, true)
+            putExtra(ReminderReceiver.EXTRA_SNOOZED_UNTIL, snoozedUntil)
+        }
+        val requestCode = (task.id * 100 + 99).toInt()
+        val pendingIntent = PendingIntent.getBroadcast(
+            context, requestCode, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (alarmManager.canScheduleExactAlarms()) {
+                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, snoozedUntil, pendingIntent)
+            } else {
+                alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, snoozedUntil, pendingIntent)
+            }
+        } else {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, snoozedUntil, pendingIntent)
+        }
+    }
+
+    override fun cancelSnooze(task: Task) {
+        val requestCode = (task.id * 100 + 99).toInt()
+        val intent = Intent(context, ReminderReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context, requestCode, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        alarmManager.cancel(pendingIntent)
     }
 
     override fun cancel(taskId: Long) {

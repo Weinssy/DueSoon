@@ -25,6 +25,12 @@ class HomeViewModel(
     private val _categoryFilter = MutableStateFlow<String?>(null)
     val categoryFilter: StateFlow<String?> = _categoryFilter.asStateFlow()
 
+    private val _searchQuery = MutableStateFlow("")
+    val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
+
+    private val _sortOrder = MutableStateFlow(SortOrder.DEADLINE)
+    val sortOrder: StateFlow<SortOrder> = _sortOrder.asStateFlow()
+
     val tasks: StateFlow<List<Task>> = repository.observeTasks()
         .stateIn(
             scope = viewModelScope,
@@ -35,24 +41,12 @@ class HomeViewModel(
     val filteredTasks: StateFlow<List<Task>> = combine(
         tasks,
         _statusFilter,
-        _categoryFilter
-    ) { taskList, status, category ->
-        val filtered = HomeFilterLogic.filterTasks(taskList, status, category)
-        val currentTime = System.currentTimeMillis()
-        filtered.sortedWith(compareBy<Task> {
-            val state = DeadlineStateCalculator.calculate(it, currentTime)
-            when (state) {
-                DeadlineState.OVERDUE -> 0
-                DeadlineState.DUE_TODAY -> 1
-                DeadlineState.DUE_SOON -> 2
-                DeadlineState.UPCOMING -> 3
-                DeadlineState.NO_DEADLINE -> 4
-                DeadlineState.COMPLETED -> 5
-            }
-        }.thenBy(nullsLast()) { it.deadline }
-            .thenByDescending { it.priority.ordinal }
-            .thenBy { it.createdAt }
-        )
+        _categoryFilter,
+        _searchQuery,
+        _sortOrder
+    ) { taskList, status, category, query, sort ->
+        val filtered = HomeFilterLogic.filterTasks(taskList, status, category, query)
+        HomeFilterLogic.sortTasks(filtered, sort)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     // Backward-compatibility
@@ -73,10 +67,17 @@ class HomeViewModel(
         _categoryFilter.value = if (category.isNullOrBlank() || category.equals("Semua", ignoreCase = true)) null else category
     }
 
+    fun setSearchQuery(query: String) {
+        _searchQuery.value = query
+    }
+
+    fun setSortOrder(sort: SortOrder) {
+        _sortOrder.value = sort
+    }
+
     fun toggleTaskCompletion(task: Task, isComplete: Boolean) {
         viewModelScope.launch {
             repository.updateTask(task.copy(completed = isComplete, updatedAt = System.currentTimeMillis()))
         }
     }
 }
-

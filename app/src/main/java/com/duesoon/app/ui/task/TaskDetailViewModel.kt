@@ -33,7 +33,6 @@ class TaskDetailViewModel(
         val currentTask = _task.value ?: return
         viewModelScope.launch {
             repository.updateTask(currentTask.copy(completed = true, updatedAt = System.currentTimeMillis()))
-            // TODO: Cancel remaining notifications (Phase 6)
             loadTask()
         }
     }
@@ -42,7 +41,6 @@ class TaskDetailViewModel(
         val currentTask = _task.value ?: return
         viewModelScope.launch {
             repository.updateTask(currentTask.copy(completed = false, updatedAt = System.currentTimeMillis()))
-            // TODO: Reschedule notifications (Phase 6)
             loadTask()
         }
     }
@@ -51,7 +49,6 @@ class TaskDetailViewModel(
         val currentTask = _task.value ?: return
         viewModelScope.launch {
             repository.deleteTask(currentTask)
-            // TODO: Cancel remaining notifications (Phase 6)
             onDeleted()
         }
     }

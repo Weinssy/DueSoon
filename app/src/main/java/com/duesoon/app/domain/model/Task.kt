@@ -29,6 +29,7 @@ data class Task(
     val isRecurring: Boolean = false,
     val recurrenceInterval: RecurrenceInterval? = null,
     val completed: Boolean = false,
+    val snoozedUntil: Long? = null,
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis()
 )

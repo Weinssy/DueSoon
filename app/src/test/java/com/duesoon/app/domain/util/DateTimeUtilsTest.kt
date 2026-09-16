@@ -7,6 +7,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.ZoneId
+import java.time.Instant
 
 class DateTimeUtilsTest {
 
@@ -161,4 +162,19 @@ class DateTimeUtilsTest {
 
         assertEquals(expectedDate, resolvedDate)
     }
+    @Test
+    fun `getTomorrowSnoozeTime returns next day at 9 AM local time`() {
+        val snoozeTimeMillis = DateTimeUtils.getTomorrowSnoozeTime()
+        val localDateTime = Instant.ofEpochMilli(snoozeTimeMillis)
+            .atZone(ZoneId.systemDefault())
+            .toLocalDateTime()
+
+        val expectedDate = LocalDateTime.now().plusDays(1).toLocalDate()
+        assertEquals(expectedDate, localDateTime.toLocalDate())
+        assertEquals(9, localDateTime.hour)
+        assertEquals(0, localDateTime.minute)
+        assertEquals(0, localDateTime.second)
+        assertEquals(0, localDateTime.nano)
+    }
 }
+

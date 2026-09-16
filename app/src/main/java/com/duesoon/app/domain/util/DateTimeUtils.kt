@@ -84,4 +84,19 @@ object DateTimeUtils {
         val localDateTime = toLocalDateTime(epochMillis, zoneId)
         return localDateTime.format(DEADLINE_FORMATTER)
     }
+
+    /**
+     * Calculates tomorrow at 09:00:00 local time for snooze.
+     */
+    fun getTomorrowSnoozeTime(): Long {
+        return LocalDateTime.now()
+            .plusDays(1)
+            .withHour(9)
+            .withMinute(0)
+            .withSecond(0)
+            .withNano(0)
+            .atZone(ZoneId.systemDefault())
+            .toInstant()
+            .toEpochMilli()
+    }
 }

@@ -13,18 +13,30 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -44,13 +56,73 @@ fun HomeScreen(
 ) {
     val statusFilter by viewModel.statusFilter.collectAsState()
     val categoryFilter by viewModel.categoryFilter.collectAsState()
+    val searchQuery by viewModel.searchQuery.collectAsState()
+    val currentSort by viewModel.sortOrder.collectAsState()
     val tasks by viewModel.filteredTasks.collectAsState()
+    
+    var isSearching by remember { mutableStateOf(false) }
+    var sortMenuExpanded by remember { mutableStateOf(false) }
 
     Scaffold(
         modifier = modifier,
         topBar = {
             TopAppBar(
-                title = { Text("DueSoon", style = MaterialTheme.typography.headlineSmall) }
+                title = { 
+                    if (isSearching) {
+                        TextField(
+                            value = searchQuery,
+                            onValueChange = { viewModel.setSearchQuery(it) },
+                            placeholder = { Text(stringResource(R.string.search_hint)) },
+                            singleLine = true,
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = TextFieldDefaults.colors(
+                                focusedContainerColor = Color.Transparent,
+                                unfocusedContainerColor = Color.Transparent,
+                                disabledContainerColor = Color.Transparent,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent
+                            )
+                        )
+                    } else {
+                        Text("DueSoon", style = MaterialTheme.typography.headlineSmall)
+                    }
+                },
+                actions = {
+                    if (isSearching) {
+                        IconButton(onClick = { 
+                            isSearching = false
+                            viewModel.setSearchQuery("")
+                        }) {
+                            Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.cd_clear_search))
+                        }
+                    } else {
+                        IconButton(onClick = { isSearching = true }) {
+                            Icon(Icons.Filled.Search, contentDescription = stringResource(R.string.cd_search))
+                        }
+                        IconButton(onClick = { sortMenuExpanded = true }) {
+                            Icon(Icons.Filled.MoreVert, contentDescription = stringResource(R.string.cd_sort))
+                        }
+                        DropdownMenu(
+                            expanded = sortMenuExpanded,
+                            onDismissRequest = { sortMenuExpanded = false }
+                        ) {
+                            SortOrder.entries.forEach { sortOrder ->
+                                DropdownMenuItem(
+                                    text = { 
+                                        Text(
+                                            text = stringResource(sortOrder.labelResId),
+                                            color = if (currentSort == sortOrder) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
+                                        ) 
+                                    },
+                                    onClick = { 
+                                        viewModel.setSortOrder(sortOrder)
+                                        sortMenuExpanded = false 
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
             )
         },
         floatingActionButton = {

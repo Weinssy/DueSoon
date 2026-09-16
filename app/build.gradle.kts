@@ -15,13 +15,15 @@ android {
         applicationId = "com.duesoon.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.1.0"
+        versionCode = 3
+        versionName = "1.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
+        
+        setProperty("archivesBaseName", "DueSoon-v${versionName}")
     }
 
     val keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -67,6 +69,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.10"

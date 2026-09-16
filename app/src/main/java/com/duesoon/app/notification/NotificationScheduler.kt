@@ -6,4 +6,7 @@ interface NotificationScheduler {
     fun schedule(task: Task)
     fun cancel(taskId: Long)
     fun cancelAll(task: Task)
+    fun scheduleSnooze(task: Task, snoozedUntil: Long)
+    fun cancelSnooze(task: Task)
 }
+
