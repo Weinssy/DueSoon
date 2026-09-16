@@ -6,7 +6,7 @@
 ## 2. Git State
 - **Branch:** main
 - **Commit before release:** e41a516 (Merge branch 'main')
-- **Commit after release:** [See final commit hash in Git log]
+- **Commit after release:** `af6ebe1` (Release v1.2.0: Search, Sorting, Recurring Polish, and Snooze)
 - **Working tree status:** Cleaned and staged properly.
 - **Remote status:** Up to date with origin/main.
 - **Push status:** NOT PUSHED.
@@ -56,13 +56,13 @@
 *(All documentation confirmed present and accurate)*
 
 ## 8. Commit
-- **Commit Hash:** [To be created]
+- **Commit Hash:** `af6ebe151347666fe92966dab27d0d1870e94da5`
 - **Commit Message:** Release v1.2.0: Search, Sorting, Recurring Polish, and Snooze
 
 ## 9. Tag
 - **tag:** v1.2.0
 - **annotated:** yes
-- **target commit hash:** [Same as release commit]
+- **target commit hash:** `af6ebe151347666fe92966dab27d0d1870e94da5`
 
 ## 10. Push
 NOT PUSHED.
