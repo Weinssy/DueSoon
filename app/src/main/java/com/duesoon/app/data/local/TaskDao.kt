@@ -24,4 +24,16 @@ interface TaskDao {
 
     @Delete
     suspend fun delete(task: TaskEntity)
+
+    @Insert
+    suspend fun insertTasks(tasks: List<TaskEntity>)
+
+    @Query("DELETE FROM tasks")
+    suspend fun deleteAllTasks()
+
+    @androidx.room.Transaction
+    suspend fun replaceAllTasks(tasks: List<TaskEntity>) {
+        deleteAllTasks()
+        insertTasks(tasks)
+    }
 }

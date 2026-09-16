@@ -123,6 +123,21 @@
     <string name="settings_about_title">Tentang DueSoon</string>
     <string name="settings_about_subtitle">v%1$s</string>
 
+    <!-- Data & Backup -->
+    <string name="settings_section_data">Data &amp; Backup</string>
+    <string name="settings_export_title">Ekspor Backup</string>
+    <string name="settings_export_subtitle">Simpan data tugas ke file JSON</string>
+    <string name="settings_import_title">Impor Data</string>
+    <string name="settings_import_subtitle">Tambahkan tugas dari file backup ke data saat ini</string>
+    <string name="settings_restore_title">Pulihkan Backup</string>
+    <string name="settings_restore_subtitle">Ganti seluruh data saat ini dengan file backup</string>
+    <string name="dialog_import_title">Impor Tugas</string>
+    <string name="dialog_import_message">Apakah Anda ingin mengimpor %1$d tugas baru ke dalam data saat ini?</string>
+    <string name="dialog_restore_title">Pulihkan Data (Berbahaya)</string>
+    <string name="dialog_restore_message">Tindakan ini akan menghapus permanen seluruh data Anda saat ini dan menggantinya dengan %1$d tugas dari backup. Lanjutkan?</string>
+    <string name="action_import">Impor</string>
+    <string name="action_restore">Pulihkan</string>
+
     <!-- Notifications -->
     <string name="notif_channel_name">Pengingat Tugas</string>
     <string name="notif_channel_description">Notifikasi pengingat tenggat waktu DueSoon</string>

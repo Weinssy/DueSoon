@@ -96,5 +96,19 @@ class TaskRepository(
         }
         return calendar.timeInMillis
     }
+
+    suspend fun importTasks(tasks: List<Task>) {
+        if (tasks.isEmpty()) return
+        val entities = tasks.map { it.copy(id = 0).toEntity() }
+        taskDao.insertTasks(entities)
+        DueSoonWidgetUpdater.update(context)
+    }
+
+    suspend fun restoreTasks(tasks: List<Task>) {
+        if (tasks.isEmpty()) return
+        val entities = tasks.map { it.toEntity() }
+        taskDao.replaceAllTasks(entities)
+        DueSoonWidgetUpdater.update(context)
+    }
 }
 

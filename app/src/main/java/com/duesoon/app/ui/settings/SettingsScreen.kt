@@ -14,6 +14,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.duesoon.app.R
 import com.duesoon.app.BuildConfig
 import com.duesoon.app.ui.AppViewModelProvider
+import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -24,6 +25,24 @@ fun SettingsScreen(
     val prefs by viewModel.userPreferences.collectAsState()
     var showClearDialog by remember { mutableStateOf(false) }
     var showThemeMenu by remember { mutableStateOf(false) }
+
+    val backupState by viewModel.backupUiState.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val context = androidx.compose.ui.platform.LocalContext.current
+    
+    LaunchedEffect(backupState) {
+        when (val state = backupState) {
+            is BackupUiState.Success -> {
+                snackbarHostState.showSnackbar(state.message)
+                viewModel.resetBackupState()
+            }
+            is BackupUiState.Error -> {
+                snackbarHostState.showSnackbar("Error: ${state.message}")
+                viewModel.resetBackupState()
+            }
+            else -> {}
+        }
+    }
 
     if (showClearDialog) {
         AlertDialog(
@@ -44,6 +63,7 @@ fun SettingsScreen(
 
     Scaffold(
         topBar = { TopAppBar(title = { Text(stringResource(R.string.nav_settings)) }) },
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         modifier = modifier
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding).fillMaxSize()) {
@@ -111,6 +131,115 @@ fun SettingsScreen(
                 supportingContent = { Text(stringResource(R.string.settings_about_subtitle, BuildConfig.VERSION_NAME)) },
                 leadingContent = { Icon(Icons.Filled.Info, contentDescription = null) }
             )
+            HorizontalDivider()
+
+            // --- Data & Backup ---
+            
+            val exportLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
+                androidx.activity.result.contract.ActivityResultContracts.CreateDocument("application/json")
+            ) { uri ->
+                if (uri != null) {
+                    viewModel.exportBackup(uri)
+                }
+            }
+
+            val importLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
+                androidx.activity.result.contract.ActivityResultContracts.OpenDocument()
+            ) { uri ->
+                if (uri != null) {
+                    viewModel.prepareImport(uri)
+                }
+            }
+
+            val restoreLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
+                androidx.activity.result.contract.ActivityResultContracts.OpenDocument()
+            ) { uri ->
+                if (uri != null) {
+                    viewModel.prepareRestore(uri)
+                }
+            }
+
+            if (backupState is BackupUiState.AwaitingImportConfirmation) {
+                val state = backupState as BackupUiState.AwaitingImportConfirmation
+                AlertDialog(
+                    onDismissRequest = { viewModel.cancelConfirmation() },
+                    title = { Text(stringResource(R.string.dialog_import_title)) },
+                    text = { Text(stringResource(R.string.dialog_import_message, state.backup.tasks.size)) },
+                    confirmButton = {
+                        TextButton(onClick = { viewModel.executeImport() }) {
+                            Text(stringResource(R.string.action_import))
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = { viewModel.cancelConfirmation() }) {
+                            Text(stringResource(R.string.action_cancel))
+                        }
+                    }
+                )
+            }
+
+            if (backupState is BackupUiState.AwaitingRestoreConfirmation) {
+                val state = backupState as BackupUiState.AwaitingRestoreConfirmation
+                AlertDialog(
+                    onDismissRequest = { viewModel.cancelConfirmation() },
+                    title = { Text(stringResource(R.string.dialog_restore_title)) },
+                    text = { Text(stringResource(R.string.dialog_restore_message, state.backup.tasks.size)) },
+                    confirmButton = {
+                        TextButton(onClick = { viewModel.executeRestore() }) {
+                            Text(stringResource(R.string.action_restore), color = MaterialTheme.colorScheme.error)
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = { viewModel.cancelConfirmation() }) {
+                            Text(stringResource(R.string.action_cancel))
+                        }
+                    }
+                )
+            }
+            
+            Text(
+                text = stringResource(R.string.settings_section_data),
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.titleSmall,
+                modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 8.dp)
+            )
+
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_export_title)) },
+                supportingContent = { Text(stringResource(R.string.settings_export_subtitle)) },
+                modifier = Modifier.clickable(
+                    enabled = backupState !is BackupUiState.Loading,
+                    onClick = {
+                        val formatter = java.text.SimpleDateFormat("yyyyMMdd", java.util.Locale.getDefault())
+                        val fileName = "DueSoon_Backup_${formatter.format(java.util.Date())}.json"
+                        exportLauncher.launch(fileName)
+                    }
+                )
+            )
+            
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_import_title)) },
+                supportingContent = { Text(stringResource(R.string.settings_import_subtitle)) },
+                modifier = Modifier.clickable(
+                    enabled = backupState !is BackupUiState.Loading,
+                    onClick = { importLauncher.launch(arrayOf("application/json")) }
+                )
+            )
+
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_restore_title)) },
+                supportingContent = { Text(stringResource(R.string.settings_restore_subtitle)) },
+                modifier = Modifier.clickable(
+                    enabled = backupState !is BackupUiState.Loading,
+                    onClick = { restoreLauncher.launch(arrayOf("application/json")) }
+                )
+            )
+            
+            Box(modifier = Modifier.fillMaxWidth().padding(16.dp), contentAlignment = androidx.compose.ui.Alignment.Center) {
+                if (backupState is BackupUiState.Loading) {
+                    CircularProgressIndicator(modifier = Modifier.size(24.dp))
+                }
+            }
         }
     }
 }

@@ -5,6 +5,11 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
+}
+
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
 }
 
 android {
@@ -100,8 +105,11 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.glance.material3)
+    
+    implementation(libs.kotlinx.serialization.json)
 
     testImplementation(libs.junit)
+    testImplementation("org.mockito:mockito-core:5.7.0")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

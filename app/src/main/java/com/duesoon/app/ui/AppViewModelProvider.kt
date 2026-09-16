@@ -44,7 +44,8 @@ object AppViewModelProvider {
             SettingsViewModel(
                 dueSoonApplication().container.userPreferencesRepository,
                 dueSoonApplication().container.taskRepository,
-                dueSoonApplication().container.notificationScheduler
+                dueSoonApplication().container.notificationScheduler,
+                dueSoonApplication().container.backupRestoreCoordinator
             )
         }
     }
