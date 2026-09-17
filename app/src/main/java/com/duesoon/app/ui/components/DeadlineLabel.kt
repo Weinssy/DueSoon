@@ -21,10 +21,13 @@ import java.util.Locale
 fun DeadlineLabel(task: Task, modifier: Modifier = Modifier) {
     val state = DeadlineStateCalculator.calculate(task)
     
-    val color = when (state) {
-        DeadlineState.OVERDUE -> Error
-        DeadlineState.DUE_TODAY, DeadlineState.DUE_SOON -> Warning
-        DeadlineState.COMPLETED -> Success
+    val tier = com.duesoon.app.domain.util.AttentionRankingEngine.calculateTier(task)
+    val color = when (tier) {
+        com.duesoon.app.domain.model.AttentionTier.OVERDUE,
+        com.duesoon.app.domain.model.AttentionTier.CRITICAL -> Error
+        com.duesoon.app.domain.model.AttentionTier.HIGH,
+        com.duesoon.app.domain.model.AttentionTier.ELEVATED -> Warning
+        com.duesoon.app.domain.model.AttentionTier.COMPLETED -> Success
         else -> MaterialTheme.colorScheme.onSurfaceVariant
     }
 

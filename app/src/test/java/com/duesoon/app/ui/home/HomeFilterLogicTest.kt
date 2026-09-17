@@ -287,17 +287,50 @@ class HomeFilterLogicTest {
 
     @Test
     fun sortTasks_deadline_sortsCorrectly() {
-        // currentTime = 600, so:
-        // Task 1 (deadline 1000): DUE_SOON/UPCOMING
-        // Task 3 (deadline 500): OVERDUE
-        // Task 2 (deadline null): NO_DEADLINE
-        // Task 4 (completed): COMPLETED
         val sorted = HomeFilterLogic.sortTasks(sortTasksList, SortOrder.DEADLINE, currentTime = 600)
         
         assertEquals(3L, sorted[0].id) // OVERDUE
         assertEquals(1L, sorted[1].id) // UPCOMING
         assertEquals(2L, sorted[2].id) // NO DEADLINE
         assertEquals(4L, sorted[3].id) // COMPLETED
+    }
+
+    @Test
+    fun sortTasksByAttention_prioritizesOverdue() {
+        val currentTime = 1000L
+        val overdueTask = Task(id = 1, title = "Overdue", deadline = 500L, priority = Priority.LOW)
+        val todayHighTask = Task(id = 2, title = "Today High", deadline = 1000L, priority = Priority.HIGH)
+        
+        val sorted = HomeFilterLogic.sortTasksByAttention(listOf(todayHighTask, overdueTask), currentTime)
+        
+        assertEquals(1L, sorted[0].id) // OVERDUE beats CRITICAL
+        assertEquals(2L, sorted[1].id)
+    }
+
+    @Test
+    fun sortTasksByAttention_blendsPriorityAndDeadline() {
+        // Assume currentTime is 0 for simplicity. 
+        val currentTime = 0L
+        val sameDay = 1000L // Still 1970-01-01 -> DUE_TODAY
+        val twoDays = java.util.concurrent.TimeUnit.DAYS.toMillis(2) // 1970-01-03 -> DUE_SOON
+        val fourDays = java.util.concurrent.TimeUnit.DAYS.toMillis(4) // 1970-01-05 -> UPCOMING
+        
+        // DUE_TODAY + LOW -> HIGH tier
+        val todayLow = Task(id = 1, title = "Today Low", deadline = sameDay, priority = Priority.LOW)
+        
+        // DUE_SOON + HIGH -> HIGH tier
+        val soonHigh = Task(id = 2, title = "Soon High", deadline = twoDays, priority = Priority.HIGH)
+        
+        // UPCOMING + HIGH -> ELEVATED tier
+        val upcomingHigh = Task(id = 3, title = "Upcoming High", deadline = fourDays, priority = Priority.HIGH)
+        
+        val sorted = HomeFilterLogic.sortTasksByAttention(listOf(upcomingHigh, soonHigh, todayLow), currentTime)
+        
+        // HIGH tier elements first, then ELEVATED
+        // Inside HIGH tier (todayLow vs soonHigh), the deadline takes precedence because it's the secondary sort
+        assertEquals(1L, sorted[0].id) // Today Low (earlier deadline)
+        assertEquals(2L, sorted[1].id) // Soon High (later deadline, same tier)
+        assertEquals(3L, sorted[2].id) // Upcoming High (lower tier)
     }
 
     @Test

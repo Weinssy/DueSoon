@@ -39,10 +39,11 @@ class DueSoonWidget : GlanceAppWidget() {
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val app = context.applicationContext as DueSoonApplication
         val allTasks = app.container.taskRepository.observeTasks().first()
-        val upcomingTasks = allTasks
-            .filter { !it.completed && it.deadline != null }
-            .sortedBy { it.deadline }
-            .take(3)
+        val currentTime = System.currentTimeMillis()
+        val upcomingTasks = com.duesoon.app.ui.home.HomeFilterLogic.sortTasksByAttention(
+            allTasks.filter { !it.completed },
+            currentTime
+        ).take(3)
 
         provideContent {
             Box(
@@ -109,10 +110,13 @@ class DueSoonWidget : GlanceAppWidget() {
 
     @androidx.compose.runtime.Composable
     private fun WidgetItem(task: Task) {
-        val state = DeadlineStateCalculator.calculate(task)
-        val deadlineColor = when (state) {
-            DeadlineState.OVERDUE -> Color(0xFFEF4444)
-            DeadlineState.DUE_TODAY, DeadlineState.DUE_SOON -> Color(0xFFF59E0B)
+        val currentTime = System.currentTimeMillis()
+        val tier = com.duesoon.app.domain.util.AttentionRankingEngine.calculateTier(task, currentTime)
+        val deadlineColor = when (tier) {
+            com.duesoon.app.domain.model.AttentionTier.OVERDUE, 
+            com.duesoon.app.domain.model.AttentionTier.CRITICAL -> Color(0xFFEF4444)
+            com.duesoon.app.domain.model.AttentionTier.HIGH, 
+            com.duesoon.app.domain.model.AttentionTier.ELEVATED -> Color(0xFFF59E0B)
             else -> Color(0xFF94A3B8)
         }
 

@@ -45,8 +45,9 @@ class HomeViewModel(
         _searchQuery,
         _sortOrder
     ) { taskList, status, category, query, sort ->
+        val currentTime = System.currentTimeMillis()
         val filtered = HomeFilterLogic.filterTasks(taskList, status, category, query)
-        HomeFilterLogic.sortTasks(filtered, sort)
+        HomeFilterLogic.sortTasks(filtered, sort, currentTime)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     // Backward-compatibility

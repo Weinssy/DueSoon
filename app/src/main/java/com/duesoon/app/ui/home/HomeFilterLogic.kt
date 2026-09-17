@@ -57,6 +57,10 @@ object HomeFilterLogic {
         }
     }
 
+    fun sortTasksByAttention(tasks: List<Task>, currentTime: Long): List<Task> {
+        return tasks.sortedWith(com.duesoon.app.domain.util.AttentionRankingEngine.getComparator(currentTime))
+    }
+
     fun sortTasks(
         tasks: List<Task>,
         sortOrder: SortOrder = SortOrder.DEADLINE,
@@ -64,20 +68,7 @@ object HomeFilterLogic {
     ): List<Task> {
         return when (sortOrder) {
             SortOrder.DEADLINE -> {
-                tasks.sortedWith(compareBy<Task> {
-                    val state = DeadlineStateCalculator.calculate(it, currentTime)
-                    when (state) {
-                        DeadlineState.OVERDUE -> 0
-                        DeadlineState.DUE_TODAY -> 1
-                        DeadlineState.DUE_SOON -> 2
-                        DeadlineState.UPCOMING -> 3
-                        DeadlineState.NO_DEADLINE -> 4
-                        DeadlineState.COMPLETED -> 5
-                    }
-                }.thenBy(nullsLast()) { it.deadline }
-                    .thenByDescending { it.priority.ordinal }
-                    .thenBy { it.createdAt }
-                )
+                sortTasksByAttention(tasks, currentTime)
             }
             SortOrder.PRIORITY -> {
                 tasks.sortedWith(

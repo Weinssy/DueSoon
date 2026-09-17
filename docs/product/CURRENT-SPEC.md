@@ -1,8 +1,8 @@
 # DueSoon — Current Product Specification
 
 ## Overview
-**Current Version:** 1.3.0 (Active Development)  
-**Status:** In Development (Based on v1.2.0 stable baseline)  
+**Current Version:** 1.4.0 (Active Development)  
+**Status:** In Development (Based on v1.3.0 stable baseline)  
 **Positioning:** DueSoon is a minimal, local-first Android deadline reminder app designed to help users stay aware of upcoming deadlines without the complexity of traditional project management tools.  
 **Tagline:** Know what needs your attention next.
 
@@ -40,10 +40,11 @@
 | Snooze | Released | v1.2.0 | 10m, 1h, Tomorrow options |
 | Calendar | Released | v1.0.0 | Visualizes deadlines by date |
 | Widget | Released | v1.1.0+ | Jetpack Glance Home screen widget |
-| Backup | Implemented / unreleased | v1.3.0 | Snapshot of full data |
-| Export | Implemented / unreleased | v1.3.0 | Export data to JSON via SAF |
-| Import | In Development | v1.3.0 | Merge tasks from JSON, generating new IDs |
-| Restore | In Development | v1.3.0 | Transactional destructive replace preserving original IDs |
+| Backup | Released | v1.3.0 | Snapshot of full data |
+| Export | Released | v1.3.0 | Export data to JSON via SAF |
+| Import | Released | v1.3.0 | Merge tasks from JSON, generating new IDs |
+| Restore | Released | v1.3.0 | Transactional destructive replace preserving original IDs |
+| Smart Attention Ranking | In Development | v1.4.0 | Blends deadline and priority deterministically |
 
 ## Current Task Model
 Based on the actual `Task` domain model.
@@ -78,10 +79,22 @@ Based on the actual `Task` domain model.
 - **Timezone/Reboot:** Handled natively by Android's `AlarmManager` and `BootReceiver`.
 - **Modifications:** Editing a deadline cancels old alarms and reschedules new ones.
 
-## Search, Filtering, and Sorting
+## Search, Filtering, and Smart Attention Ranking (v1.4.0)
 - **Search:** Case-insensitive string matching on task titles.
 - **Filters:** Supports filtering by task status (Upcoming, Due Soon, Overdue, Completed).
-- **Sorting:** Users can sort tasks by Deadline, Priority, Title, or Creation Date.
+- **Sorting (Smart Attention Ranking):** 
+  v1.4.0 introduces the **Hybrid Urgency Matrix (Option C)**, rendering tasks through an explainable `AttentionTier`:
+  1. `OVERDUE` (Overdue tasks, irrespective of priority)
+  2. `CRITICAL` (Today + Normal/High)
+  3. `HIGH` (Today + Low, OR Soon + High)
+  4. `ELEVATED` (Soon + Normal/Low, OR Upcoming + High)
+  5. `NORMAL` (Upcoming + Normal/Low)
+  6. `OPTIONAL` (Tasks with no deadline)
+  7. `COMPLETED`
+  
+  **Strict Day Boundary:** Within the same tier, secondary deadline sorting takes absolute precedence. 
+  **Tie-breaking chain:** `Tier` -> `Deadline (nullsLast)` -> `Priority (descending)` -> `CreatedAt (ascending)` -> `Id (ascending)`.
+- **Widget Parity:** The Home Screen and the Glance Widget share the exact same Smart Attention Ranking algorithm.
 
 ## Recurring Tasks and Snooze
 - **Recurring:** Supports DAILY, WEEKLY, and MONTHLY intervals.
