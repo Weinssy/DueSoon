@@ -62,29 +62,32 @@ project management features in the MVP.
 
 ## Status
 
-**Latest stable release: v1.4.0**
+**Latest stable release: v1.6.0**
 
 DueSoon is a minimal, deadline-first reminder app designed to answer one question:
 
 > What needs my attention next?
 
+### v1.6.0 highlights
+- **Interactive Widgets:** Complete tasks directly from the home screen widget without opening the app.
+- **Quick Add:** Added a `(+)` launcher shortcut on the widget to instantly open the task creation sheet.
+- **Idempotency:** Widget interactions are strictly guarded against rapid double-taps to ensure database stability.
+
+### v1.5.0 highlights
+- **Calendar & Time UX:** In-memory date filtering grid with workload density dots.
+- **Visual Workload Indicators:** Calendar days display colored dots based on the highest Attention Tier due.
+
 ### v1.4.0 highlights
 - **Smart Attention Ranking:** A deterministic hybrid matrix that blends deadline and priority.
 - **100% Widget Parity:** The Glance widget perfectly matches the Home Screen's attention ranking.
-- **Explainable Badges:** Task badges accurately reflect attention tiers.
 
 ### v1.3.0 highlights
 - **JSON Backup & Restore:** Portable data exports with full offline safety.
 - **Merge/Import:** Safely import tasks from JSON files.
 
-### v1.2.0 highlights
-- Home Search & Sorting
-- Recurring tasks UI polish
-- Snooze notifications (10m, 1h, Tomorrow)
-
 ## Roadmap
 
-Please refer to our detailed [Roadmap](docs/roadmap/duesoon-roadmap.md) for upcoming features in v1.5 and beyond.
+Please refer to our detailed [Roadmap](docs/roadmap/duesoon-roadmap.md) for upcoming features in v1.7 and beyond.
 
 ## License
 

@@ -6,7 +6,7 @@ v1.2.0  ✅
 └── Snooze
 │
 ▼
-v1.2.1
+v1.2.1  ✅
 │
 ├── Repository hygiene
 ├── Reliability
@@ -14,7 +14,7 @@ v1.2.1
 └── Migration testing
 │
 ▼
-v1.3.0
+v1.3.0  ✅
 │
 ├── Export
 ├── Import
@@ -22,21 +22,21 @@ v1.3.0
 └── Restore
 │
 ▼
-v1.4.0
+v1.4.0  ✅
 │
 ├── Smart urgency
 ├── Better attention ranking
 └── Task intelligence
 │
 ▼
-v1.5.0
+v1.5.0  ✅
 │
 ├── Calendar UX
 ├── Day agenda
 └── Rescheduling
 │
 ▼
-v1.6.0
+v1.6.0  ✅
 │
 ├── Widget 2.0
 ├── Quick actions
