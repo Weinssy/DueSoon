@@ -18,9 +18,17 @@ import com.duesoon.app.navigation.AppNavigation
 import com.duesoon.app.ui.theme.DueSoonTheme
 
 class MainActivity : ComponentActivity() {
+    companion object {
+        const val ACTION_QUICK_ADD = "com.duesoon.app.action.QUICK_ADD"
+    }
+
+    private val _quickAddTrigger = kotlinx.coroutines.flow.MutableStateFlow(false)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+        
+        checkQuickAddIntent(intent)
         
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ActivityCompat.requestPermissions(
@@ -35,6 +43,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val userPreferences by userPreferencesRepository.userPreferencesFlow.collectAsState(initial = UserPreferences())
+            val triggerQuickAdd by _quickAddTrigger.collectAsState()
             
             val isDarkTheme = when (userPreferences.theme) {
                 "LIGHT" -> false
@@ -47,9 +56,23 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppNavigation()
+                    AppNavigation(
+                        quickAddTrigger = triggerQuickAdd,
+                        onQuickAddHandled = { _quickAddTrigger.value = false }
+                    )
                 }
             }
+        }
+    }
+
+    override fun onNewIntent(intent: android.content.Intent) {
+        super.onNewIntent(intent)
+        checkQuickAddIntent(intent)
+    }
+
+    private fun checkQuickAddIntent(intent: android.content.Intent?) {
+        if (intent?.action == ACTION_QUICK_ADD || intent?.getBooleanExtra("quick_add", false) == true) {
+            _quickAddTrigger.value = true
         }
     }
 }

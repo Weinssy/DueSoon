@@ -10,6 +10,7 @@ import com.duesoon.app.data.repository.UserPreferencesRepository
 import com.duesoon.app.notification.AndroidNotificationScheduler
 import com.duesoon.app.notification.NotificationScheduler
 import com.duesoon.app.BuildConfig
+import com.duesoon.app.domain.usecase.CompleteTaskUseCase
 
 interface AppContainer {
     val taskRepository: TaskRepository
@@ -17,6 +18,7 @@ interface AppContainer {
     val userPreferencesRepository: UserPreferencesRepository
     val backupStorage: BackupStorage
     val backupRestoreCoordinator: BackupRestoreCoordinator
+    val completeTaskUseCase: com.duesoon.app.domain.usecase.CompleteTaskUseCase
 }
 
 class DefaultAppContainer(private val context: Context) : AppContainer {
@@ -44,5 +46,9 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
             notificationScheduler = notificationScheduler,
             userPreferencesRepository = userPreferencesRepository
         )
+    }
+
+    override val completeTaskUseCase: CompleteTaskUseCase by lazy {
+        CompleteTaskUseCase(taskRepository)
     }
 }

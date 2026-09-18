@@ -66,7 +66,11 @@ val bottomNavItems = listOf(
 )
 
 @Composable
-fun AppNavigation(navController: NavHostController = rememberNavController()) {
+fun AppNavigation(
+    navController: NavHostController = rememberNavController(),
+    quickAddTrigger: Boolean = false,
+    onQuickAddHandled: () -> Unit = {}
+) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     val context = LocalContext.current
@@ -78,6 +82,15 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
         snackbarMessage?.let { msg ->
             snackbarHostState.showSnackbar(msg)
             navBackStackEntry?.savedStateHandle?.remove<String>("snackbar_message")
+        }
+    }
+
+    LaunchedEffect(quickAddTrigger) {
+        if (quickAddTrigger) {
+            navController.navigate(Destinations.CREATE_TASK) {
+                launchSingleTop = true
+            }
+            onQuickAddHandled()
         }
     }
 

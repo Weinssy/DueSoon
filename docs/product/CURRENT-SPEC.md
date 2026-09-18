@@ -1,8 +1,8 @@
 # DueSoon — Current Product Specification
 
 ## Overview
-**Current Version:** 1.5.0 (Active Development)  
-**Status:** In Development (Based on v1.4.0 stable baseline)  
+**Current Version:** 1.6.0 (Active Development)  
+**Status:** In Development (Based on v1.5.0 stable baseline)  
 **Positioning:** DueSoon is a minimal, local-first Android deadline reminder app designed to help users stay aware of upcoming deadlines without the complexity of traditional project management tools.  
 **Tagline:** Know what needs your attention next.
 
@@ -45,6 +45,8 @@
 | Import | Released | v1.3.0 | Merge tasks from JSON, generating new IDs |
 | Restore | Released | v1.3.0 | Transactional destructive replace preserving original IDs |
 | Smart Attention Ranking | Released | v1.4.0 | Blends deadline and priority deterministically |
+| Widget Interactivity | Released | v1.6.0 | Task completion via widget |
+| Quick Add | Released | v1.6.0 | Launcher shortcut to create task |
 
 ## Current Task Model
 Based on the actual `Task` domain model.
@@ -107,6 +109,12 @@ Based on the actual `Task` domain model.
 - **Timezone Safety:** UTC epoch deadlines are dynamically mapped to `LocalDate` using the user's active `ZoneId.systemDefault()` during Flow emission to prevent midnight crossover issues.
 - **Widget & Notification Isolation:** The Glance Widget and Android NotificationScheduler remain completely oblivious to the UI calendar selection state, ensuring parity with the unfiltered baseline.
 
+## Widgets & Quick Actions (v1.6.0)
+- **Interactive Glance Widget:** Introduces `CompleteTaskActionCallback` allowing users to complete tasks directly from the home screen widget.
+- **Domain Delegation & Idempotency:** The widget delegates actions to `CompleteTaskUseCase`, ensuring a safe, atomic, and idempotent task completion sequence (handling DB update, recurrence spawning, alarm cancellation, and widget refresh) that is resistant to rapid double-taps.
+- **Touch-Target Separation:** The widget enforces a strictly sized 48dp checkbox hitbox for completing tasks, while tapping the task body opens the main app.
+- **Quick Add (`ACTION_QUICK_ADD`):** A dedicated `(+)` icon on the widget routes users directly into the task creation flow (`Destinations.CREATE_TASK`) by propagating an explicit intent through the app's `MainActivity` and `AppNavigation`.
+
 ## Recurring Tasks and Snooze
 - **Recurring:** Supports DAILY, WEEKLY, and MONTHLY intervals.
 - **Snooze:** Postpones a reminder notification to 10 minutes, 1 hour, or Tomorrow.
@@ -119,8 +127,9 @@ DueSoon v1.3.0 introduces a portable JSON format (`schemaVersion: 1`).
 - **Privacy:** Entirely offline, no cloud syncing involved.
 
 ## Current Roadmap
-**Active Development (v1.5.0):**
-- In-memory Calendar & Time UX
+**Released:**
+- v1.5.0 Calendar & Time UX
+- v1.6.0 Widgets & Quick Actions
 
 **Future:**
 - AI assistance

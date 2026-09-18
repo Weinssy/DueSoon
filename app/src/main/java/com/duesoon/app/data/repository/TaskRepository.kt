@@ -13,24 +13,24 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.util.Calendar
 
-class TaskRepository(
+open class TaskRepository(
     private val taskDao: TaskDao,
     private val notificationScheduler: NotificationScheduler,
     private val userPreferencesRepository: UserPreferencesRepository,
     private val context: Context? = null
 ) {
 
-    fun observeTasks(): Flow<List<Task>> {
+    open fun observeTasks(): Flow<List<Task>> {
         return taskDao.observeTasks().map { entities ->
             entities.map { it.toDomainModel() }
         }
     }
 
-    suspend fun getTask(id: Long): Task? {
+    open suspend fun getTask(id: Long): Task? {
         return taskDao.getTask(id)?.toDomainModel()
     }
 
-    suspend fun insertTask(task: Task): Long {
+    open suspend fun insertTask(task: Task): Long {
         val id = taskDao.insert(task.toEntity())
         val savedTask = task.copy(id = id)
         val prefs = userPreferencesRepository.userPreferencesFlow.first()
@@ -41,7 +41,7 @@ class TaskRepository(
         return id
     }
 
-    suspend fun updateTask(task: Task) {
+    open suspend fun updateTask(task: Task) {
         taskDao.update(task.toEntity())
         val prefs = userPreferencesRepository.userPreferencesFlow.first()
 

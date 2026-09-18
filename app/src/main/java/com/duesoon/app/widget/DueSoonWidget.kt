@@ -1,13 +1,16 @@
 package com.duesoon.app.widget
 
 import android.content.Context
+import android.content.Intent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
+import androidx.glance.action.actionParametersOf
 import androidx.glance.action.actionStartActivity
 import androidx.glance.action.clickable
+import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.cornerRadius
 import androidx.glance.appwidget.provideContent
@@ -21,6 +24,7 @@ import androidx.glance.layout.fillMaxSize
 import androidx.glance.layout.fillMaxWidth
 import androidx.glance.layout.height
 import androidx.glance.layout.padding
+import androidx.glance.layout.size
 import androidx.glance.text.FontWeight
 import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
@@ -46,13 +50,14 @@ class DueSoonWidget : GlanceAppWidget() {
         ).take(3)
 
         provideContent {
+            val localContext = androidx.glance.LocalContext.current
+
             Box(
                 modifier = GlanceModifier
                     .fillMaxSize()
                     .background(Color(0xFF1E1E2E))
                     .cornerRadius(16.dp)
                     .padding(12.dp)
-                    .clickable(actionStartActivity<MainActivity>())
             ) {
                 Column(
                     modifier = GlanceModifier.fillMaxSize()
@@ -71,24 +76,42 @@ class DueSoonWidget : GlanceAppWidget() {
                             )
                         )
                         Spacer(modifier = GlanceModifier.defaultWeight())
-                        Text(
-                            text = context.getString(R.string.widget_deadline_count, upcomingTasks.size),
-                            style = TextStyle(
-                                color = ColorProvider(Color(0xFF94A3B8)),
-                                fontSize = 12.sp
+                        
+                        // Header Add Button
+                        Box(
+                            modifier = GlanceModifier
+                                .size(32.dp)
+                                .background(Color(0xFF313244))
+                                .cornerRadius(16.dp)
+                                .clickable(
+                                    actionStartActivity<MainActivity>(
+                                        actionParametersOf(
+                                            androidx.glance.action.ActionParameters.Key<Boolean>("quick_add") to true
+                                        )
+                                    )
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = "+",
+                                style = TextStyle(
+                                    color = ColorProvider(Color.White),
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
                             )
-                        )
+                        }
                     }
 
                     Spacer(modifier = GlanceModifier.height(8.dp))
 
                     if (upcomingTasks.isEmpty()) {
                         Box(
-                            modifier = GlanceModifier.fillMaxSize(),
+                            modifier = GlanceModifier.fillMaxSize().clickable(actionStartActivity<MainActivity>()),
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
-                                text = context.getString(R.string.widget_empty_message),
+                                text = localContext.getString(R.string.widget_empty_message),
                                 style = TextStyle(
                                     color = ColorProvider(Color(0xFF94A3B8)),
                                     fontSize = 12.sp
@@ -128,39 +151,66 @@ class DueSoonWidget : GlanceAppWidget() {
             modifier = GlanceModifier
                 .fillMaxWidth()
                 .background(Color(0xFF282A36))
-                .cornerRadius(8.dp)
-                .padding(horizontal = 8.dp, vertical = 6.dp),
+                .cornerRadius(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(modifier = GlanceModifier.defaultWeight()) {
-                Text(
-                    text = task.title,
-                    maxLines = 1,
-                    style = TextStyle(
-                        color = ColorProvider(Color.White),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Medium
-                    )
-                )
-                Text(
-                    text = deadlineText,
-                    maxLines = 1,
-                    style = TextStyle(
-                        color = ColorProvider(deadlineColor),
-                        fontSize = 11.sp
-                    )
-                )
+            // Checkbox Area (Min 48dp Touch Target)
+            Box(
+                modifier = GlanceModifier
+                    .size(48.dp)
+                    .clickable(
+                        actionRunCallback<CompleteTaskActionCallback>(
+                            actionParametersOf(taskIdKey to task.id)
+                        )
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Box(
+                    modifier = GlanceModifier
+                        .size(18.dp)
+                        .background(Color(0xFF1E1E2E))
+                        .cornerRadius(9.dp) // Border radius to simulate a circle
+                ) {}
             }
 
-            if (!task.category.isNullOrBlank()) {
-                Text(
-                    text = task.category,
-                    style = TextStyle(
-                        color = ColorProvider(Color(0xFFA5B4FC)),
-                        fontSize = 10.sp
-                    ),
-                    modifier = GlanceModifier.padding(start = 4.dp)
-                )
+            // Task Body (Clickable to open app)
+            Row(
+                modifier = GlanceModifier
+                    .defaultWeight()
+                    .padding(end = 8.dp, top = 6.dp, bottom = 6.dp)
+                    .clickable(actionStartActivity<MainActivity>()),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = GlanceModifier.defaultWeight()) {
+                    Text(
+                        text = task.title,
+                        maxLines = 1,
+                        style = TextStyle(
+                            color = ColorProvider(Color.White),
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Medium
+                        )
+                    )
+                    Text(
+                        text = deadlineText,
+                        maxLines = 1,
+                        style = TextStyle(
+                            color = ColorProvider(deadlineColor),
+                            fontSize = 11.sp
+                        )
+                    )
+                }
+
+                if (!task.category.isNullOrBlank()) {
+                    Text(
+                        text = task.category,
+                        style = TextStyle(
+                            color = ColorProvider(Color(0xFFA5B4FC)),
+                            fontSize = 10.sp
+                        ),
+                        modifier = GlanceModifier.padding(start = 4.dp)
+                    )
+                }
             }
         }
     }
