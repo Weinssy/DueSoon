@@ -1,8 +1,8 @@
 # DueSoon — Current Product Specification
 
 ## Overview
-**Current Version:** 1.6.0 (Active Development)  
-**Status:** In Development (Based on v1.5.0 stable baseline)  
+**Current Version:** 1.7.0 (Active Development)  
+**Status:** In Development (Based on v1.6.0 stable baseline)  
 **Positioning:** DueSoon is a minimal, local-first Android deadline reminder app designed to help users stay aware of upcoming deadlines without the complexity of traditional project management tools.  
 **Tagline:** Know what needs your attention next.
 
@@ -37,7 +37,9 @@
 | Filtering | Released | v1.2.0 | By Status, Category, Priority |
 | Sorting | Released | v1.2.0 | Deadline, Priority, Title, Created |
 | Recurring tasks | Released | v1.2.0 | Daily, Weekly, Monthly intervals |
+| Advanced Recurrence | Released | v1.7.0 | Custom intervals & weekdays |
 | Snooze | Released | v1.2.0 | 10m, 1h, Tomorrow options |
+| Multi-Stage Reminders| Released | v1.7.0 | Stage-based offsets |
 | Calendar | Released | v1.5.0 | In-memory grid with date filters and workload dots |
 | Widget | Released | v1.1.0+ | Jetpack Glance Home screen widget |
 | Backup | Released | v1.3.0 | Snapshot of full data |
@@ -115,9 +117,17 @@ Based on the actual `Task` domain model.
 - **Touch-Target Separation:** The widget enforces a strictly sized 48dp checkbox hitbox for completing tasks, while tapping the task body opens the main app.
 - **Quick Add (`ACTION_QUICK_ADD`):** A dedicated `(+)` icon on the widget routes users directly into the task creation flow (`Destinations.CREATE_TASK`) by propagating an explicit intent through the app's `MainActivity` and `AppNavigation`.
 
-## Recurring Tasks and Snooze
-- **Recurring:** Supports DAILY, WEEKLY, and MONTHLY intervals.
-- **Snooze:** Postpones a reminder notification to 10 minutes, 1 hour, or Tomorrow.
+## Recurring & Reminder Engine 2.0 (v1.7.0)
+- **Advanced Recurrence (v1.7.0):** 
+  - Supports polymorphic token storage inside `recurrenceInterval: String?` without migrating Room database schemas (e.g. `INTERVAL:<UNIT>:<COUNT>`, `WEEKLY_DAYS:<...>`).
+  - Strict backward compatibility mapping for legacy `"DAILY"`, `"WEEKLY"`, `"MONTHLY"`.
+  - Overdue advancement loop is safely guarded with a 365-iteration ceiling to prevent infinite looping.
+  - Utilizes `java.time.ZonedDateTime` to preserve exact hour and minute boundaries across offset jumps.
+- **Multi-Stage Reminders (v1.7.0):** 
+  - Calculation Rules: Exact deadline (Offset 0) for all, H-2 hours for all, H-24 hours strictly for High priority tasks.
+  - Pruning: Any stage that calculates to a past timestamp (`<= currentTimeMillis`) is safely pruned at generation time.
+  - Multiplexing: `AndroidNotificationScheduler` safely multiplexes alarm request codes utilizing the formula `(taskId * 100 + index)` spanning indices `0..9` to guarantee comprehensive scheduling and cancellation.
+- **Snooze:** Postpones a reminder notification to 10 minutes, 1 hour, or Tomorrow, multiplexed safely into index `99`.
 
 ## Backup, Export, Import, and Restore (v1.3.0)
 DueSoon v1.3.0 introduces a portable JSON format (`schemaVersion: 1`).
@@ -130,6 +140,7 @@ DueSoon v1.3.0 introduces a portable JSON format (`schemaVersion: 1`).
 **Released:**
 - v1.5.0 Calendar & Time UX
 - v1.6.0 Widgets & Quick Actions
+- v1.7.0 Recurring & Reminder Engine 2.0
 
 **Future:**
 - AI assistance
