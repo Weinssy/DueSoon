@@ -362,5 +362,32 @@ class HomeFilterLogicTest {
         assertEquals(2L, sorted[2].id) // createdAt 200
         assertEquals(1L, sorted[3].id) // createdAt 100
     }
+
+    @Test
+    fun filterByDate_nullDate_returnsAllTasks() {
+        val result = HomeFilterLogic.filterByDate(sampleTasks, null, java.time.ZoneId.of("UTC"))
+        assertEquals(sampleTasks.size, result.size)
+    }
+
+    @Test
+    fun filterByDate_specificDate_returnsOnlyMatchingTasks() {
+        val zone = java.time.ZoneId.of("UTC")
+        val targetDate = java.time.LocalDate.of(2026, 9, 18)
+        
+        // 2026-09-18T10:00:00Z
+        val matchDeadline = java.time.Instant.parse("2026-09-18T10:00:00Z").toEpochMilli()
+        // 2026-09-19T10:00:00Z
+        val mismatchDeadline = java.time.Instant.parse("2026-09-19T10:00:00Z").toEpochMilli()
+        
+        val tasks = listOf(
+            Task(id = 1, title = "Match", deadline = matchDeadline),
+            Task(id = 2, title = "Mismatch", deadline = mismatchDeadline),
+            Task(id = 3, title = "No Deadline", deadline = null)
+        )
+        
+        val result = HomeFilterLogic.filterByDate(tasks, targetDate, zone)
+        assertEquals(1, result.size)
+        assertEquals(1L, result[0].id)
+    }
 }
 

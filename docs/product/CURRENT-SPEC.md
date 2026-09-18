@@ -1,8 +1,8 @@
 # DueSoon — Current Product Specification
 
 ## Overview
-**Current Version:** 1.4.0 (Active Development)  
-**Status:** In Development (Based on v1.3.0 stable baseline)  
+**Current Version:** 1.5.0 (Active Development)  
+**Status:** In Development (Based on v1.4.0 stable baseline)  
 **Positioning:** DueSoon is a minimal, local-first Android deadline reminder app designed to help users stay aware of upcoming deadlines without the complexity of traditional project management tools.  
 **Tagline:** Know what needs your attention next.
 
@@ -38,13 +38,13 @@
 | Sorting | Released | v1.2.0 | Deadline, Priority, Title, Created |
 | Recurring tasks | Released | v1.2.0 | Daily, Weekly, Monthly intervals |
 | Snooze | Released | v1.2.0 | 10m, 1h, Tomorrow options |
-| Calendar | Released | v1.0.0 | Visualizes deadlines by date |
+| Calendar | Released | v1.5.0 | In-memory grid with date filters and workload dots |
 | Widget | Released | v1.1.0+ | Jetpack Glance Home screen widget |
 | Backup | Released | v1.3.0 | Snapshot of full data |
 | Export | Released | v1.3.0 | Export data to JSON via SAF |
 | Import | Released | v1.3.0 | Merge tasks from JSON, generating new IDs |
 | Restore | Released | v1.3.0 | Transactional destructive replace preserving original IDs |
-| Smart Attention Ranking | In Development | v1.4.0 | Blends deadline and priority deterministically |
+| Smart Attention Ranking | Released | v1.4.0 | Blends deadline and priority deterministically |
 
 ## Current Task Model
 Based on the actual `Task` domain model.
@@ -96,6 +96,17 @@ Based on the actual `Task` domain model.
   **Tie-breaking chain:** `Tier` -> `Deadline (nullsLast)` -> `Priority (descending)` -> `CreatedAt (ascending)` -> `Id (ascending)`.
 - **Widget Parity:** The Home Screen and the Glance Widget share the exact same Smart Attention Ranking algorithm.
 
+## Calendar & Time UX (v1.5.0)
+- **In-Memory Date Filtering:** A native Compose grid acts as a visual date filter. Selecting a date operates strictly in-memory (no new DB queries), functioning as a boolean AND against category and search filters.
+- **Null Deadline Exclusion:** When a specific date filter is active, tasks without a deadline (`deadline == null`) are strictly hidden from the list.
+- **Workload Density Indicators:** Calendar days display a colored dot representing the highest `AttentionTier` due that day:
+  - `CRITICAL` / `OVERDUE` -> Red (Error)
+  - `HIGH` / `ELEVATED` -> Orange (Warning)
+  - `NORMAL` / `OPTIONAL` -> Gray (Muted)
+  - Tasks where `completed == true` are strictly excluded from generating density dots.
+- **Timezone Safety:** UTC epoch deadlines are dynamically mapped to `LocalDate` using the user's active `ZoneId.systemDefault()` during Flow emission to prevent midnight crossover issues.
+- **Widget & Notification Isolation:** The Glance Widget and Android NotificationScheduler remain completely oblivious to the UI calendar selection state, ensuring parity with the unfiltered baseline.
+
 ## Recurring Tasks and Snooze
 - **Recurring:** Supports DAILY, WEEKLY, and MONTHLY intervals.
 - **Snooze:** Postpones a reminder notification to 10 minutes, 1 hour, or Tomorrow.
@@ -108,14 +119,11 @@ DueSoon v1.3.0 introduces a portable JSON format (`schemaVersion: 1`).
 - **Privacy:** Entirely offline, no cloud syncing involved.
 
 ## Current Roadmap
-**Active Development (v1.3.0):**
-- Export / Import backup (In Development)
-- Archive (Planned)
-- Statistics (Planned)
+**Active Development (v1.5.0):**
+- In-memory Calendar & Time UX
 
-**Future (v2.0):**
+**Future:**
 - AI assistance
-- Calendar integration
 - Cloud sync
 - Multi-device support
 

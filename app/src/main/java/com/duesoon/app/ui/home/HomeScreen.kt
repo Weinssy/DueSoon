@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -26,6 +27,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
@@ -45,6 +47,8 @@ import com.duesoon.app.domain.model.CategoryPreset
 import com.duesoon.app.ui.AppViewModelProvider
 import com.duesoon.app.ui.components.EmptyState
 import com.duesoon.app.ui.components.TaskCard
+import com.duesoon.app.ui.home.calendar.CalendarMonthView
+import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,6 +63,7 @@ fun HomeScreen(
     val searchQuery by viewModel.searchQuery.collectAsState()
     val currentSort by viewModel.sortOrder.collectAsState()
     val tasks by viewModel.filteredTasks.collectAsState()
+    val calendarUiState by viewModel.calendarUiState.collectAsState()
     
     var isSearching by remember { mutableStateOf(false) }
     var sortMenuExpanded by remember { mutableStateOf(false) }
@@ -98,6 +103,9 @@ fun HomeScreen(
                     } else {
                         IconButton(onClick = { isSearching = true }) {
                             Icon(Icons.Filled.Search, contentDescription = stringResource(R.string.cd_search))
+                        }
+                        IconButton(onClick = { viewModel.onToggleCalendarExpanded() }) {
+                            Icon(Icons.Filled.DateRange, contentDescription = "Toggle Calendar", tint = if (calendarUiState.isExpanded) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
                         }
                         IconButton(onClick = { sortMenuExpanded = true }) {
                             Icon(Icons.Filled.MoreVert, contentDescription = stringResource(R.string.cd_sort))
@@ -176,6 +184,29 @@ fun HomeScreen(
                         onClick = { viewModel.setCategoryFilter(if (isSelected) null else preset.label) },
                         label = { Text(stringResource(preset.labelResId), style = MaterialTheme.typography.labelMedium) }
                     )
+                }
+            }
+
+            CalendarMonthView(
+                uiState = calendarUiState,
+                densityMap = calendarUiState.densityMap,
+                onDateSelected = viewModel::onDateSelected,
+                onMonthChanged = viewModel::onMonthChanged,
+                onJumpToToday = viewModel::onJumpToToday,
+                modifier = Modifier.padding(horizontal = 8.dp)
+            )
+
+            if (calendarUiState.selectedDate != null) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+                ) {
+                    val dateFormatted = calendarUiState.selectedDate!!.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))
+                    Text("Showing tasks due: $dateFormatted", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
+                    TextButton(onClick = viewModel::onClearDateFilter) {
+                        Text("Clear")
+                    }
                 }
             }
 

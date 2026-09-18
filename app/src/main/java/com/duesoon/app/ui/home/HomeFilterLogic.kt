@@ -57,6 +57,15 @@ object HomeFilterLogic {
         }
     }
 
+    fun filterByDate(tasks: List<Task>, selectedDate: java.time.LocalDate?, zoneId: java.time.ZoneId): List<Task> {
+        if (selectedDate == null) return tasks
+        return tasks.filter { task ->
+            if (task.deadline == null) return@filter false
+            val localDate = java.time.Instant.ofEpochMilli(task.deadline).atZone(zoneId).toLocalDate()
+            localDate == selectedDate
+        }
+    }
+
     fun sortTasksByAttention(tasks: List<Task>, currentTime: Long): List<Task> {
         return tasks.sortedWith(com.duesoon.app.domain.util.AttentionRankingEngine.getComparator(currentTime))
     }
