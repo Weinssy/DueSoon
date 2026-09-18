@@ -1,7 +1,8 @@
 package com.duesoon.app.domain.backup
 
 import com.duesoon.app.domain.model.Priority
-import com.duesoon.app.domain.model.RecurrenceInterval
+import com.duesoon.app.domain.model.RecurrenceRule
+import com.duesoon.app.domain.util.RecurrenceRuleParser
 import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.domain.model.Task
 
@@ -19,7 +20,7 @@ object PortableTaskMapper {
             priority = task.priority.name,
             reminderType = task.reminderType.name,
             isRecurring = task.isRecurring,
-            recurrenceInterval = task.recurrenceInterval?.name,
+            recurrenceInterval = task.recurrenceRule?.let { RecurrenceRuleParser.serialize(it) },
             completed = task.completed,
             snoozedUntil = task.snoozedUntil,
             createdAt = task.createdAt,
@@ -42,7 +43,7 @@ object PortableTaskMapper {
             priority = Priority.valueOf(portableTask.priority),
             reminderType = ReminderType.valueOf(portableTask.reminderType),
             isRecurring = portableTask.isRecurring,
-            recurrenceInterval = portableTask.recurrenceInterval?.let { RecurrenceInterval.valueOf(it) },
+            recurrenceRule = RecurrenceRuleParser.deserialize(portableTask.recurrenceInterval),
             completed = portableTask.completed,
             snoozedUntil = portableTask.snoozedUntil,
             createdAt = portableTask.createdAt,

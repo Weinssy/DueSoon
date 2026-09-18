@@ -2,7 +2,7 @@ package com.duesoon.app.domain.usecase
 
 import com.duesoon.app.data.repository.TaskRepository
 import com.duesoon.app.domain.model.Priority
-import com.duesoon.app.domain.model.RecurrenceInterval
+import com.duesoon.app.domain.model.RecurrenceRule
 import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.domain.model.Task
 import kotlinx.coroutines.flow.Flow
@@ -56,8 +56,8 @@ class CompleteTaskUseCaseTest {
             priority = Priority.NORMAL,
             reminderType = ReminderType.SMART,
             isRecurring = true,
-            recurrenceInterval = RecurrenceInterval.DAILY,
-            deadline = 2000L,
+            recurrenceRule = RecurrenceRule.Daily,
+            deadline = System.currentTimeMillis(),
             completed = false,
             createdAt = 1000L,
             updatedAt = 1000L

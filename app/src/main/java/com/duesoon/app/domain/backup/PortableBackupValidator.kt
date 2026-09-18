@@ -1,7 +1,7 @@
 package com.duesoon.app.domain.backup
 
 import com.duesoon.app.domain.model.Priority
-import com.duesoon.app.domain.model.RecurrenceInterval
+import com.duesoon.app.domain.util.RecurrenceRuleParser
 import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.domain.model.Task
 
@@ -148,11 +148,6 @@ object PortableBackupValidator {
     }
 
     private fun isValidRecurrenceInterval(value: String): Boolean {
-        return try {
-            RecurrenceInterval.valueOf(value)
-            true
-        } catch (e: IllegalArgumentException) {
-            false
-        }
+        return RecurrenceRuleParser.deserialize(value) != null
     }
 }

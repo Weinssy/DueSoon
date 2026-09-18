@@ -15,27 +15,22 @@ object SmartReminderCalculator {
             // TODO: Extensible custom reminders in future phases
         }
 
-        val diff = deadline - currentTimeMillis
-        val daysDiff = TimeUnit.MILLISECONDS.toDays(diff)
         val scheduledTimes = mutableListOf<Long>()
 
-        val threeDaysBefore = deadline - TimeUnit.DAYS.toMillis(3)
-        val oneDayBefore = deadline - TimeUnit.DAYS.toMillis(1)
-        val threeHoursBefore = deadline - TimeUnit.HOURS.toMillis(3)
-        val thirtyMinsBefore = deadline - TimeUnit.MINUTES.toMillis(30)
+        // 1. Exact Deadline
+        scheduledTimes.add(deadline)
 
-        if (daysDiff > 7) {
-            scheduledTimes.add(threeDaysBefore)
+        // 2. Short-range (2 hours before)
+        val twoHoursBefore = deadline - TimeUnit.HOURS.toMillis(2)
+        scheduledTimes.add(twoHoursBefore)
+
+        // 3. Medium-range (24 hours before) - Only for HIGH
+        if (task.priority == com.duesoon.app.domain.model.Priority.HIGH) {
+            val oneDayBefore = deadline - TimeUnit.DAYS.toMillis(1)
             scheduledTimes.add(oneDayBefore)
-            scheduledTimes.add(threeHoursBefore)
-        } else if (daysDiff in 1..7) {
-            scheduledTimes.add(oneDayBefore)
-            scheduledTimes.add(threeHoursBefore)
-        } else {
-            scheduledTimes.add(threeHoursBefore)
-            scheduledTimes.add(thirtyMinsBefore)
         }
 
-        return scheduledTimes.filter { it > currentTimeMillis }
+        // Pruning Rule: Filter generated timestamps using triggerTime > currentTimeMillis
+        return scheduledTimes.filter { it > currentTimeMillis }.sorted()
     }
 }

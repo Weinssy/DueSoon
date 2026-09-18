@@ -4,14 +4,14 @@ import android.content.Context
 import com.duesoon.app.data.local.TaskDao
 import com.duesoon.app.data.local.toDomainModel
 import com.duesoon.app.data.local.toEntity
-import com.duesoon.app.domain.model.RecurrenceInterval
+import com.duesoon.app.domain.engine.RecurrenceCalculator
 import com.duesoon.app.domain.model.Task
 import com.duesoon.app.notification.NotificationScheduler
 import com.duesoon.app.widget.DueSoonWidgetUpdater
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import java.util.Calendar
+
 
 open class TaskRepository(
     private val taskDao: TaskDao,
@@ -46,8 +46,8 @@ open class TaskRepository(
         val prefs = userPreferencesRepository.userPreferencesFlow.first()
 
         // If task is being marked complete and is recurring, create the next instance
-        if (task.completed && task.isRecurring && task.recurrenceInterval != null && task.deadline != null) {
-            val nextDeadline = calculateNextDeadline(task.deadline, task.recurrenceInterval)
+        if (task.completed && task.isRecurring && task.recurrenceRule != null && task.deadline != null) {
+            val nextDeadline = RecurrenceCalculator.calculateNextDeadline(task.deadline, task.recurrenceRule)
             val nextTask = task.copy(
                 id = 0,
                 completed = false,
@@ -87,15 +87,7 @@ open class TaskRepository(
         DueSoonWidgetUpdater.update(context)
     }
 
-    private fun calculateNextDeadline(currentDeadline: Long, interval: RecurrenceInterval): Long {
-        val calendar = Calendar.getInstance().apply { timeInMillis = currentDeadline }
-        when (interval) {
-            RecurrenceInterval.DAILY -> calendar.add(Calendar.DAY_OF_YEAR, 1)
-            RecurrenceInterval.WEEKLY -> calendar.add(Calendar.WEEK_OF_YEAR, 1)
-            RecurrenceInterval.MONTHLY -> calendar.add(Calendar.MONTH, 1)
-        }
-        return calendar.timeInMillis
-    }
+
 
     suspend fun importTasks(tasks: List<Task>) {
         if (tasks.isEmpty()) return

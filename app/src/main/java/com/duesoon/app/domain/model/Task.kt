@@ -12,11 +12,7 @@ enum class ReminderType {
     NONE
 }
 
-enum class RecurrenceInterval(val label: String) {
-    DAILY("Harian"),
-    WEEKLY("Mingguan"),
-    MONTHLY("Bulanan")
-}
+
 
 data class Task(
     val id: Long = 0,
@@ -27,7 +23,7 @@ data class Task(
     val priority: Priority = Priority.NORMAL,
     val reminderType: ReminderType = ReminderType.SMART,
     val isRecurring: Boolean = false,
-    val recurrenceInterval: RecurrenceInterval? = null,
+    val recurrenceRule: RecurrenceRule? = null,
     val completed: Boolean = false,
     val snoozedUntil: Long? = null,
     val createdAt: Long = System.currentTimeMillis(),

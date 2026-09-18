@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.duesoon.app.data.repository.TaskRepository
 import com.duesoon.app.domain.model.Priority
-import com.duesoon.app.domain.model.RecurrenceInterval
+import com.duesoon.app.domain.model.RecurrenceRule
 import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.domain.model.Task
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,7 +36,7 @@ class EditTaskViewModel(
                     priority = task.priority,
                     reminderType = task.reminderType,
                     isRecurring = task.isRecurring,
-                    recurrenceInterval = task.recurrenceInterval ?: RecurrenceInterval.DAILY
+                    recurrenceRule = task.recurrenceRule ?: RecurrenceRule.Daily
                 )
             }
         }
@@ -49,7 +49,7 @@ class EditTaskViewModel(
     fun updatePriority(priority: Priority) { _uiState.value = _uiState.value.copy(priority = priority) }
     fun updateReminderType(type: ReminderType) { _uiState.value = _uiState.value.copy(reminderType = type) }
     fun updateIsRecurring(isRecurring: Boolean) { _uiState.value = _uiState.value.copy(isRecurring = isRecurring) }
-    fun updateRecurrenceInterval(interval: RecurrenceInterval) { _uiState.value = _uiState.value.copy(recurrenceInterval = interval) }
+    fun updateRecurrenceRule(rule: RecurrenceRule) { _uiState.value = _uiState.value.copy(recurrenceRule = rule) }
 
     fun updateTask() {
         val currentState = _uiState.value
@@ -68,7 +68,7 @@ class EditTaskViewModel(
             priority = currentState.priority,
             reminderType = currentState.reminderType,
             isRecurring = currentState.isRecurring,
-            recurrenceInterval = if (currentState.isRecurring) currentState.recurrenceInterval else null,
+            recurrenceRule = if (currentState.isRecurring) currentState.recurrenceRule else null,
             updatedAt = System.currentTimeMillis()
         )
 

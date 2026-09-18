@@ -111,8 +111,8 @@ fun EditTaskScreen(
             RecurrenceSelector(
                 isRecurring = uiState.isRecurring,
                 onIsRecurringChange = viewModel::updateIsRecurring,
-                selectedInterval = uiState.recurrenceInterval,
-                onIntervalSelected = viewModel::updateRecurrenceInterval,
+                selectedRule = uiState.recurrenceRule,
+                onRuleSelected = viewModel::updateRecurrenceRule,
                 enabled = uiState.deadline != null,
                 modifier = Modifier.fillMaxWidth()
             )

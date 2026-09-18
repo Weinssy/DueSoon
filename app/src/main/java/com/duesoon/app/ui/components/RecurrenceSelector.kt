@@ -17,15 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.duesoon.app.R
-import com.duesoon.app.domain.model.RecurrenceInterval
+import com.duesoon.app.domain.model.RecurrenceRule
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecurrenceSelector(
     isRecurring: Boolean,
     onIsRecurringChange: (Boolean) -> Unit,
-    selectedInterval: RecurrenceInterval,
-    onIntervalSelected: (RecurrenceInterval) -> Unit,
+    selectedRule: RecurrenceRule,
+    onRuleSelected: (RecurrenceRule) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true
 ) {
@@ -61,15 +61,17 @@ fun RecurrenceSelector(
                     .padding(top = 8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                RecurrenceInterval.entries.forEach { interval ->
-                    val label = when (interval) {
-                        RecurrenceInterval.DAILY -> stringResource(R.string.recurrence_daily)
-                        RecurrenceInterval.WEEKLY -> stringResource(R.string.recurrence_weekly)
-                        RecurrenceInterval.MONTHLY -> stringResource(R.string.recurrence_monthly)
+                val basicRules = listOf(RecurrenceRule.Daily, RecurrenceRule.Weekly, RecurrenceRule.Monthly)
+                basicRules.forEach { rule ->
+                    val label = when (rule) {
+                        is RecurrenceRule.Daily -> stringResource(R.string.recurrence_daily)
+                        is RecurrenceRule.Weekly -> stringResource(R.string.recurrence_weekly)
+                        is RecurrenceRule.Monthly -> stringResource(R.string.recurrence_monthly)
+                        else -> ""
                     }
                     FilterChip(
-                        selected = selectedInterval == interval,
-                        onClick = { onIntervalSelected(interval) },
+                        selected = selectedRule == rule,
+                        onClick = { onRuleSelected(rule) },
                         label = { Text(label) }
                     )
                 }

@@ -3,7 +3,8 @@ package com.duesoon.app.data.local
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.duesoon.app.domain.model.Priority
-import com.duesoon.app.domain.model.RecurrenceInterval
+import com.duesoon.app.domain.model.RecurrenceRule
+import com.duesoon.app.domain.util.RecurrenceRuleParser
 import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.domain.model.Task
 
@@ -35,7 +36,7 @@ fun TaskEntity.toDomainModel(): Task {
         priority = Priority.valueOf(priority),
         reminderType = ReminderType.valueOf(reminderType),
         isRecurring = isRecurring,
-        recurrenceInterval = recurrenceInterval?.let { RecurrenceInterval.valueOf(it) },
+        recurrenceRule = RecurrenceRuleParser.deserialize(recurrenceInterval),
         completed = completed,
         snoozedUntil = snoozedUntil,
         createdAt = createdAt,
@@ -53,7 +54,7 @@ fun Task.toEntity(): TaskEntity {
         priority = priority.name,
         reminderType = reminderType.name,
         isRecurring = isRecurring,
-        recurrenceInterval = recurrenceInterval?.name,
+        recurrenceInterval = recurrenceRule?.let { RecurrenceRuleParser.serialize(it) },
         completed = completed,
         snoozedUntil = snoozedUntil,
         createdAt = createdAt,

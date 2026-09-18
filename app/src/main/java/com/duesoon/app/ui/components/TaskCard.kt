@@ -28,7 +28,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.duesoon.app.R
-import com.duesoon.app.domain.model.RecurrenceInterval
+import com.duesoon.app.domain.model.RecurrenceRule
 import com.duesoon.app.domain.model.Task
 
 @Composable
@@ -119,11 +119,12 @@ fun TaskCard(
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                if (task.isRecurring && task.recurrenceInterval != null) {
-                    val intervalText = when (task.recurrenceInterval) {
-                        RecurrenceInterval.DAILY -> stringResource(R.string.recurrence_daily)
-                        RecurrenceInterval.WEEKLY -> stringResource(R.string.recurrence_weekly)
-                        RecurrenceInterval.MONTHLY -> stringResource(R.string.recurrence_monthly)
+                if (task.isRecurring && task.recurrenceRule != null) {
+                    val intervalText = when (task.recurrenceRule) {
+                        is RecurrenceRule.Daily -> stringResource(R.string.recurrence_daily)
+                        is RecurrenceRule.Weekly -> stringResource(R.string.recurrence_weekly)
+                        is RecurrenceRule.Monthly -> stringResource(R.string.recurrence_monthly)
+                        else -> "Custom"
                     }
                     Text(
                         text = stringResource(R.string.recurrence_tag, intervalText),
