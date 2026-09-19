@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
@@ -232,17 +233,14 @@ fun HomeScreen(
                 }
             }
 
-            if (tasks.isEmpty()) {
-                Box(modifier = Modifier.weight(1f).fillMaxWidth().nestedScroll(pullToRefreshState.nestedScrollConnection)) {
+            Box(modifier = Modifier.weight(1f).fillMaxWidth().nestedScroll(pullToRefreshState.nestedScrollConnection)) {
+                if (tasks.isEmpty()) {
                     EmptyState(
                         title = stringResource(R.string.empty_home_title),
                         message = stringResource(R.string.empty_home_message),
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
                     )
-                    PullToRefreshContainer(state = pullToRefreshState, modifier = Modifier.align(Alignment.TopCenter))
-                }
-            } else {
-                Box(modifier = Modifier.weight(1f).fillMaxWidth().nestedScroll(pullToRefreshState.nestedScrollConnection)) {
+                } else {
                     LazyColumn(
                         contentPadding = PaddingValues(16.dp),
                         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -270,8 +268,8 @@ fun HomeScreen(
                             )
                         }
                     }
-                    PullToRefreshContainer(state = pullToRefreshState, modifier = Modifier.align(Alignment.TopCenter))
                 }
+                PullToRefreshContainer(state = pullToRefreshState, modifier = Modifier.align(Alignment.TopCenter))
             }
         }
     }
