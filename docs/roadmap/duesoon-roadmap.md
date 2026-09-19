@@ -43,10 +43,18 @@ v1.6.0  ✅
 └── Faster task creation
 │
 ▼
-v1.7.0
+v1.7.0  ✅
 │
 ├── Advanced recurring
 └── Reminder engine improvements
+│
+│
+▼
+v1.8.0  ✅
+│
+├── Search & Archive Hardening
+├── Memory Optimizations
+└── Clean Data Separation
 │
 ▼
 v2.0
