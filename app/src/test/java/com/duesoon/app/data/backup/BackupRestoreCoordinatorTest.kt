@@ -48,7 +48,7 @@ class BackupRestoreCoordinatorTest {
         mockScheduler = mock(com.duesoon.app.notification.NotificationScheduler::class.java)
         mockPrefsRepo = mock(com.duesoon.app.data.repository.UserPreferencesRepository::class.java)
         `when`(mockPrefsRepo.userPreferencesFlow).thenReturn(
-            flowOf(com.duesoon.app.data.repository.UserPreferences(notificationsEnabled = true))
+            flowOf(com.duesoon.app.data.repository.UserPreferencesState(notificationsEnabled = true))
         )
         `when`(mockTaskRepo.observeTasks()).thenReturn(flowOf(emptyList()))
 

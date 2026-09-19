@@ -1,8 +1,8 @@
 # DueSoon — Current Product Specification
 
 ## Overview
-**Current Version:** 1.8.0 (Active Development)  
-**Status:** In Development (Based on v1.7.0 stable baseline)  
+**Current Version:** 1.9.0 (Active Development)  
+**Status:** In Development (Based on v1.8.0 stable baseline)  
 **Positioning:** DueSoon is a minimal, local-first Android deadline reminder app designed to help users stay aware of upcoming deadlines without the complexity of traditional project management tools.  
 **Tagline:** Know what needs your attention next.
 
@@ -49,6 +49,7 @@
 | Smart Attention Ranking | Released | v1.4.0 | Blends deadline and priority deterministically |
 | Widget Interactivity | Released | v1.6.0 | Task completion via widget |
 | Quick Add | Released | v1.6.0 | Launcher shortcut to create task |
+| Dynamic Theming & Haptics | Released | v1.9.0 | Custom accents, visual density, widget haptics |
 
 ## Current Task Model
 Based on the actual `Task` domain model.
@@ -143,12 +144,21 @@ DueSoon v1.3.0 introduces a portable JSON format (`schemaVersion: 1`).
 - **Bulk Cleanup Contract:** `TaskDao.deleteCompletedTasks()` exposes bulk deletion of the archive, rigorously protected by a destructive confirmation `AlertDialog`.
 - **Side-effect Safety:** Restoring an archived task via `RestoreTaskUseCase` reinstates the deadline, reschedules necessary alarms (strictly pruning past timestamps), and guarantees an immediate refresh of the Jetpack Glance Widget.
 
+## Custom Themes & Visual Density (v1.9.0)
+- **Personalization Tokens:** Extends the theming engine with an `AccentPalette` (`INDIGO`, `EMERALD`, `AMBER`, `ROSE`), which dynamically overrides Material 3 primary tokens while preserving the strict `#0F0F10` dark mode foundation.
+- **Semantic Alert Protection:** Essential urgency and alert surfaces (`AttentionUrgencyColors` mapping `Critical` to `#EF4444`, `Elevated` to `#F97316`, `Normal` to `#71717A`) are completely decoupled and isolated from dynamic accent palette shifts, preventing semantic collisions.
+- **Visual Density Modes:** Exposes layout controls to swap between `Comfortable` (16dp paddings, multi-row metadata, `titleMedium`) and `Compact` (8dp paddings, condensed internal spacing, single-line focus, `titleSmall`) on the fly.
+- **Accessibility Guarantee:** Independent of visual density scaling, the core task completion `IconButton` strictly enforces a 48dp minimum hardware touch target.
+- **Dual-Surface Haptics:** Implements tactical physical feedback on task completion via standard `LocalHapticFeedback` within the UI and synchronous `Vibrator` / `VibratorManager` OS-level service for Glance widgets (`CompleteTaskActionCallback`), fully guarded by the `hapticsEnabled` preference.
+- **Preferences Isolation:** All custom appearance data (theme mode, accent palette, visual density, haptics) is exclusively stored in the Jetpack Preferences DataStore (`UserPreferencesRepository`), completely bypassing SQLite/Room schemas and safeguarding JSON backup portability.
+
 ## Current Roadmap
 **Released:**
 - v1.5.0 Calendar & Time UX
 - v1.6.0 Widgets & Quick Actions
 - v1.7.0 Recurring & Reminder Engine 2.0
 - v1.8.0 Search & Archive Hardening
+- v1.9.0 Custom Themes & Visual Density
 
 **Future:**
 - AI assistance

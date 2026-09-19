@@ -3,7 +3,7 @@ package com.duesoon.app.ui.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.duesoon.app.data.repository.TaskRepository
-import com.duesoon.app.data.repository.UserPreferences
+import com.duesoon.app.data.repository.UserPreferencesState
 import com.duesoon.app.data.repository.UserPreferencesRepository
 import com.duesoon.app.notification.NotificationScheduler
 import kotlinx.coroutines.flow.SharingStarted
@@ -11,6 +11,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import com.duesoon.app.domain.model.AccentPalette
+import com.duesoon.app.domain.model.VisualDensity
 
 import android.net.Uri
 import com.duesoon.app.data.backup.BackupRestoreCoordinator
@@ -38,8 +40,8 @@ class SettingsViewModel(
     private val _backupUiState = MutableStateFlow<BackupUiState>(BackupUiState.Idle)
     val backupUiState: StateFlow<BackupUiState> = _backupUiState.asStateFlow()
 
-    val userPreferences: StateFlow<UserPreferences> = userPreferencesRepository.userPreferencesFlow
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), UserPreferences())
+    val userPreferences: StateFlow<UserPreferencesState> = userPreferencesRepository.userPreferencesFlow
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), UserPreferencesState())
 
     fun updateTheme(theme: String) {
         viewModelScope.launch {
@@ -61,6 +63,24 @@ class SettingsViewModel(
                     }
                 }
             }
+        }
+    }
+
+    fun updateAccentPalette(palette: AccentPalette) {
+        viewModelScope.launch {
+            userPreferencesRepository.updateAccentPalette(palette)
+        }
+    }
+
+    fun updateVisualDensity(density: VisualDensity) {
+        viewModelScope.launch {
+            userPreferencesRepository.updateVisualDensity(density)
+        }
+    }
+
+    fun updateHapticsEnabled(enabled: Boolean) {
+        viewModelScope.launch {
+            userPreferencesRepository.updateHapticsEnabled(enabled)
         }
     }
 

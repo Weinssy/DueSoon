@@ -2,6 +2,8 @@ package com.duesoon.app.ui.settings
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Info
@@ -15,6 +17,8 @@ import com.duesoon.app.R
 import com.duesoon.app.BuildConfig
 import com.duesoon.app.ui.AppViewModelProvider
 import androidx.compose.ui.unit.dp
+import com.duesoon.app.domain.model.AccentPalette
+import com.duesoon.app.domain.model.VisualDensity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -25,6 +29,8 @@ fun SettingsScreen(
     val prefs by viewModel.userPreferences.collectAsState()
     var showClearDialog by remember { mutableStateOf(false) }
     var showThemeMenu by remember { mutableStateOf(false) }
+    var showPaletteMenu by remember { mutableStateOf(false) }
+    var showDensityMenu by remember { mutableStateOf(false) }
 
     val backupState by viewModel.backupUiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -66,8 +72,16 @@ fun SettingsScreen(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         modifier = modifier
     ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding).fillMaxSize()) {
+        val scrollState = rememberScrollState()
+        Column(modifier = Modifier.padding(innerPadding).fillMaxSize().verticalScroll(scrollState)) {
             
+            Text(
+                text = stringResource(R.string.settings_section_appearance),
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.titleSmall,
+                modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 8.dp)
+            )
+
             ListItem(
                 headlineContent = { Text(stringResource(R.string.settings_theme_title)) },
                 supportingContent = { 
@@ -101,6 +115,94 @@ fun SettingsScreen(
                             )
                         }
                     }
+                }
+            )
+            HorizontalDivider()
+
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_accent_palette_title)) },
+                supportingContent = { 
+                    val paletteName = when (prefs.accentPalette) {
+                        AccentPalette.INDIGO -> stringResource(R.string.accent_indigo)
+                        AccentPalette.EMERALD -> stringResource(R.string.accent_emerald)
+                        AccentPalette.AMBER -> stringResource(R.string.accent_amber)
+                        AccentPalette.ROSE -> stringResource(R.string.accent_rose)
+                    }
+                    Text(paletteName)
+                },
+                trailingContent = {
+                    Box {
+                        Button(onClick = { showPaletteMenu = true }) {
+                            Text(stringResource(R.string.action_change))
+                        }
+                        DropdownMenu(
+                            expanded = showPaletteMenu,
+                            onDismissRequest = { showPaletteMenu = false }
+                        ) {
+                            AccentPalette.values().forEach { palette ->
+                                DropdownMenuItem(
+                                    text = { 
+                                        val pName = when (palette) {
+                                            AccentPalette.INDIGO -> stringResource(R.string.accent_indigo)
+                                            AccentPalette.EMERALD -> stringResource(R.string.accent_emerald)
+                                            AccentPalette.AMBER -> stringResource(R.string.accent_amber)
+                                            AccentPalette.ROSE -> stringResource(R.string.accent_rose)
+                                        }
+                                        Text(pName) 
+                                    },
+                                    onClick = { viewModel.updateAccentPalette(palette); showPaletteMenu = false }
+                                )
+                            }
+                        }
+                    }
+                }
+            )
+            HorizontalDivider()
+
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_visual_density_title)) },
+                supportingContent = { 
+                    val densityName = when (prefs.visualDensity) {
+                        VisualDensity.COMFORTABLE -> stringResource(R.string.density_comfortable)
+                        VisualDensity.COMPACT -> stringResource(R.string.density_compact)
+                    }
+                    Text(densityName)
+                },
+                trailingContent = {
+                    Box {
+                        Button(onClick = { showDensityMenu = true }) {
+                            Text(stringResource(R.string.action_change))
+                        }
+                        DropdownMenu(
+                            expanded = showDensityMenu,
+                            onDismissRequest = { showDensityMenu = false }
+                        ) {
+                            VisualDensity.values().forEach { density ->
+                                DropdownMenuItem(
+                                    text = { 
+                                        val dName = when (density) {
+                                            VisualDensity.COMFORTABLE -> stringResource(R.string.density_comfortable)
+                                            VisualDensity.COMPACT -> stringResource(R.string.density_compact)
+                                        }
+                                        Text(dName) 
+                                    },
+                                    onClick = { viewModel.updateVisualDensity(density); showDensityMenu = false }
+                                )
+                            }
+                        }
+                    }
+                }
+            )
+            HorizontalDivider()
+
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_haptics_title)) },
+                supportingContent = { Text(stringResource(R.string.settings_haptics_subtitle)) },
+                trailingContent = {
+                    Switch(
+                        checked = prefs.hapticsEnabled,
+                        onCheckedChange = { viewModel.updateHapticsEnabled(it) }
+                    )
                 }
             )
             HorizontalDivider()

@@ -7,7 +7,9 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import com.duesoon.app.domain.model.AccentPalette
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
@@ -37,12 +39,24 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun DueSoonTheme(
+    accentPalette: AccentPalette = AccentPalette.INDIGO,
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
+    val accentColor = Color(accentPalette.primaryHex)
     val colorScheme = when {
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> DarkColorScheme.copy(
+            primary = accentColor,
+            onPrimary = LightSurface,
+            primaryContainer = accentColor.copy(alpha = 0.2f),
+            secondary = accentColor
+        )
+        else -> LightColorScheme.copy(
+            primary = accentColor,
+            onPrimary = LightSurface,
+            primaryContainer = accentColor.copy(alpha = 0.2f),
+            secondary = accentColor
+        )
     }
     
     val view = LocalView.current

@@ -22,6 +22,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -30,6 +32,9 @@ import androidx.compose.ui.unit.dp
 import com.duesoon.app.R
 import com.duesoon.app.domain.model.RecurrenceRule
 import com.duesoon.app.domain.model.Task
+import com.duesoon.app.domain.model.VisualDensity
+import com.duesoon.app.ui.theme.LocalHapticFeedbackEnabled
+import com.duesoon.app.ui.theme.LocalVisualDensity
 
 @Composable
 fun TaskCard(
@@ -38,6 +43,15 @@ fun TaskCard(
     onCompleteToggle: ((Boolean) -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
+    val visualDensity = LocalVisualDensity.current
+    val hapticFeedbackEnabled = LocalHapticFeedbackEnabled.current
+    val haptic = LocalHapticFeedback.current
+
+    val (padding, spacing, titleStyle) = when (visualDensity) {
+        VisualDensity.COMPACT -> Triple(8.dp, 4.dp, MaterialTheme.typography.titleSmall)
+        VisualDensity.COMFORTABLE -> Triple(16.dp, 8.dp, MaterialTheme.typography.titleMedium)
+    }
+
     Card(
         modifier = modifier
             .fillMaxWidth()
@@ -50,8 +64,8 @@ fun TaskCard(
     ) {
         val alpha = if (task.completed) 0.6f else 1f
         Column(
-            modifier = Modifier.padding(16.dp).alpha(alpha),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            modifier = Modifier.padding(padding).alpha(alpha),
+            verticalArrangement = Arrangement.spacedBy(spacing)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -61,7 +75,7 @@ fun TaskCard(
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = task.title,
-                        style = MaterialTheme.typography.titleMedium.copy(
+                        style = titleStyle.copy(
                             textDecoration = if (task.completed) TextDecoration.LineThrough else TextDecoration.None
                         ),
                         color = MaterialTheme.colorScheme.onSurface
@@ -73,7 +87,12 @@ fun TaskCard(
                     val markIncompleteDesc = stringResource(R.string.cd_mark_incomplete)
                     val markCompleteDesc = stringResource(R.string.cd_mark_complete)
                     androidx.compose.material3.IconButton(
-                        onClick = { onCompleteToggle(!task.completed) }
+                        onClick = { 
+                            if (hapticFeedbackEnabled) {
+                                haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                            }
+                            onCompleteToggle(!task.completed) 
+                        }
                     ) {
                         if (task.completed) {
                             androidx.compose.material3.Icon(

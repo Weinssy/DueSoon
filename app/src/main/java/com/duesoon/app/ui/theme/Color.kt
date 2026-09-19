@@ -11,6 +11,12 @@ val Success = Color(0xFF16A34A)
 val Warning = Color(0xFFD97706)
 val Error = Color(0xFFDC2626)
 
+object AttentionUrgencyColors {
+    val Critical = Color(0xFFEF4444)
+    val Elevated = Color(0xFFF97316)
+    val Normal = Color(0xFF71717A)
+}
+
 // Light Theme Colors
 val LightBackground = Color(0xFFFAFAFA)
 val LightSurface = Color(0xFFFFFFFF)

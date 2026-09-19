@@ -111,6 +111,21 @@
     <string name="msg_task_completed">Tugas diselesaikan</string>
 
     <!-- Settings -->
+    <!-- Appearance -->
+    <string name="settings_section_appearance">Tampilan</string>
+    <string name="settings_accent_palette_title">Warna Aksen</string>
+    <string name="settings_visual_density_title">Kerapatan Tampilan</string>
+    <string name="settings_haptics_title">Getaran (Haptics)</string>
+    <string name="settings_haptics_subtitle">Getaran saat menyelesaikan tugas</string>
+    
+    <string name="density_comfortable">Nyaman</string>
+    <string name="density_compact">Padat</string>
+    
+    <string name="accent_indigo">Indigo</string>
+    <string name="accent_emerald">Emerald</string>
+    <string name="accent_amber">Amber</string>
+    <string name="accent_rose">Rose</string>
+
     <string name="settings_theme_title">Tema Aplikasi</string>
     <string name="settings_theme_change">Ubah</string>
     <string name="theme_system">Mengikuti Sistem</string>
