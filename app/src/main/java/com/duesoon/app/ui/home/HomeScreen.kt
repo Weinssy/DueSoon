@@ -2,6 +2,7 @@ package com.duesoon.app.ui.home
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -27,6 +28,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -38,7 +41,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.delay
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -69,6 +77,15 @@ fun HomeScreen(
     
     var isSearching by remember { mutableStateOf(false) }
     var sortMenuExpanded by remember { mutableStateOf(false) }
+
+    val pullToRefreshState = rememberPullToRefreshState()
+    if (pullToRefreshState.isRefreshing) {
+        LaunchedEffect(true) {
+            viewModel.triggerSync()
+            delay(1500)
+            pullToRefreshState.endRefresh()
+        }
+    }
 
     Scaffold(
         modifier = modifier,
@@ -216,38 +233,44 @@ fun HomeScreen(
             }
 
             if (tasks.isEmpty()) {
-                EmptyState(
-                    title = stringResource(R.string.empty_home_title),
-                    message = stringResource(R.string.empty_home_message),
-                    modifier = Modifier.weight(1f)
-                )
+                Box(modifier = Modifier.weight(1f).fillMaxWidth().nestedScroll(pullToRefreshState.nestedScrollConnection)) {
+                    EmptyState(
+                        title = stringResource(R.string.empty_home_title),
+                        message = stringResource(R.string.empty_home_message),
+                        modifier = Modifier.fillMaxSize()
+                    )
+                    PullToRefreshContainer(state = pullToRefreshState, modifier = Modifier.align(Alignment.TopCenter))
+                }
             } else {
-                LazyColumn(
-                    contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    item {
-                        Text(
-                            text = if (statusFilter == TaskStatusFilter.COMPLETED) {
-                                stringResource(R.string.section_completed_tasks)
-                            } else {
-                                stringResource(R.string.section_needs_attention)
-                            },
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.padding(bottom = 8.dp)
-                        )
+                Box(modifier = Modifier.weight(1f).fillMaxWidth().nestedScroll(pullToRefreshState.nestedScrollConnection)) {
+                    LazyColumn(
+                        contentPadding = PaddingValues(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        item {
+                            Text(
+                                text = if (statusFilter == TaskStatusFilter.COMPLETED) {
+                                    stringResource(R.string.section_completed_tasks)
+                                } else {
+                                    stringResource(R.string.section_needs_attention)
+                                },
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.padding(bottom = 8.dp)
+                            )
+                        }
+                        items(tasks, key = { it.id }) { task ->
+                            TaskCard(
+                                task = task,
+                                onClick = { navigateToTaskDetail(task.id) },
+                                onCompleteToggle = { isComplete ->
+                                    viewModel.toggleTaskCompletion(task, isComplete)
+                                }
+                            )
+                        }
                     }
-                    items(tasks, key = { it.id }) { task ->
-                        TaskCard(
-                            task = task,
-                            onClick = { navigateToTaskDetail(task.id) },
-                            onCompleteToggle = { isComplete ->
-                                viewModel.toggleTaskCompletion(task, isComplete)
-                            }
-                        )
-                    }
+                    PullToRefreshContainer(state = pullToRefreshState, modifier = Modifier.align(Alignment.TopCenter))
                 }
             }
         }

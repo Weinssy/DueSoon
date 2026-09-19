@@ -86,4 +86,72 @@ class AppDatabaseMigrationTest {
         cursor.close()
         roomDb.close()
     }
+
+    @Test
+    fun testMigration3To4() {
+        // Step 1: Create a raw database matching Version 3 schema
+        val factory = FrameworkSQLiteOpenHelperFactory()
+        val configuration = SupportSQLiteOpenHelper.Configuration.builder(context)
+            .name(dbName)
+            .callback(object : SupportSQLiteOpenHelper.Callback(3) {
+                override fun onCreate(db: SupportSQLiteDatabase) {
+                    db.execSQL(
+                        "CREATE TABLE IF NOT EXISTS `tasks` (" +
+                        "`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                        "`title` TEXT NOT NULL, " +
+                        "`description` TEXT, " +
+                        "`deadline` INTEGER, " +
+                        "`category` TEXT, " +
+                        "`priority` TEXT NOT NULL, " +
+                        "`reminderType` TEXT NOT NULL, " +
+                        "`isRecurring` INTEGER NOT NULL, " +
+                        "`recurrenceInterval` TEXT, " +
+                        "`completed` INTEGER NOT NULL, " +
+                        "`snoozedUntil` INTEGER, " +
+                        "`createdAt` INTEGER NOT NULL, " +
+                        "`updatedAt` INTEGER NOT NULL)"
+                    )
+                    // Insert a V3 record
+                    db.execSQL(
+                        "INSERT INTO tasks (title, priority, reminderType, isRecurring, completed, createdAt, updatedAt) " +
+                        "VALUES ('Test V3', 'NORMAL', 'SMART', 0, 0, 200, 200)"
+                    )
+                }
+
+                override fun onUpgrade(db: SupportSQLiteDatabase, oldVersion: Int, newVersion: Int) {}
+            })
+            .build()
+
+        val rawDb = factory.create(configuration).writableDatabase
+        rawDb.close()
+
+        // Step 2: Open with Room using version 4 and MIGRATION_3_4
+        val roomDb = Room.databaseBuilder(context, AppDatabase::class.java, dbName)
+            .addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3, AppDatabase.MIGRATION_3_4)
+            .build()
+
+        // Query the database via Room to trigger migration and verify the new columns are readable
+        val cursor = roomDb.query("SELECT * FROM tasks", null)
+        assertTrue(cursor.moveToFirst())
+        
+        // Verify uuid column exists and is populated
+        val uuidIndex = cursor.getColumnIndex("uuid")
+        assertTrue("uuid column should exist", uuidIndex != -1)
+        val uuidValue = cursor.getString(uuidIndex)
+        assertNotNull(uuidValue)
+        assertTrue("uuid should not be empty", uuidValue.isNotEmpty())
+
+        // Verify other sync columns
+        val isDeleted = cursor.getInt(cursor.getColumnIndex("isDeleted"))
+        assertEquals("isDeleted should default to 0", 0, isDeleted)
+
+        val syncState = cursor.getString(cursor.getColumnIndex("syncState"))
+        assertEquals("syncState should default to DIRTY", "DIRTY", syncState)
+
+        val revision = cursor.getLong(cursor.getColumnIndex("revision"))
+        assertEquals("revision should default to 1", 1L, revision)
+        
+        cursor.close()
+        roomDb.close()
+    }
 }

@@ -21,6 +21,8 @@ import java.time.LocalDate
 import java.time.YearMonth
 import java.time.ZoneId
 
+import com.duesoon.app.core.sync.SyncScheduler
+
 private data class FilterState(
     val status: TaskStatusFilter,
     val category: String?,
@@ -30,7 +32,8 @@ private data class FilterState(
 )
 
 class HomeViewModel(
-    private val repository: TaskRepository
+    private val repository: TaskRepository,
+    private val syncScheduler: SyncScheduler? = null
 ) : ViewModel() {
 
     private val _statusFilter = MutableStateFlow(TaskStatusFilter.ALL)
@@ -146,5 +149,9 @@ class HomeViewModel(
     fun onJumpToToday() {
         val today = LocalDate.now(ZoneId.systemDefault())
         _currentDisplayedMonth.value = YearMonth.from(today)
+    }
+    
+    fun triggerSync() {
+        syncScheduler?.triggerExpeditedSync()
     }
 }

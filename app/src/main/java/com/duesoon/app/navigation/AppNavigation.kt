@@ -49,6 +49,7 @@ object Destinations {
     const val TASK_DETAIL = "task_detail/{taskId}"
     const val EDIT_TASK = "edit_task/{taskId}"
     const val ARCHIVE = "archive"
+    const val SYNC_SETTINGS = "sync_settings"
 
     fun taskDetailRoute(taskId: Long) = "task_detail/$taskId"
     fun editTaskRoute(taskId: Long) = "edit_task/$taskId"
@@ -144,7 +145,16 @@ fun AppNavigation(
                 )
             }
             composable(Destinations.SETTINGS) {
-                SettingsScreen()
+                SettingsScreen(
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToSync = { navController.navigate(Destinations.SYNC_SETTINGS) }
+                )
+            }
+            composable(Destinations.SYNC_SETTINGS) {
+                com.duesoon.app.ui.settings.sync.SyncSettingsScreen(
+                    viewModel = androidx.lifecycle.viewmodel.compose.viewModel(factory = com.duesoon.app.ui.AppViewModelProvider.Factory),
+                    onNavigateBack = { navController.popBackStack() }
+                )
             }
             composable(Destinations.ARCHIVE) {
                 com.duesoon.app.ui.archive.ArchiveScreen(

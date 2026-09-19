@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Notifications
@@ -23,6 +24,8 @@ import com.duesoon.app.domain.model.VisualDensity
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
+    onNavigateBack: () -> Unit,
+    onNavigateToSync: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SettingsViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -335,6 +338,16 @@ fun SettingsScreen(
                     enabled = backupState !is BackupUiState.Loading,
                     onClick = { restoreLauncher.launch(arrayOf("application/json")) }
                 )
+            )
+            HorizontalDivider()
+
+            ListItem(
+                headlineContent = { Text("Cloud Sync") },
+                supportingContent = { Text("Manage End-to-End Encrypted Sync") },
+                leadingContent = {
+                    Icon(imageVector = Icons.Default.Refresh, contentDescription = "Sync Settings")
+                },
+                modifier = Modifier.clickable { onNavigateToSync() }
             )
             
             Box(modifier = Modifier.fillMaxWidth().padding(16.dp), contentAlignment = androidx.compose.ui.Alignment.Center) {
