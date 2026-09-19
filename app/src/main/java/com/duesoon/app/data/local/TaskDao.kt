@@ -13,6 +13,18 @@ interface TaskDao {
     @Query("SELECT * FROM tasks ORDER BY deadline ASC")
     fun observeTasks(): Flow<List<TaskEntity>>
 
+    @Query("SELECT * FROM tasks WHERE completed = 0 ORDER BY deadline ASC")
+    fun observeActiveTasks(): Flow<List<TaskEntity>>
+
+    @Query("SELECT * FROM tasks WHERE completed = 1 ORDER BY deadline DESC")
+    fun observeArchivedTasks(): Flow<List<TaskEntity>>
+
+    @Query("SELECT * FROM tasks WHERE completed = 1 AND title LIKE '%' || :query || '%' ORDER BY deadline DESC")
+    fun searchArchivedTasks(query: String): Flow<List<TaskEntity>>
+
+    @Query("DELETE FROM tasks WHERE completed = 1")
+    suspend fun deleteCompletedTasks(): Int
+
     @Query("SELECT * FROM tasks WHERE id = :id LIMIT 1")
     suspend fun getTask(id: Long): TaskEntity?
 

@@ -175,8 +175,13 @@
     <string name="snooze_10m">10 mnt</string>
     <string name="snooze_1h">1 jam</string>
     <string name="snooze_tomorrow">Besok</string>
+    <!-- Archive -->
+    <string name="title_archive">Arsip Tugas</string>
+    <string name="empty_archive_title">Arsip Kosong</string>
+    <string name="empty_archive_message">Tugas yang telah selesai akan muncul di sini.</string>
+    <string name="title_clear_archive">Kosongkan Arsip?</string>
+    <string name="msg_clear_archive_confirmation">Tindakan ini tidak dapat dibatalkan. Semua tugas di arsip akan dihapus permanen.</string>
+    <string name="cd_navigate_up">Kembali ke atas</string>
+    <string name="cd_clear_archive">Kosongkan arsip</string>
+    <string name="cd_restore_task">Pulihkan tugas</string>
 </resources>
-
-
-
-

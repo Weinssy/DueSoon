@@ -17,6 +17,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -55,6 +56,7 @@ import java.time.format.DateTimeFormatter
 fun HomeScreen(
     navigateToCreateTask: () -> Unit,
     navigateToTaskDetail: (Long) -> Unit,
+    navigateToArchive: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -106,6 +108,9 @@ fun HomeScreen(
                         }
                         IconButton(onClick = { viewModel.onToggleCalendarExpanded() }) {
                             Icon(Icons.Filled.DateRange, contentDescription = "Toggle Calendar", tint = if (calendarUiState.isExpanded) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
+                        }
+                        IconButton(onClick = navigateToArchive) {
+                            Icon(Icons.Filled.List, contentDescription = "Archive")
                         }
                         IconButton(onClick = { sortMenuExpanded = true }) {
                             Icon(Icons.Filled.MoreVert, contentDescription = stringResource(R.string.cd_sort))

@@ -1,8 +1,8 @@
 # DueSoon — Current Product Specification
 
 ## Overview
-**Current Version:** 1.7.0 (Active Development)  
-**Status:** In Development (Based on v1.6.0 stable baseline)  
+**Current Version:** 1.8.0 (Active Development)  
+**Status:** In Development (Based on v1.7.0 stable baseline)  
 **Positioning:** DueSoon is a minimal, local-first Android deadline reminder app designed to help users stay aware of upcoming deadlines without the complexity of traditional project management tools.  
 **Tagline:** Know what needs your attention next.
 
@@ -136,11 +136,19 @@ DueSoon v1.3.0 introduces a portable JSON format (`schemaVersion: 1`).
 - **RESTORE:** Reads a JSON backup and **replaces** all current local data via a SQLite `@Transaction`. It preserves the exact IDs from the backup file. Requires a destructive confirmation dialog.
 - **Privacy:** Entirely offline, no cloud syncing involved.
 
+## Search & Archive Hardening (v1.8.0)
+- **Data Stream Split:** The active feed strictly binds to `observeActiveTasks()` (where `completed = 0`), completely eliminating historical tasks from memory. Archive tasks are queried entirely on demand via `observeArchivedTasks()` and `searchArchivedTasks()`.
+- **Search UX & Debounce:** A reactive `StateFlow` pipeline with a 300ms debounce connects the `TextField` to SQLite queries across both Home and Archive screens, providing instant filtering without compromising main-thread performance.
+- **Archive Management Architecture:** A dedicated `ArchiveScreen` (`Destinations.ARCHIVE`) managed by `ArchiveViewModel` serves as the silo for completed tasks.
+- **Bulk Cleanup Contract:** `TaskDao.deleteCompletedTasks()` exposes bulk deletion of the archive, rigorously protected by a destructive confirmation `AlertDialog`.
+- **Side-effect Safety:** Restoring an archived task via `RestoreTaskUseCase` reinstates the deadline, reschedules necessary alarms (strictly pruning past timestamps), and guarantees an immediate refresh of the Jetpack Glance Widget.
+
 ## Current Roadmap
 **Released:**
 - v1.5.0 Calendar & Time UX
 - v1.6.0 Widgets & Quick Actions
 - v1.7.0 Recurring & Reminder Engine 2.0
+- v1.8.0 Search & Archive Hardening
 
 **Future:**
 - AI assistance

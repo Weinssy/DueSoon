@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -48,7 +49,7 @@ class HomeViewModel(
     private val _currentDisplayedMonth = MutableStateFlow<YearMonth>(YearMonth.now(ZoneId.systemDefault()))
     private val _isCalendarExpanded = MutableStateFlow<Boolean>(false)
 
-    val tasks: StateFlow<List<Task>> = repository.observeTasks()
+    val tasks: StateFlow<List<Task>> = repository.observeActiveTasks()
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
@@ -71,10 +72,11 @@ class HomeViewModel(
         CalendarUiState(currentDisplayedMonth = YearMonth.now(ZoneId.systemDefault()))
     )
 
+    @OptIn(kotlinx.coroutines.FlowPreview::class)
     private val filtersFlow = combine(
         _statusFilter,
         _categoryFilter,
-        _searchQuery,
+        _searchQuery.debounce(300L),
         _sortOrder,
         _selectedDate
     ) { status, category, query, sort, date ->
