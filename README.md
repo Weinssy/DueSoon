@@ -19,12 +19,12 @@ of traditional project management tools.
 - Search and task filtering
 - Dark mode
 - Local data persistence
-- No account required
-- Offline-first
+- No account required (Offline-first)
+- **[NEW]** Opt-in Cloud & Multi-Device Sync (E2EE)
 
 ## Installation
 
-Download the latest `DueSoon-v1.8.0-release.apk` from the [GitHub Releases](https://github.com/Weinssy/DueSoon/releases) page and install it on your Android device (Android 8.0 Oreo or higher, API 26+).
+Download the latest `DueSoon-v2.0.0-release.apk` from the [GitHub Releases](https://github.com/Weinssy/DueSoon/releases) page and install it on your Android device (Android 8.0 Oreo or higher, API 26+).
 
 ## Tech Stack
 
@@ -40,6 +40,8 @@ Download the latest `DueSoon-v1.8.0-release.apk` from the [GitHub Releases](http
 - DataStore
 - Glance (App Widgets)
 - Android Notification APIs
+- WorkManager (Background Sync)
+- Tink (E2EE Cryptography)
 - Gradle Kotlin DSL
 
 ## Architecture
@@ -62,11 +64,17 @@ project management features in the MVP.
 
 ## Status
 
-**Latest stable release: v1.8.0**
+**Latest stable release: v2.0.0**
 
 DueSoon is a minimal, deadline-first reminder app designed to answer one question:
 
 > What needs my attention next?
+
+### v2.0.0 highlights
+- **Cloud & Multi-Device Sync:** Safely sync your tasks across devices using an optional, non-custodial cloud backend.
+- **End-to-End Encryption (E2EE):** All tasks are encrypted locally via AES-256-GCM before leaving the device. The server only sees ciphertext.
+- **Strict Offline-First:** Sync is 100% opt-in. The app continues to function perfectly without an account or internet connection.
+- **Deterministic Conflict Resolution:** Last-Writer-Wins (LWW) conflict engine seamlessly merges offline edits using UTC timestamps and revisions.
 
 ### v1.8.0 highlights
 - **Archive Screen:** Completed tasks are now siloed into a dedicated memory-efficient Archive screen.
