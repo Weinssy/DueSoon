@@ -29,9 +29,9 @@ data class TaskEntity(
     val snoozedUntil: Long? = null,
     val createdAt: Long,
     val updatedAt: Long,
-    val uuid: String = "",
+    val uuid: String = java.util.UUID.randomUUID().toString(),
     val isDeleted: Boolean = false,
-    val updatedAtUtc: Long = 0L,
+    val updatedAtUtc: Long = System.currentTimeMillis(),
     val revision: Long = 1L,
     val syncState: String = SyncState.DIRTY.name
 )

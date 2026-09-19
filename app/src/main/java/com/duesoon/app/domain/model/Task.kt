@@ -32,9 +32,9 @@ data class Task(
     val snoozedUntil: Long? = null,
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis(),
-    val uuid: String = "",
+    val uuid: String = java.util.UUID.randomUUID().toString(),
     val isDeleted: Boolean = false,
-    val updatedAtUtc: Long = 0L,
+    val updatedAtUtc: Long = System.currentTimeMillis(),
     val revision: Long = 1L,
     val syncState: SyncState = SyncState.DIRTY
 )
