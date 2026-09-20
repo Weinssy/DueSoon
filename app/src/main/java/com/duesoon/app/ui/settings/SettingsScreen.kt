@@ -25,7 +25,6 @@ import com.duesoon.app.domain.model.VisualDensity
 @Composable
 fun SettingsScreen(
     onNavigateBack: () -> Unit,
-    onNavigateToSync: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SettingsViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -341,15 +340,6 @@ fun SettingsScreen(
             )
             HorizontalDivider()
 
-            ListItem(
-                headlineContent = { Text("Cloud Sync") },
-                supportingContent = { Text("Manage End-to-End Encrypted Sync") },
-                leadingContent = {
-                    Icon(imageVector = Icons.Default.Refresh, contentDescription = "Sync Settings")
-                },
-                modifier = Modifier.clickable { onNavigateToSync() }
-            )
-            
             Box(modifier = Modifier.fillMaxWidth().padding(16.dp), contentAlignment = androidx.compose.ui.Alignment.Center) {
                 if (backupState is BackupUiState.Loading) {
                     CircularProgressIndicator(modifier = Modifier.size(24.dp))

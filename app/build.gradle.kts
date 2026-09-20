@@ -105,14 +105,7 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.glance.material3)
-    implementation(libs.androidx.security.crypto.ktx)
-    implementation(libs.androidx.work.runtime.ktx)
-    
     implementation(libs.kotlinx.serialization.json)
-    
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.kotlinx.serialization)
-    implementation(libs.okhttp)
 
     testImplementation(libs.junit)
     testImplementation("org.mockito:mockito-core:5.7.0")

@@ -10,17 +10,12 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TaskDao {
-    @Query("SELECT * FROM tasks WHERE isDeleted = 0 ORDER BY deadline ASC")
+    @Query("SELECT * FROM tasks WHERE isDeleted = 0 ORDER BY completed ASC, deadline ASC")
     fun observeTasks(): Flow<List<TaskEntity>>
 
     @Query("SELECT * FROM tasks WHERE completed = 0 AND isDeleted = 0 ORDER BY deadline ASC")
     fun observeActiveTasks(): Flow<List<TaskEntity>>
 
-    @Query("SELECT * FROM tasks WHERE completed = 1 AND isDeleted = 0 ORDER BY deadline DESC")
-    fun observeArchivedTasks(): Flow<List<TaskEntity>>
-
-    @Query("SELECT * FROM tasks WHERE completed = 1 AND isDeleted = 0 AND title LIKE '%' || :query || '%' ORDER BY deadline DESC")
-    fun searchArchivedTasks(query: String): Flow<List<TaskEntity>>
 
     @Query("UPDATE tasks SET isDeleted = 1, syncState = 'DIRTY', updatedAtUtc = :timestamp, revision = revision + 1 WHERE completed = 1")
     suspend fun deleteCompletedTasks(timestamp: Long = System.currentTimeMillis()): Int
@@ -52,14 +47,4 @@ interface TaskDao {
         insertTasks(tasks)
     }
 
-    // --- Sync / Outbox Queries ---
-
-    @Query("SELECT * FROM tasks WHERE syncState = 'DIRTY'")
-    suspend fun getDirtyTasks(): List<TaskEntity>
-
-    @Query("UPDATE tasks SET syncState = 'SYNCED' WHERE uuid = :uuid AND revision = :revision")
-    suspend fun markTaskSynced(uuid: String, revision: Long)
-
-    @Query("DELETE FROM tasks WHERE isDeleted = 1 AND syncState = 'SYNCED' AND updatedAtUtc < :cutoffTimestamp")
-    suspend fun purgeTombstones(cutoffTimestamp: Long)
 }

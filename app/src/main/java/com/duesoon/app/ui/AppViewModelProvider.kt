@@ -13,15 +13,10 @@ import com.duesoon.app.ui.task.EditTaskViewModel
 import com.duesoon.app.ui.task.TaskDetailViewModel
 import com.duesoon.app.ui.tasks.TasksViewModel
 import com.duesoon.app.ui.settings.SettingsViewModel
-import com.duesoon.app.ui.archive.ArchiveViewModel
-
 object AppViewModelProvider {
     val Factory = viewModelFactory {
         initializer {
-            HomeViewModel(
-                dueSoonApplication().container.taskRepository,
-                dueSoonApplication().container.syncScheduler
-            )
+            HomeViewModel(dueSoonApplication().container.taskRepository)
         }
         initializer {
             CreateTaskViewModel(dueSoonApplication().container.taskRepository)
@@ -50,20 +45,6 @@ object AppViewModelProvider {
                 dueSoonApplication().container.taskRepository,
                 dueSoonApplication().container.notificationScheduler,
                 dueSoonApplication().container.backupRestoreCoordinator
-            )
-        }
-        initializer {
-            ArchiveViewModel(
-                dueSoonApplication().container.taskRepository,
-                dueSoonApplication().container.restoreTaskUseCase
-            )
-        }
-        initializer {
-            com.duesoon.app.ui.settings.sync.SyncSettingsViewModel(
-                dueSoonApplication().container.secureStorage,
-                dueSoonApplication().container.cryptoManager,
-                dueSoonApplication().container.taskDao,
-                dueSoonApplication().container.syncScheduler
             )
         }
     }
