@@ -1,111 +1,120 @@
 # DueSoon
 
-> Know what needs your attention next.
+> Tahu apa yang perlu menjadi perhatian Anda berikutnya.
 
-DueSoon is a minimal, local-first Android deadline reminder app designed
-to help users stay aware of upcoming deadlines without the complexity
-of traditional project management tools.
+DueSoon adalah aplikasi pengingat deadline Android yang minimal, local-first, dan fokus pada satu tujuan utama: membantu Anda mengetahui tugas mana yang paling penting untuk ditangani selanjutnya.
 
-## Features
+Aplikasi ini dirancang agar tetap tenang, jelas, cepat, andal, dan bebas dari kompleksitas yang tidak perlu. Semua data disimpan secara lokal di perangkat Anda, dengan fokus pada prioritas deadline dan manajemen tugas yang sederhana.
 
-- Create, edit, complete, and delete tasks
-- Optional deadlines
-- Upcoming / Due Soon / Due Today / Overdue states
-- Smart reminders
-- Custom reminders
-- Local notifications
-- Home screen widget (Jetpack Glance)
-- Calendar view
-- Search and task filtering
-- Dark mode
-- Local data persistence
-- No account required (Offline-first)
-- **[NEW]** Opt-in Cloud & Multi-Device Sync (E2EE)
+## Prinsip produk
 
-## Installation
+"Deadline harus jelas. Yang lain harus tetap tenang."
 
-Download the latest `DueSoon-v2.0.0-release.apk` from the [GitHub Releases](https://github.com/Weinssy/DueSoon/releases) page and install it on your Android device (Android 8.0 Oreo or higher, API 26+).
+DueSoon tidak membebani pengguna dengan fitur yang tidak relevan. Tidak ada akun, tidak ada sinkronisasi cloud, dan tidak ada kebutuhan untuk mengelola ekosistem yang rumit. Fokus utama aplikasi ini adalah membantu Anda tetap aware terhadap tenggat waktu yang paling dekat.
 
-## Tech Stack
+## Fitur utama
+
+- Membuat, mengedit, menandai selesai, dan menghapus tugas
+- Deadline opsional
+- Status tugas seperti: Mendekati deadline, Perlu perhatian hari ini, Terlambat
+- Smart Reminder
+- Reminder kustom
+- Notifikasi lokal
+- Tampilan beranda, daftar tugas, dan kalender
+- Pencarian dan penyaringan tugas
+- Pengurutan tugas yang sederhana dan konsisten
+- Tugas berulang
+- Fitur snooze
+- Backup dan ekspor data lokal
+- Impor dan restore data secara aman
+- Fokus pada data lokal dan keamanan saat pemulihan data
+
+## Stack teknologi
 
 - Kotlin
 - Jetpack Compose
 - Material 3
-- MVVM
 - Room
-- KSP
 - Coroutines
 - Flow / StateFlow
 - Navigation Compose
 - DataStore
-- Glance (App Widgets)
 - Android Notification APIs
-- WorkManager (Background Sync)
-- Tink (E2EE Cryptography)
+- WorkManager
 - Gradle Kotlin DSL
 
-## Architecture
+## Arsitektur
 
 UI → ViewModel → Repository → Room
 
-Notification scheduling is handled through a dedicated
-NotificationScheduler abstraction.
+Pendekatan arsitektur ini menjaga pemisahan tanggung jawab agar logika bisnis tetap terjaga dari UI dan akses data tetap konsisten melalui repository.
 
-## Product Philosophy
+## Status proyek
 
-DueSoon follows a simple principle:
+Saat ini, fokus pengembangan DueSoon berada pada versi v1.3.0 dengan tema:
 
-"Deadline should be obvious. Everything else should stay quiet."
+- Backup & Data Safety
+- Ekspor data portable dalam format JSON
+- Import data dari file backup
+- Restore data dengan validasi yang aman
+- Transaction Room yang aman
+- Reconciliation notifikasi setelah operasi database berhasil
 
-The app intentionally avoids unnecessary complexity such as
-cloud accounts, collaboration, AI, gamification, and advanced
-project management features in the MVP.
+Ini menandakan bahwa proyek saat ini lebih menekankan pada keandalan data, keamanan restore, dan integritas data lokal dibandingkan fitur-fitur yang bersifat cloud atau multi-device.
 
+## Prinsip lokal-first dan keamanan data
 
-## Status
+DueSoon tetap berorientasi pada perangkat lokal. Data pengguna tidak dipaksa untuk disinkronkan ke layanan eksternal, dan aplikasi dirancang agar tetap dapat berfungsi tanpa akun atau koneksi internet.
 
-**Latest stable release: v2.0.0**
+Pada tahap saat ini, fokus utama adalah:
 
-DueSoon is a minimal, deadline-first reminder app designed to answer one question:
+- menjaga data tetap aman dan dapat dipulihkan
+- memvalidasi seluruh backup sebelum restore
+- memastikan operasi impor/restore tidak mengubah data secara parsial
+- menjaga notifikasi tetap konsisten dengan tindakan pengguna
 
-> What needs my attention next?
+## Cara menjalankan
 
-### v2.0.0 highlights
-- **Cloud & Multi-Device Sync:** Safely sync your tasks across devices using an optional, non-custodial cloud backend.
-- **End-to-End Encryption (E2EE):** All tasks are encrypted locally via AES-256-GCM before leaving the device. The server only sees ciphertext.
-- **Strict Offline-First:** Sync is 100% opt-in. The app continues to function perfectly without an account or internet connection.
-- **Deterministic Conflict Resolution:** Last-Writer-Wins (LWW) conflict engine seamlessly merges offline edits using UTC timestamps and revisions.
+1. Clone repositori ini.
+2. Buka project di Android Studio.
+3. Hubungkan perangkat Android atau emulator.
+4. Jalankan aplikasi dari modul `app`.
 
-### v1.8.0 highlights
-- **Archive Screen:** Completed tasks are now siloed into a dedicated memory-efficient Archive screen.
-- **Search Hardening:** Debounced reactive text search that filters both active tasks and archives instantly.
-- **Bulk Management:** Permanently clear all completed tasks safely with one tap.
+Pastikan Anda sudah menyiapkan lingkungan Android Studio dan SDK yang sesuai.
 
-### v1.7.0 highlights
-- **Advanced Recurrence:** Custom intervals & weekdays mapped seamlessly to local databases.
-- **Multi-Stage Reminders:** Intelligent stage-based offsets providing staggered notifications for High-priority tasks.
+## Struktur project
 
-### v1.6.0 highlights
-- **Interactive Widgets:** Complete tasks directly from the home screen widget without opening the app.
-- **Quick Add:** Added a `(+)` launcher shortcut on the widget to instantly open the task creation sheet.
-- **Idempotency:** Widget interactions are strictly guarded against rapid double-taps to ensure database stability.
+```text
+DueSoon/
+├─ app/
+│  ├─ src/
+│  └─ build.gradle.kts
+├─ docs/
+├─ gradle/
+├─ build.gradle.kts
+├─ gradlew
+├─ gradlew.bat
+├─ settings.gradle.kts
+├─ LICENSE
+├─ README.md
+└─ prd.md
+```
 
-### v1.5.0 highlights
-- **Calendar & Time UX:** In-memory date filtering grid with workload density dots.
-- **Visual Workload Indicators:** Calendar days display colored dots based on the highest Attention Tier due.
+## Roadmap saat ini
 
-### v1.4.0 highlights
-- **Smart Attention Ranking:** A deterministic hybrid matrix that blends deadline and priority.
-- **100% Widget Parity:** The Glance widget perfectly matches the Home Screen's attention ranking.
+DueSoon saat ini berfokus pada stabilitas data dan pengalaman pengelolaan deadline yang minimal, dengan prioritas pengembangan pada:
 
-### v1.3.0 highlights
-- **JSON Backup & Restore:** Portable data exports with full offline safety.
-- **Merge/Import:** Safely import tasks from JSON files.
+- backup dan ekspor data
+- validasi import/restore
+- perlindungan data dari operasi yang tidak aman
+- notifikasi lokal yang konsisten
+- pengalaman pengelolaan tugas yang tetap simpel dan cepat
 
-## Roadmap
+## Lisensi
 
-Please refer to our detailed [Roadmap](docs/roadmap/duesoon-roadmap.md) for upcoming features in v2.0 and beyond.
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
 
-## License
+## Deskripsi GitHub yang direkomendasikan
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Aplikasi pengingat deadline Android yang minimal, local-first, dan fokus pada tugas yang paling perlu ditangani berikutnya.
+
