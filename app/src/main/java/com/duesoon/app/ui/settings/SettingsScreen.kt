@@ -221,6 +221,18 @@ fun SettingsScreen(
             HorizontalDivider()
 
             ListItem(
+                headlineContent = { Text("Alarm Pengingat") },
+                supportingContent = { Text("Putar alarm berulang saat waktu pengingat tiba.") },
+                trailingContent = {
+                    Switch(
+                        checked = prefs.alarmReminderEnabled,
+                        onCheckedChange = { viewModel.updateAlarmReminderEnabled(it) }
+                    )
+                }
+            )
+            HorizontalDivider()
+
+            ListItem(
                 headlineContent = { Text(stringResource(R.string.settings_clear_completed_title)) },
                 supportingContent = { Text(stringResource(R.string.settings_clear_completed_subtitle)) },
                 leadingContent = { Icon(Icons.Filled.Delete, contentDescription = null, tint = MaterialTheme.colorScheme.error) },

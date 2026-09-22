@@ -66,6 +66,12 @@ class SettingsViewModel(
         }
     }
 
+    fun updateAlarmReminderEnabled(enabled: Boolean) {
+        viewModelScope.launch {
+            userPreferencesRepository.updateAlarmReminderEnabled(enabled)
+        }
+    }
+
     fun updateAccentPalette(palette: AccentPalette) {
         viewModelScope.launch {
             userPreferencesRepository.updateAccentPalette(palette)

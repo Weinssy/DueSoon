@@ -17,6 +17,7 @@ import com.duesoon.app.domain.util.DateTimeUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.first
 import java.util.Calendar
 
 class ReminderReceiver : BroadcastReceiver() {
@@ -63,7 +64,10 @@ class ReminderReceiver : BroadcastReceiver() {
                     repo.clearSnooze(taskId)
                 }
 
-                showNotification(context, taskId, title, deadline)
+                val userPrefsRepo = com.duesoon.app.data.repository.UserPreferencesRepository(context)
+                val prefs = userPrefsRepo.userPreferencesFlow.first()
+
+                showNotification(context, taskId, title, deadline, prefs.alarmReminderEnabled)
             } finally {
                 pendingResult.finish()
             }
@@ -104,7 +108,7 @@ class ReminderReceiver : BroadcastReceiver() {
         }
     }
 
-    private fun showNotification(context: Context, taskId: Long, title: String, deadline: Long) {
+    private fun showNotification(context: Context, taskId: Long, title: String, deadline: Long, alarmReminderEnabled: Boolean) {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -157,17 +161,38 @@ class ReminderReceiver : BroadcastReceiver() {
             context.getString(R.string.notif_body_due_soon)
         }
 
-        val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+        val notificationBuilder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_popup_reminder)
             .setContentTitle(context.getString(R.string.notif_title_format, title))
             .setContentText(contentText)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
-            .addAction(0, context.getString(R.string.snooze_10m), pSnooze10)
-            .addAction(0, context.getString(R.string.snooze_1h), pSnooze1h)
-            .addAction(0, context.getString(R.string.snooze_tomorrow), pSnoozeTomorrow)
-            .build()
+
+        val canUseFullScreen = Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE || 
+            notificationManager.canUseFullScreenIntent()
+
+        if (alarmReminderEnabled && canUseFullScreen) {
+            val alarmIntent = Intent(context, AlarmActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                putExtra(EXTRA_TASK_ID, taskId)
+                putExtra(EXTRA_TASK_TITLE, title)
+            }
+            val alarmPendingIntent = PendingIntent.getActivity(
+                context, 
+                taskId.toInt() * 100, 
+                alarmIntent, 
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            notificationBuilder.setFullScreenIntent(alarmPendingIntent, true)
+        } else {
+            notificationBuilder
+                .addAction(0, context.getString(R.string.snooze_10m), pSnooze10)
+                .addAction(0, context.getString(R.string.snooze_1h), pSnooze1h)
+                .addAction(0, context.getString(R.string.snooze_tomorrow), pSnoozeTomorrow)
+        }
+
+        val notification = notificationBuilder.build()
 
         notificationManager.notify(taskId.toInt(), notification)
     }

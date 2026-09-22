@@ -17,7 +17,8 @@ data class UserPreferencesState(
     val notificationsEnabled: Boolean = true,
     val accentPalette: AccentPalette = AccentPalette.INDIGO,
     val visualDensity: VisualDensity = VisualDensity.COMFORTABLE,
-    val hapticsEnabled: Boolean = true
+    val hapticsEnabled: Boolean = true,
+    val alarmReminderEnabled: Boolean = false
 )
 
 class UserPreferencesRepository(private val context: Context) {
@@ -29,6 +30,7 @@ class UserPreferencesRepository(private val context: Context) {
         val ACCENT_PALETTE = stringPreferencesKey("accent_palette")
         val VISUAL_DENSITY = stringPreferencesKey("visual_density")
         val HAPTIC_FEEDBACK_ENABLED = booleanPreferencesKey("haptic_feedback_enabled")
+        val ALARM_REMINDER_ENABLED = booleanPreferencesKey("alarm_reminder_enabled")
     }
 
     val userPreferencesFlow: Flow<UserPreferencesState> = dataStore.data.map { preferences ->
@@ -50,8 +52,9 @@ class UserPreferencesRepository(private val context: Context) {
         }
         
         val hapticsEnabled = preferences[PreferencesKeys.HAPTIC_FEEDBACK_ENABLED] ?: true
+        val alarmReminderEnabled = preferences[PreferencesKeys.ALARM_REMINDER_ENABLED] ?: false
 
-        UserPreferencesState(theme, notificationsEnabled, accentPalette, visualDensity, hapticsEnabled)
+        UserPreferencesState(theme, notificationsEnabled, accentPalette, visualDensity, hapticsEnabled, alarmReminderEnabled)
     }
 
     suspend fun updateTheme(theme: String) {
@@ -81,6 +84,12 @@ class UserPreferencesRepository(private val context: Context) {
     suspend fun updateHapticsEnabled(enabled: Boolean) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.HAPTIC_FEEDBACK_ENABLED] = enabled
+        }
+    }
+
+    suspend fun updateAlarmReminderEnabled(enabled: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.ALARM_REMINDER_ENABLED] = enabled
         }
     }
 }
