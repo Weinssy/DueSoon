@@ -44,10 +44,10 @@ class DueSoonWidget : GlanceAppWidget() {
         val app = context.applicationContext as DueSoonApplication
         val allTasks = app.container.taskRepository.observeTasks().first()
         val currentTime = System.currentTimeMillis()
-        val upcomingTasks = com.duesoon.app.ui.home.HomeFilterLogic.sortTasksByAttention(
-            allTasks.filter { !it.completed },
-            currentTime
-        ).take(3)
+        val upcomingTasks = allTasks
+            .filter { !it.completed }
+            .sortedBy { it.deadline }
+            .take(3)
 
         provideContent {
             val localContext = androidx.glance.LocalContext.current

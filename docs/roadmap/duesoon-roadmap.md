@@ -57,8 +57,15 @@ v1.8.0  ✅
 └── Clean Data Separation
 │
 ▼
-v2.0
+v2.0.0  ✅
 │
-├── Optional account
+├── Optional account & E2EE
 ├── Optional cloud sync
-└── Optional AI
+└── Cross-device conflict resolution
+│
+▼
+v2.1.0
+│
+├── Desktop / Web Client
+├── Real-time Collaboration (Shared Lists)
+└── Natural Language Task Creation (AI)

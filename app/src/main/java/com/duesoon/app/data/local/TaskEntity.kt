@@ -1,14 +1,19 @@
 package com.duesoon.app.data.local
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.duesoon.app.domain.model.Priority
 import com.duesoon.app.domain.model.RecurrenceRule
 import com.duesoon.app.domain.util.RecurrenceRuleParser
 import com.duesoon.app.domain.model.ReminderType
+import com.duesoon.app.domain.model.SyncState
 import com.duesoon.app.domain.model.Task
 
-@Entity(tableName = "tasks")
+@Entity(
+    tableName = "tasks",
+    indices = [Index(value = ["uuid"], unique = true)]
+)
 data class TaskEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
@@ -23,7 +28,12 @@ data class TaskEntity(
     val completed: Boolean,
     val snoozedUntil: Long? = null,
     val createdAt: Long,
-    val updatedAt: Long
+    val updatedAt: Long,
+    val uuid: String = java.util.UUID.randomUUID().toString(),
+    val isDeleted: Boolean = false,
+    val updatedAtUtc: Long = System.currentTimeMillis(),
+    val revision: Long = 1L,
+    val syncState: String = SyncState.DIRTY.name
 )
 
 fun TaskEntity.toDomainModel(): Task {
@@ -40,7 +50,12 @@ fun TaskEntity.toDomainModel(): Task {
         completed = completed,
         snoozedUntil = snoozedUntil,
         createdAt = createdAt,
-        updatedAt = updatedAt
+        updatedAt = updatedAt,
+        uuid = uuid,
+        isDeleted = isDeleted,
+        updatedAtUtc = updatedAtUtc,
+        revision = revision,
+        syncState = SyncState.valueOf(syncState)
     )
 }
 
@@ -58,6 +73,11 @@ fun Task.toEntity(): TaskEntity {
         completed = completed,
         snoozedUntil = snoozedUntil,
         createdAt = createdAt,
-        updatedAt = updatedAt
+        updatedAt = updatedAt,
+        uuid = uuid,
+        isDeleted = isDeleted,
+        updatedAtUtc = updatedAtUtc,
+        revision = revision,
+        syncState = syncState.name
     )
 }

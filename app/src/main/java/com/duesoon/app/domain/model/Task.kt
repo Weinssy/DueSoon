@@ -11,7 +11,11 @@ enum class ReminderType {
     CUSTOM,
     NONE
 }
-
+enum class SyncState {
+    DIRTY,
+    SYNCING,
+    SYNCED
+}
 
 
 data class Task(
@@ -27,5 +31,10 @@ data class Task(
     val completed: Boolean = false,
     val snoozedUntil: Long? = null,
     val createdAt: Long = System.currentTimeMillis(),
-    val updatedAt: Long = System.currentTimeMillis()
+    val updatedAt: Long = System.currentTimeMillis(),
+    val uuid: String = java.util.UUID.randomUUID().toString(),
+    val isDeleted: Boolean = false,
+    val updatedAtUtc: Long = System.currentTimeMillis(),
+    val revision: Long = 1L,
+    val syncState: SyncState = SyncState.DIRTY
 )

@@ -22,6 +22,8 @@ The app is deadline-focused, calm, clear, fast, reliable, and minimal.
 - Navigation Compose
 - DataStore
 - Android Notification APIs
+- WorkManager (Background Sync)
+- Tink (E2EE Cryptography)
 - Gradle Kotlin DSL
 
 ## Architecture
