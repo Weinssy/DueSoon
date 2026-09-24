@@ -1,15 +1,10 @@
 package com.duesoon.app.notification
 
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
-import android.media.AudioAttributes
-import android.media.MediaPlayer
-import android.media.RingtoneManager
 import android.os.Build
 import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
-import android.os.VibratorManager
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -29,9 +24,6 @@ import com.duesoon.app.ui.theme.DueSoonTheme
 
 class AlarmActivity : ComponentActivity() {
 
-    private var mediaPlayer: MediaPlayer? = null
-    private var vibrator: Vibrator? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
@@ -40,14 +32,11 @@ class AlarmActivity : ComponentActivity() {
         val taskId = intent.getLongExtra(ReminderReceiver.EXTRA_TASK_ID, -1L)
         val title = intent.getStringExtra(ReminderReceiver.EXTRA_TASK_TITLE) ?: ""
 
-        startAlarmSound()
-        startVibration()
-
         setContent {
             DueSoonTheme {
                 AlarmScreen(
                     title = title,
-                    onDismiss = { dismissAlarm() },
+                    onDismiss = { dismissAlarm(taskId) },
                     onSnooze = { snoozeAlarm(taskId) }
                 )
             }
@@ -64,7 +53,7 @@ class AlarmActivity : ComponentActivity() {
             DueSoonTheme {
                 AlarmScreen(
                     title = title,
-                    onDismiss = { dismissAlarm() },
+                    onDismiss = { dismissAlarm(taskId) },
                     onSnooze = { snoozeAlarm(taskId) }
                 )
             }
@@ -89,64 +78,19 @@ class AlarmActivity : ComponentActivity() {
         )
     }
 
-    private fun startAlarmSound() {
-        try {
-            val alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-            mediaPlayer = MediaPlayer().apply {
-                setDataSource(this@AlarmActivity, alarmUri)
-                setAudioAttributes(
-                    AudioAttributes.Builder()
-                        .setUsage(AudioAttributes.USAGE_ALARM)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                        .build()
-                )
-                isLooping = true
-                prepare()
-                start()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
+    private fun dismissAlarm(taskId: Long) {
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (taskId != -1L) {
+            notificationManager.cancel(taskId.toInt())
         }
-    }
-
-    private fun startVibration() {
-        vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            val vibratorManager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
-            vibratorManager.defaultVibrator
-        } else {
-            @Suppress("DEPRECATION")
-            getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        }
-
-        val pattern = longArrayOf(0, 500, 500)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator?.vibrate(VibrationEffect.createWaveform(pattern, 0))
-        } else {
-            @Suppress("DEPRECATION")
-            vibrator?.vibrate(pattern, 0)
-        }
-    }
-
-    private fun stopAlarmSoundAndVibration() {
-        mediaPlayer?.let {
-            if (it.isPlaying) {
-                it.stop()
-            }
-            it.release()
-        }
-        mediaPlayer = null
-        
-        vibrator?.cancel()
-        vibrator = null
-    }
-
-    private fun dismissAlarm() {
-        stopAlarmSoundAndVibration()
         finish()
     }
 
     private fun snoozeAlarm(taskId: Long) {
-        stopAlarmSoundAndVibration()
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (taskId != -1L) {
+            notificationManager.cancel(taskId.toInt())
+        }
         
         val snoozeIntent = Intent(this, ReminderReceiver::class.java).apply {
             action = ReminderReceiver.ACTION_SNOOZE
@@ -156,11 +100,6 @@ class AlarmActivity : ComponentActivity() {
         sendBroadcast(snoozeIntent)
         
         finish()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        stopAlarmSoundAndVibration()
     }
 }
 
