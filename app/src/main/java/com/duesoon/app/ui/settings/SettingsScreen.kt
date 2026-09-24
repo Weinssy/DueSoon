@@ -20,6 +20,13 @@ import androidx.compose.ui.unit.dp
 import com.duesoon.app.domain.model.AccentPalette
 import com.duesoon.app.domain.model.VisualDensity
 
+import android.os.Build
+import android.content.Intent
+import android.provider.Settings
+import android.net.Uri
+import android.app.NotificationManager
+import android.content.Context
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
@@ -226,7 +233,18 @@ fun SettingsScreen(
                 trailingContent = {
                     Switch(
                         checked = prefs.alarmReminderEnabled,
-                        onCheckedChange = { viewModel.updateAlarmReminderEnabled(it) }
+                        onCheckedChange = { enabled -> 
+                            if (enabled && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                                val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                                if (!notificationManager.canUseFullScreenIntent()) {
+                                    val intent = Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT).apply {
+                                        data = Uri.parse("package:${context.packageName}")
+                                    }
+                                    context.startActivity(intent)
+                                }
+                            }
+                            viewModel.updateAlarmReminderEnabled(enabled)
+                        }
                     )
                 }
             )

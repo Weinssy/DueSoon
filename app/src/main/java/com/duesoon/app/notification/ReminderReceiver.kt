@@ -111,12 +111,27 @@ class ReminderReceiver : BroadcastReceiver() {
     private fun showNotification(context: Context, taskId: Long, title: String, deadline: Long, alarmReminderEnabled: Boolean) {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
+        val channelId = if (alarmReminderEnabled) ALARM_CHANNEL_ID else CHANNEL_ID
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
-                CHANNEL_ID,
-                context.getString(R.string.notif_channel_name),
+                channelId,
+                if (alarmReminderEnabled) "Alarm Pengingat" else context.getString(R.string.notif_channel_name),
                 NotificationManager.IMPORTANCE_HIGH
-            ).apply { description = context.getString(R.string.notif_channel_description) }
+            ).apply { 
+                description = if (alarmReminderEnabled) "Channel khusus untuk alarm layar penuh" else context.getString(R.string.notif_channel_description)
+                
+                if (alarmReminderEnabled) {
+                    val alarmSound = android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_ALARM)
+                    val audioAttributes = android.media.AudioAttributes.Builder()
+                        .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .setUsage(android.media.AudioAttributes.USAGE_ALARM)
+                        .build()
+                    setSound(alarmSound, audioAttributes)
+                    enableVibration(true)
+                    vibrationPattern = longArrayOf(0, 1000, 500, 1000)
+                }
+            }
             notificationManager.createNotificationChannel(channel)
         }
 
@@ -161,13 +176,16 @@ class ReminderReceiver : BroadcastReceiver() {
             context.getString(R.string.notif_body_due_soon)
         }
 
-        val notificationBuilder = NotificationCompat.Builder(context, CHANNEL_ID)
+        val notificationBuilder = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(android.R.drawable.ic_popup_reminder)
             .setContentTitle(context.getString(R.string.notif_title_format, title))
             .setContentText(contentText)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
+            .addAction(0, context.getString(R.string.snooze_10m), pSnooze10)
+            .addAction(0, context.getString(R.string.snooze_1h), pSnooze1h)
+            .addAction(0, context.getString(R.string.snooze_tomorrow), pSnoozeTomorrow)
 
         val canUseFullScreen = Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE || 
             notificationManager.canUseFullScreenIntent()
@@ -185,14 +203,12 @@ class ReminderReceiver : BroadcastReceiver() {
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
             notificationBuilder.setFullScreenIntent(alarmPendingIntent, true)
-        } else {
-            notificationBuilder
-                .addAction(0, context.getString(R.string.snooze_10m), pSnooze10)
-                .addAction(0, context.getString(R.string.snooze_1h), pSnooze1h)
-                .addAction(0, context.getString(R.string.snooze_tomorrow), pSnoozeTomorrow)
         }
 
         val notification = notificationBuilder.build()
+        if (alarmReminderEnabled) {
+            notification.flags = notification.flags or android.app.Notification.FLAG_INSISTENT
+        }
 
         notificationManager.notify(taskId.toInt(), notification)
     }
@@ -210,6 +226,7 @@ class ReminderReceiver : BroadcastReceiver() {
         const val SNOOZE_TOMORROW = -2L
         
         const val CHANNEL_ID = "duesoon_reminders"
+        const val ALARM_CHANNEL_ID = "duesoon_alarms_channel"
     }
 }
 
