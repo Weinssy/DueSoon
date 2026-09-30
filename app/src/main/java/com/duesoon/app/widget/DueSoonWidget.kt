@@ -35,7 +35,9 @@ import com.duesoon.app.R
 import com.duesoon.app.domain.model.DeadlineState
 import com.duesoon.app.domain.model.Task
 import com.duesoon.app.domain.util.DateTimeUtils
-import com.duesoon.app.domain.util.DeadlineStateCalculator
+import androidx.glance.appwidget.lazy.LazyColumn
+import androidx.glance.appwidget.lazy.itemsIndexed
+import androidx.glance.GlanceTheme
 import kotlinx.coroutines.flow.first
 
 class DueSoonWidget : GlanceAppWidget() {
@@ -43,35 +45,41 @@ class DueSoonWidget : GlanceAppWidget() {
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val app = context.applicationContext as DueSoonApplication
         val allTasks = app.container.taskRepository.observeTasks().first()
-        val currentTime = System.currentTimeMillis()
         val upcomingTasks = allTasks
-            .filter { !it.completed }
-            .sortedBy { it.deadline }
-            .take(3)
+            .filter { !it.completed && !it.isDeleted }
+            .sortedBy { it.deadline ?: Long.MAX_VALUE }
 
         provideContent {
-            val localContext = androidx.glance.LocalContext.current
+            GlanceTheme {
+                val backgroundColor = GlanceTheme.colors.background
+                val surfaceColor = GlanceTheme.colors.surface
+                val textColor = GlanceTheme.colors.onSurface
+                val secondaryTextColor = GlanceTheme.colors.onSurfaceVariant
+                val checkboxColor = GlanceTheme.colors.surfaceVariant
+                val brandColor = GlanceTheme.colors.primary
 
-            Box(
-                modifier = GlanceModifier
-                    .fillMaxSize()
-                    .background(Color(0xFF1E1E2E))
-                    .cornerRadius(16.dp)
-                    .padding(12.dp)
-            ) {
+                val localContext = androidx.glance.LocalContext.current
+
+                Box(
+                    modifier = GlanceModifier
+                        .fillMaxSize()
+                        .background(backgroundColor)
+                        .cornerRadius(16.dp)
+                        .padding(12.dp)
+                ) {
                 Column(
                     modifier = GlanceModifier.fillMaxSize()
                 ) {
                     // Header
                     Row(
-                        modifier = GlanceModifier.fillMaxWidth(),
+                        modifier = GlanceModifier.fillMaxWidth().padding(bottom = 8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
                             text = "DueSoon",
                             style = TextStyle(
-                                color = ColorProvider(Color(0xFF6366F1)),
-                                fontSize = 14.sp,
+                                color = brandColor,
+                                fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold
                             )
                         )
@@ -81,7 +89,7 @@ class DueSoonWidget : GlanceAppWidget() {
                         Box(
                             modifier = GlanceModifier
                                 .size(32.dp)
-                                .background(Color(0xFF313244))
+                                .background(brandColor)
                                 .cornerRadius(16.dp)
                                 .clickable(
                                     actionStartActivity<MainActivity>(
@@ -103,8 +111,6 @@ class DueSoonWidget : GlanceAppWidget() {
                         }
                     }
 
-                    Spacer(modifier = GlanceModifier.height(8.dp))
-
                     if (upcomingTasks.isEmpty()) {
                         Box(
                             modifier = GlanceModifier.fillMaxSize().clickable(actionStartActivity<MainActivity>()),
@@ -113,34 +119,45 @@ class DueSoonWidget : GlanceAppWidget() {
                             Text(
                                 text = localContext.getString(R.string.widget_empty_message),
                                 style = TextStyle(
-                                    color = ColorProvider(Color(0xFF94A3B8)),
-                                    fontSize = 12.sp
+                                    color = secondaryTextColor,
+                                    fontSize = 13.sp
                                 )
                             )
                         }
                     } else {
-                        upcomingTasks.forEachIndexed { index, task ->
-                            if (index > 0) {
-                                Spacer(modifier = GlanceModifier.height(6.dp))
+                        LazyColumn(modifier = GlanceModifier.fillMaxSize()) {
+                            itemsIndexed(upcomingTasks) { index, task ->
+                                Column(modifier = GlanceModifier.fillMaxWidth()) {
+                                    WidgetItem(task = task)
+                                    if (index < upcomingTasks.size - 1) {
+                                        Spacer(modifier = GlanceModifier.height(6.dp))
+                                    }
+                                }
                             }
-                            WidgetItem(task = task)
                         }
                     }
                 }
             }
         }
     }
+}
 
     @androidx.compose.runtime.Composable
     private fun WidgetItem(task: Task) {
+        val surfaceColor = GlanceTheme.colors.surface
+        val textColor = GlanceTheme.colors.onSurface
+        val secondaryTextColor = GlanceTheme.colors.onSurfaceVariant
+        val checkboxColor = GlanceTheme.colors.surfaceVariant
+        val brandColor = GlanceTheme.colors.primary
+
         val currentTime = System.currentTimeMillis()
         val tier = com.duesoon.app.domain.util.AttentionRankingEngine.calculateTier(task, currentTime)
         val deadlineColor = when (tier) {
             com.duesoon.app.domain.model.AttentionTier.OVERDUE, 
-            com.duesoon.app.domain.model.AttentionTier.CRITICAL -> Color(0xFFEF4444)
+            com.duesoon.app.domain.model.AttentionTier.CRITICAL -> ColorProvider(Color(0xFFEF4444))
             com.duesoon.app.domain.model.AttentionTier.HIGH, 
-            com.duesoon.app.domain.model.AttentionTier.ELEVATED -> Color(0xFFF59E0B)
-            else -> Color(0xFF94A3B8)
+            com.duesoon.app.domain.model.AttentionTier.ELEVATED -> ColorProvider(Color(0xFFF59E0B))
+            else -> secondaryTextColor
         }
 
         val deadlineText = task.deadline?.let {
@@ -150,7 +167,7 @@ class DueSoonWidget : GlanceAppWidget() {
         Row(
             modifier = GlanceModifier
                 .fillMaxWidth()
-                .background(Color(0xFF282A36))
+                .background(surfaceColor)
                 .cornerRadius(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -167,9 +184,9 @@ class DueSoonWidget : GlanceAppWidget() {
             ) {
                 Box(
                     modifier = GlanceModifier
-                        .size(18.dp)
-                        .background(Color(0xFF1E1E2E))
-                        .cornerRadius(9.dp) // Border radius to simulate a circle
+                        .size(20.dp)
+                        .background(checkboxColor)
+                        .cornerRadius(10.dp) // Border radius to simulate a circle
                 ) {}
             }
 
@@ -177,7 +194,7 @@ class DueSoonWidget : GlanceAppWidget() {
             Row(
                 modifier = GlanceModifier
                     .defaultWeight()
-                    .padding(end = 8.dp, top = 6.dp, bottom = 6.dp)
+                    .padding(end = 8.dp, top = 8.dp, bottom = 8.dp)
                     .clickable(actionStartActivity<MainActivity>()),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -186,29 +203,32 @@ class DueSoonWidget : GlanceAppWidget() {
                         text = task.title,
                         maxLines = 1,
                         style = TextStyle(
-                            color = ColorProvider(Color.White),
-                            fontSize = 13.sp,
+                            color = textColor,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.Medium
                         )
                     )
-                    Text(
-                        text = deadlineText,
-                        maxLines = 1,
-                        style = TextStyle(
-                            color = ColorProvider(deadlineColor),
-                            fontSize = 11.sp
+                    if (deadlineText.isNotEmpty()) {
+                        Text(
+                            text = deadlineText,
+                            maxLines = 1,
+                            style = TextStyle(
+                                color = deadlineColor,
+                                fontSize = 12.sp
+                            )
                         )
-                    )
+                    }
                 }
 
                 if (!task.category.isNullOrBlank()) {
                     Text(
                         text = task.category,
                         style = TextStyle(
-                            color = ColorProvider(Color(0xFFA5B4FC)),
-                            fontSize = 10.sp
+                            color = brandColor,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold
                         ),
-                        modifier = GlanceModifier.padding(start = 4.dp)
+                        modifier = GlanceModifier.padding(start = 6.dp)
                     )
                 }
             }
