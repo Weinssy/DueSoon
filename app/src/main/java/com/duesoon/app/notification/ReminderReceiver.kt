@@ -32,6 +32,11 @@ class ReminderReceiver : BroadcastReceiver() {
             return
         }
 
+        if (intent.action == ACTION_COMPLETE) {
+            handleCompleteAction(context, taskId)
+            return
+        }
+
         val isSnooze = intent.getBooleanExtra(EXTRA_IS_SNOOZE, false)
         val title = intent.getStringExtra(EXTRA_TASK_TITLE) ?: return
         val deadline = intent.getLongExtra(EXTRA_TASK_DEADLINE, -1L)
@@ -108,6 +113,32 @@ class ReminderReceiver : BroadcastReceiver() {
         }
     }
 
+    private fun handleCompleteAction(context: Context, taskId: Long) {
+        val pendingResult = goAsync()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val db = AppDatabase.getDatabase(context)
+                val taskDao = db.taskDao()
+                val entity = taskDao.getTask(taskId)
+                if (entity == null || entity.completed) {
+                    return@launch
+                }
+                
+                // Clear the current notification
+                val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                notificationManager.cancel(taskId.toInt())
+                
+                val updatedEntity = entity.copy(completed = true, updatedAt = System.currentTimeMillis())
+                taskDao.update(updatedEntity)
+                
+                val repo = TaskRepository(taskDao, AndroidNotificationScheduler(context), com.duesoon.app.data.repository.UserPreferencesRepository(context), context)
+                repo.clearSnooze(taskId)
+            } finally {
+                pendingResult.finish()
+            }
+        }
+    }
+
     private fun showNotification(context: Context, taskId: Long, title: String, deadline: Long, alarmReminderEnabled: Boolean) {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -144,6 +175,13 @@ class ReminderReceiver : BroadcastReceiver() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
         
+        // Complete Intent
+        val completeIntent = Intent(context, ReminderReceiver::class.java).apply {
+            action = ACTION_COMPLETE
+            putExtra(EXTRA_TASK_ID, taskId)
+        }
+        val pComplete = PendingIntent.getBroadcast(context, taskId.toInt() * 10, completeIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
         // Snooze Intents
         val snooze10Intent = Intent(context, ReminderReceiver::class.java).apply {
             action = ACTION_SNOOZE
@@ -183,6 +221,7 @@ class ReminderReceiver : BroadcastReceiver() {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
+            .addAction(0, "Tandai Selesai", pComplete)
             .addAction(0, context.getString(R.string.snooze_10m), pSnooze10)
             .addAction(0, context.getString(R.string.snooze_1h), pSnooze1h)
             .addAction(0, context.getString(R.string.snooze_tomorrow), pSnoozeTomorrow)
@@ -220,6 +259,7 @@ class ReminderReceiver : BroadcastReceiver() {
         const val EXTRA_IS_SNOOZE = "extra_is_snooze"
         const val EXTRA_SNOOZED_UNTIL = "extra_snoozed_until"
         
+        const val ACTION_COMPLETE = "com.duesoon.app.ACTION_COMPLETE"
         const val ACTION_SNOOZE = "com.duesoon.app.ACTION_SNOOZE"
         const val EXTRA_SNOOZE_DURATION_MS = "extra_snooze_duration_ms"
         
