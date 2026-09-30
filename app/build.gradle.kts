@@ -20,15 +20,13 @@ android {
         applicationId = "com.duesoon.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 12
-        versionName = "1.9.2"
+        versionCode = 13
+        versionName = "1.9.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
-        
-        setProperty("archivesBaseName", "DueSoon-v${versionName}")
     }
 
     val keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -117,4 +115,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+}
+
+base {
+    archivesName = "DueSoon-v${android.defaultConfig.versionName}"
 }

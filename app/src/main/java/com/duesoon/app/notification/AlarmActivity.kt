@@ -36,8 +36,9 @@ class AlarmActivity : ComponentActivity() {
             DueSoonTheme {
                 AlarmScreen(
                     title = title,
-                    onDismiss = { dismissAlarm(taskId) },
-                    onSnooze = { snoozeAlarm(taskId) }
+                    onComplete = { completeTask(taskId) },
+                    onSnooze = { snoozeAlarm(taskId) },
+                    onDismiss = { dismissAlarm(taskId) }
                 )
             }
         }
@@ -53,8 +54,9 @@ class AlarmActivity : ComponentActivity() {
             DueSoonTheme {
                 AlarmScreen(
                     title = title,
-                    onDismiss = { dismissAlarm(taskId) },
-                    onSnooze = { snoozeAlarm(taskId) }
+                    onComplete = { completeTask(taskId) },
+                    onSnooze = { snoozeAlarm(taskId) },
+                    onDismiss = { dismissAlarm(taskId) }
                 )
             }
         }
@@ -86,6 +88,21 @@ class AlarmActivity : ComponentActivity() {
         finish()
     }
 
+    private fun completeTask(taskId: Long) {
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (taskId != -1L) {
+            notificationManager.cancel(taskId.toInt())
+        }
+        
+        val completeIntent = Intent(this, ReminderReceiver::class.java).apply {
+            action = ReminderReceiver.ACTION_COMPLETE
+            putExtra(ReminderReceiver.EXTRA_TASK_ID, taskId)
+        }
+        sendBroadcast(completeIntent)
+        
+        finish()
+    }
+
     private fun snoozeAlarm(taskId: Long) {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (taskId != -1L) {
@@ -106,8 +123,9 @@ class AlarmActivity : ComponentActivity() {
 @Composable
 fun AlarmScreen(
     title: String,
-    onDismiss: () -> Unit,
-    onSnooze: () -> Unit
+    onComplete: () -> Unit,
+    onSnooze: () -> Unit,
+    onDismiss: () -> Unit
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -148,14 +166,14 @@ fun AlarmScreen(
             Spacer(modifier = Modifier.height(64.dp))
             
             Button(
-                onClick = onDismiss,
+                onClick = onComplete,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
             ) {
                 Text(
-                    text = "MATIKAN",
+                    text = "TANDAI SELESAI",
                     style = MaterialTheme.typography.titleMedium
                 )
             }
@@ -171,6 +189,21 @@ fun AlarmScreen(
                 Text(
                     text = "SNOOZE (10 Menit)",
                     style = MaterialTheme.typography.titleMedium
+                )
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+            
+            TextButton(
+                onClick = onDismiss,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+            ) {
+                Text(
+                    text = "HANYA MATIKAN ALARM",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
                 )
             }
         }
