@@ -10,23 +10,21 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TaskDao {
-    @Query("SELECT * FROM tasks ORDER BY deadline ASC")
+    @Query("SELECT * FROM tasks WHERE isDeleted = 0 ORDER BY completed ASC, deadline ASC")
     fun observeTasks(): Flow<List<TaskEntity>>
 
-    @Query("SELECT * FROM tasks WHERE completed = 0 ORDER BY deadline ASC")
+    @Query("SELECT * FROM tasks WHERE completed = 0 AND isDeleted = 0 ORDER BY deadline ASC")
     fun observeActiveTasks(): Flow<List<TaskEntity>>
 
-    @Query("SELECT * FROM tasks WHERE completed = 1 ORDER BY deadline DESC")
-    fun observeArchivedTasks(): Flow<List<TaskEntity>>
 
-    @Query("SELECT * FROM tasks WHERE completed = 1 AND title LIKE '%' || :query || '%' ORDER BY deadline DESC")
-    fun searchArchivedTasks(query: String): Flow<List<TaskEntity>>
+    @Query("UPDATE tasks SET isDeleted = 1, syncState = 'DIRTY', updatedAtUtc = :timestamp, revision = revision + 1 WHERE completed = 1")
+    suspend fun deleteCompletedTasks(timestamp: Long = System.currentTimeMillis()): Int
 
-    @Query("DELETE FROM tasks WHERE completed = 1")
-    suspend fun deleteCompletedTasks(): Int
-
-    @Query("SELECT * FROM tasks WHERE id = :id LIMIT 1")
+    @Query("SELECT * FROM tasks WHERE id = :id AND isDeleted = 0 LIMIT 1")
     suspend fun getTask(id: Long): TaskEntity?
+
+    @Query("SELECT * FROM tasks WHERE uuid = :uuid LIMIT 1")
+    suspend fun getTaskByUuid(uuid: String): TaskEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(task: TaskEntity): Long
@@ -40,12 +38,13 @@ interface TaskDao {
     @Insert
     suspend fun insertTasks(tasks: List<TaskEntity>)
 
-    @Query("DELETE FROM tasks")
-    suspend fun deleteAllTasks()
+    @Query("UPDATE tasks SET isDeleted = 1, syncState = 'DIRTY', updatedAtUtc = :timestamp, revision = revision + 1")
+    suspend fun deleteAllTasks(timestamp: Long = System.currentTimeMillis())
 
     @androidx.room.Transaction
     suspend fun replaceAllTasks(tasks: List<TaskEntity>) {
         deleteAllTasks()
         insertTasks(tasks)
     }
+
 }

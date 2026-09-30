@@ -48,8 +48,6 @@ object Destinations {
     const val CREATE_TASK = "create_task"
     const val TASK_DETAIL = "task_detail/{taskId}"
     const val EDIT_TASK = "edit_task/{taskId}"
-    const val ARCHIVE = "archive"
-
     fun taskDetailRoute(taskId: Long) = "task_detail/$taskId"
     fun editTaskRoute(taskId: Long) = "edit_task/$taskId"
 }
@@ -134,8 +132,7 @@ fun AppNavigation(
             composable(Destinations.HOME) {
                 HomeScreen(
                     navigateToCreateTask = { navController.navigate(Destinations.CREATE_TASK) },
-                    navigateToTaskDetail = { taskId -> navController.navigate(Destinations.taskDetailRoute(taskId)) },
-                    navigateToArchive = { navController.navigate(Destinations.ARCHIVE) }
+                    navigateToTaskDetail = { taskId -> navController.navigate(Destinations.taskDetailRoute(taskId)) }
                 )
             }
             composable(Destinations.CALENDAR) {
@@ -144,10 +141,7 @@ fun AppNavigation(
                 )
             }
             composable(Destinations.SETTINGS) {
-                SettingsScreen()
-            }
-            composable(Destinations.ARCHIVE) {
-                com.duesoon.app.ui.archive.ArchiveScreen(
+                SettingsScreen(
                     onNavigateBack = { navController.popBackStack() }
                 )
             }

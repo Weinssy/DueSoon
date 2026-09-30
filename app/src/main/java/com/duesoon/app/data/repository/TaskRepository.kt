@@ -32,23 +32,6 @@ open class TaskRepository(
         }
     }
 
-    open fun observeArchivedTasks(): Flow<List<Task>> {
-        return taskDao.observeArchivedTasks().map { entities ->
-            entities.map { it.toDomainModel() }
-        }
-    }
-
-    open fun searchArchivedTasks(query: String): Flow<List<Task>> {
-        return taskDao.searchArchivedTasks(query).map { entities ->
-            entities.map { it.toDomainModel() }
-        }
-    }
-
-    open suspend fun clearArchive(): Int {
-        val count = taskDao.deleteCompletedTasks()
-        DueSoonWidgetUpdater.update(context)
-        return count
-    }
 
     open suspend fun getTask(id: Long): Task? {
         return taskDao.getTask(id)?.toDomainModel()

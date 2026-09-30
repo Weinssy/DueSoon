@@ -19,7 +19,7 @@ interface AppContainer {
     val backupStorage: BackupStorage
     val backupRestoreCoordinator: BackupRestoreCoordinator
     val completeTaskUseCase: com.duesoon.app.domain.usecase.CompleteTaskUseCase
-    val restoreTaskUseCase: com.duesoon.app.domain.usecase.RestoreTaskUseCase
+    val taskDao: com.duesoon.app.data.local.TaskDao
 }
 
 class DefaultAppContainer(private val context: Context) : AppContainer {
@@ -53,7 +53,7 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         CompleteTaskUseCase(taskRepository)
     }
 
-    override val restoreTaskUseCase: com.duesoon.app.domain.usecase.RestoreTaskUseCase by lazy {
-        com.duesoon.app.domain.usecase.RestoreTaskUseCase(taskRepository, notificationScheduler, userPreferencesRepository, context)
+    override val taskDao: com.duesoon.app.data.local.TaskDao by lazy {
+        AppDatabase.getDatabase(context).taskDao()
     }
 }

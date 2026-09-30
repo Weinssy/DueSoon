@@ -20,3 +20,4 @@
 -keepclassmembers class * {
     @androidx.compose.runtime.Composable *;
 }
+-dontwarn com.google.errorprone.annotations.**

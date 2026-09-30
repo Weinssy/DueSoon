@@ -45,11 +45,9 @@ class DueSoonWidget : GlanceAppWidget() {
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val app = context.applicationContext as DueSoonApplication
         val allTasks = app.container.taskRepository.observeTasks().first()
-        val currentTime = System.currentTimeMillis()
-        val upcomingTasks = com.duesoon.app.ui.home.HomeFilterLogic.sortTasksByAttention(
-            allTasks.filter { !it.completed },
-            currentTime
-        )
+        val upcomingTasks = allTasks
+            .filter { !it.completed && !it.isDeleted }
+            .sortedBy { it.deadline ?: Long.MAX_VALUE }
 
         provideContent {
             GlanceTheme {
