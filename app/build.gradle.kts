@@ -27,8 +27,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        
-        setProperty("archivesBaseName", "DueSoon-v${versionName}")
     }
 
     val keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -117,4 +115,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+}
+
+base {
+    archivesName = "DueSoon-v${android.defaultConfig.versionName}"
 }
