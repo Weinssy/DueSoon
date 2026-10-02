@@ -30,6 +30,7 @@ import kotlinx.coroutines.launch
 fun TaskDetailScreen(
     navigateBack: () -> Unit,
     navigateToEdit: (Long) -> Unit,
+    navigateToFocus: (Long) -> Unit = {},
     onTaskDeleted: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TaskDetailViewModel = viewModel(factory = AppViewModelProvider.Factory)
@@ -162,6 +163,21 @@ fun TaskDetailScreen(
             Spacer(modifier = Modifier.weight(1f))
 
             if (!currentTask.completed) {
+                FilledTonalButton(
+                    onClick = { navigateToFocus(currentTask.id) },
+                    modifier = Modifier.fillMaxWidth().height(48.dp)
+                ) {
+                    Icon(
+                        painter = androidx.compose.ui.res.painterResource(id = android.R.drawable.ic_media_play),
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(stringResource(R.string.action_start_focus))
+                }
+
+                Spacer(modifier = Modifier.height(12.dp))
+
                 Button(
                     onClick = {
                         viewModel.completeTask()

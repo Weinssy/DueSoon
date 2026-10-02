@@ -37,6 +37,7 @@ import com.duesoon.app.R
 import com.duesoon.app.ui.calendar.CalendarScreen
 import com.duesoon.app.ui.home.HomeScreen
 import com.duesoon.app.ui.settings.SettingsScreen
+import com.duesoon.app.ui.focus.FocusScreen
 import com.duesoon.app.ui.task.CreateTaskScreen
 import com.duesoon.app.ui.task.EditTaskScreen
 import com.duesoon.app.ui.task.TaskDetailScreen
@@ -48,8 +49,10 @@ object Destinations {
     const val CREATE_TASK = "create_task"
     const val TASK_DETAIL = "task_detail/{taskId}"
     const val EDIT_TASK = "edit_task/{taskId}"
+    const val FOCUS_TASK = "focus_task/{taskId}"
     fun taskDetailRoute(taskId: Long) = "task_detail/$taskId"
     fun editTaskRoute(taskId: Long) = "edit_task/$taskId"
+    fun focusTaskRoute(taskId: Long) = "focus_task/$taskId"
 }
 
 data class BottomNavItem(
@@ -161,6 +164,7 @@ fun AppNavigation(
                 TaskDetailScreen(
                     navigateBack = { navController.popBackStack() },
                     navigateToEdit = { navController.navigate(Destinations.editTaskRoute(it)) },
+                    navigateToFocus = { navController.navigate(Destinations.focusTaskRoute(it)) },
                     onTaskDeleted = {
                         navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", context.getString(R.string.msg_task_deleted))
                         navController.popBackStack()
@@ -175,6 +179,18 @@ fun AppNavigation(
                     navigateBack = { navController.popBackStack() },
                     onTaskSaved = {
                         navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", context.getString(R.string.msg_task_updated))
+                        navController.popBackStack()
+                    }
+                )
+            }
+            composable(
+                route = Destinations.FOCUS_TASK,
+                arguments = listOf(navArgument("taskId") { type = NavType.LongType })
+            ) {
+                FocusScreen(
+                    navigateBack = { navController.popBackStack() },
+                    onTaskCompleted = {
+                        navController.previousBackStackEntry?.savedStateHandle?.set("snackbar_message", context.getString(R.string.msg_task_completed))
                         navController.popBackStack()
                     }
                 )

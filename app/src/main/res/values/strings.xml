@@ -199,4 +199,18 @@
     <string name="cd_navigate_up">Kembali ke atas</string>
     <string name="cd_clear_archive">Kosongkan arsip</string>
     <string name="cd_restore_task">Pulihkan tugas</string>
+
+    <!-- Focus Session / Pomodoro -->
+    <string name="title_focus_session">Sesi Fokus</string>
+    <string name="action_start_focus">Mulai Fokus</string>
+    <string name="focus_tagline">Fokus menyelesaikan tugas ini dengan tenang</string>
+    <string name="focus_completed_title">Sesi Fokus Selesai!</string>
+    <string name="focus_completed_message">Kerja bagus. Luangkan sejenak untuk istirahat atau selesaikan tugas ini.</string>
+    <string name="action_add_5_minutes">+5 Menit</string>
+    <string name="action_pause">Jeda</string>
+    <string name="action_resume">Lanjut</string>
+    <string name="action_reset">Reset</string>
+    <string name="focus_preset_15">15m</string>
+    <string name="focus_preset_25">25m</string>
+    <string name="focus_preset_50">50m</string>
 </resources>
