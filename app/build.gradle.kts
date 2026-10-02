@@ -20,8 +20,8 @@ android {
         applicationId = "com.duesoon.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 13
-        versionName = "1.9.3"
+        versionCode = 14
+        versionName = "1.9.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
