@@ -128,10 +128,8 @@ class ReminderReceiver : BroadcastReceiver() {
                 val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                 notificationManager.cancel(taskId.toInt())
                 
-                val updatedEntity = entity.copy(completed = true, updatedAt = System.currentTimeMillis())
-                taskDao.update(updatedEntity)
-                
                 val repo = TaskRepository(taskDao, AndroidNotificationScheduler(context), com.duesoon.app.data.repository.UserPreferencesRepository(context), context)
+                repo.updateTask(entity.toDomainModel().copy(completed = true, updatedAt = System.currentTimeMillis()))
                 repo.clearSnooze(taskId)
             } finally {
                 pendingResult.finish()
