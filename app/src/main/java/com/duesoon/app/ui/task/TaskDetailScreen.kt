@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.duesoon.app.R
 import com.duesoon.app.domain.model.Priority
+import com.duesoon.app.domain.model.RecurrenceRule
 import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.ui.AppViewModelProvider
 import com.duesoon.app.ui.components.CategoryChip
@@ -133,6 +134,20 @@ fun TaskDetailScreen(
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                if (currentTask.isRecurring && currentTask.recurrenceRule != null) {
+                    Text("·", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    val ruleName = when (currentTask.recurrenceRule) {
+                        is RecurrenceRule.Daily -> stringResource(R.string.recurrence_daily)
+                        is RecurrenceRule.Weekly -> stringResource(R.string.recurrence_weekly)
+                        is RecurrenceRule.Monthly -> stringResource(R.string.recurrence_monthly)
+                        else -> "Custom"
+                    }
+                    Text(
+                        text = "🔄 " + stringResource(R.string.recurrence_indicator, ruleName),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
             }
 
             if (!currentTask.description.isNullOrBlank()) {

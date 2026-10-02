@@ -57,10 +57,14 @@ open class TaskRepository(
             val nextDeadline = RecurrenceCalculator.calculateNextDeadline(task.deadline, task.recurrenceRule)
             val nextTask = task.copy(
                 id = 0,
+                uuid = java.util.UUID.randomUUID().toString(),
                 completed = false,
                 deadline = nextDeadline,
+                snoozedUntil = null,
                 createdAt = System.currentTimeMillis(),
-                updatedAt = System.currentTimeMillis()
+                updatedAt = System.currentTimeMillis(),
+                updatedAtUtc = System.currentTimeMillis(),
+                revision = 1L
             )
             insertTask(nextTask)
         }

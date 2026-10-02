@@ -200,7 +200,7 @@ class DueSoonWidget : GlanceAppWidget() {
             ) {
                 Column(modifier = GlanceModifier.defaultWeight()) {
                     Text(
-                        text = task.title,
+                        text = if (task.isRecurring && task.recurrenceRule != null) "🔄 ${task.title}" else task.title,
                         maxLines = 1,
                         style = TextStyle(
                             color = textColor,

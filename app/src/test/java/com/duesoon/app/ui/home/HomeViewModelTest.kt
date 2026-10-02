@@ -31,7 +31,7 @@ class HomeViewModelTest {
             Task(1, "Active 1", null, null, null, Priority.NORMAL, ReminderType.SMART, false, null, false, null, 0L, 0L)
         )
         // HomeViewModel now observes observeActiveTasks
-        `when`(mockRepository.observeActiveTasks()).thenReturn(flowOf(dummyTasks))
+        `when`(mockRepository.observeTasks()).thenReturn(flowOf(dummyTasks))
         viewModel = HomeViewModel(mockRepository)
     }
 
@@ -41,11 +41,8 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `init calls observeActiveTasks`() {
-        // Initialization in setup should have triggered observeActiveTasks because tasks uses stateIn
-        // Wait, stateIn is lazy unless collected if we use WhileSubscribed(5000), but tasks is public.
-        // Just verify it's called once we access tasks or initially.
+    fun `init calls observeTasks`() {
         val flow = viewModel.tasks
-        verify(mockRepository).observeActiveTasks()
+        verify(mockRepository).observeTasks()
     }
 }
