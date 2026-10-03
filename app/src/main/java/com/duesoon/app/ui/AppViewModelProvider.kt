@@ -47,6 +47,12 @@ object AppViewModelProvider {
                 dueSoonApplication().container.backupRestoreCoordinator
             )
         }
+        initializer {
+            com.duesoon.app.ui.focus.FocusViewModel(
+                this.createSavedStateHandle(),
+                dueSoonApplication().container.taskRepository
+            )
+        }
     }
 }
 
