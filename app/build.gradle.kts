@@ -20,8 +20,8 @@ android {
         applicationId = "com.duesoon.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 15
-        versionName = "1.9.5"
+        versionCode = 16
+        versionName = "1.9.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -104,6 +104,7 @@ dependencies {
     implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.glance.material3)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.okhttp)
 
     testImplementation(libs.junit)
     testImplementation("org.mockito:mockito-core:5.7.0")

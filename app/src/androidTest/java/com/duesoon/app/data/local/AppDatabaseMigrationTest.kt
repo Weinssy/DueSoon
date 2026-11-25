@@ -68,10 +68,14 @@ class AppDatabaseMigrationTest {
         val rawDb = factory.create(configuration).writableDatabase
         rawDb.close()
 
-        // Step 2: Open with Room using version 3 and MIGRATION_2_3
+        // Step 2: Open with Room using current version and migrations
         val roomDb = Room.databaseBuilder(context, AppDatabase::class.java, dbName)
-            .addMigrations(AppDatabase.MIGRATION_1_2)
-            .addMigrations(AppDatabase.MIGRATION_2_3)
+            .addMigrations(
+                AppDatabase.MIGRATION_1_2,
+                AppDatabase.MIGRATION_2_3,
+                AppDatabase.MIGRATION_3_4,
+                AppDatabase.MIGRATION_4_5
+            )
             .build()
 
         // Query the database via Room to trigger migration and verify the new column is readable
@@ -125,9 +129,14 @@ class AppDatabaseMigrationTest {
         val rawDb = factory.create(configuration).writableDatabase
         rawDb.close()
 
-        // Step 2: Open with Room using version 4 and MIGRATION_3_4
+        // Step 2: Open with Room using current version and migrations
         val roomDb = Room.databaseBuilder(context, AppDatabase::class.java, dbName)
-            .addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3, AppDatabase.MIGRATION_3_4)
+            .addMigrations(
+                AppDatabase.MIGRATION_1_2,
+                AppDatabase.MIGRATION_2_3,
+                AppDatabase.MIGRATION_3_4,
+                AppDatabase.MIGRATION_4_5
+            )
             .build()
 
         // Query the database via Room to trigger migration and verify the new columns are readable
@@ -152,6 +161,76 @@ class AppDatabaseMigrationTest {
         assertEquals("revision should default to 1", 1L, revision)
         
         cursor.close()
+        roomDb.close()
+    }
+
+    @Test
+    fun testMigration4To5() {
+        val factory = FrameworkSQLiteOpenHelperFactory()
+        val configuration = SupportSQLiteOpenHelper.Configuration.builder(context)
+            .name(dbName)
+            .callback(object : SupportSQLiteOpenHelper.Callback(4) {
+                override fun onCreate(db: SupportSQLiteDatabase) {
+                    db.execSQL(
+                        """
+                        CREATE TABLE IF NOT EXISTS `tasks` (
+                            `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                            `title` TEXT NOT NULL,
+                            `description` TEXT,
+                            `deadline` INTEGER,
+                            `category` TEXT,
+                            `priority` TEXT NOT NULL,
+                            `reminderType` TEXT NOT NULL,
+                            `isRecurring` INTEGER NOT NULL,
+                            `recurrenceInterval` TEXT,
+                            `completed` INTEGER NOT NULL,
+                            `snoozedUntil` INTEGER,
+                            `createdAt` INTEGER NOT NULL,
+                            `updatedAt` INTEGER NOT NULL,
+                            `uuid` TEXT NOT NULL,
+                            `isDeleted` INTEGER NOT NULL,
+                            `updatedAtUtc` INTEGER NOT NULL,
+                            `revision` INTEGER NOT NULL,
+                            `syncState` TEXT NOT NULL
+                        )
+                        """.trimIndent()
+                    )
+                    db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_tasks_uuid` ON `tasks` (`uuid`)")
+                    db.execSQL(
+                        """
+                        INSERT INTO tasks (title, priority, reminderType, isRecurring, completed, createdAt, updatedAt, uuid, isDeleted, updatedAtUtc, revision, syncState)
+                        VALUES ('Test V4', 'NORMAL', 'SMART', 0, 0, 300, 300, 'uuid-v4-1', 0, 300, 1, 'DIRTY')
+                        """.trimIndent()
+                    )
+                }
+
+                override fun onUpgrade(db: SupportSQLiteDatabase, oldVersion: Int, newVersion: Int) {}
+            })
+            .build()
+
+        val rawDb = factory.create(configuration).writableDatabase
+        rawDb.close()
+
+        val roomDb = Room.databaseBuilder(context, AppDatabase::class.java, dbName)
+            .addMigrations(
+                AppDatabase.MIGRATION_1_2,
+                AppDatabase.MIGRATION_2_3,
+                AppDatabase.MIGRATION_3_4,
+                AppDatabase.MIGRATION_4_5
+            )
+            .build()
+
+        val taskCursor = roomDb.query("SELECT * FROM tasks", null)
+        assertTrue(taskCursor.moveToFirst())
+        assertEquals("Test V4", taskCursor.getString(taskCursor.getColumnIndex("title")))
+        taskCursor.close()
+
+        val focusCursor = roomDb.query("SELECT * FROM focus_sessions", null)
+        assertEquals(0, focusCursor.count)
+        assertTrue(focusCursor.getColumnIndex("dateKey") != -1)
+        assertTrue(focusCursor.getColumnIndex("durationMinutes") != -1)
+        focusCursor.close()
+
         roomDb.close()
     }
 }

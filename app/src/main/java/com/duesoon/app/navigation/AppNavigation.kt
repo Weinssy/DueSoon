@@ -1,5 +1,6 @@
 package com.duesoon.app.navigation
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -22,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -44,6 +46,7 @@ import com.duesoon.app.ui.task.TaskDetailScreen
 
 object Destinations {
     const val HOME = "home"
+    const val FOCUS = "focus"
     const val CALENDAR = "calendar"
     const val SETTINGS = "settings"
     const val CREATE_TASK = "create_task"
@@ -58,13 +61,15 @@ object Destinations {
 data class BottomNavItem(
     val route: String,
     @StringRes val titleResId: Int,
-    val icon: ImageVector
+    val icon: ImageVector? = null,
+    @DrawableRes val drawableResId: Int? = null
 )
 
 val bottomNavItems = listOf(
-    BottomNavItem(Destinations.HOME, R.string.nav_home, Icons.Filled.Home),
-    BottomNavItem(Destinations.CALENDAR, R.string.nav_calendar, Icons.Filled.DateRange),
-    BottomNavItem(Destinations.SETTINGS, R.string.nav_settings, Icons.Filled.Settings)
+    BottomNavItem(Destinations.HOME, R.string.nav_home, icon = Icons.Filled.Home),
+    BottomNavItem(Destinations.FOCUS, R.string.nav_focus, drawableResId = R.drawable.ic_nav_focus),
+    BottomNavItem(Destinations.CALENDAR, R.string.nav_calendar, icon = Icons.Filled.DateRange),
+    BottomNavItem(Destinations.SETTINGS, R.string.nav_settings, icon = Icons.Filled.Settings)
 )
 
 @Composable
@@ -107,7 +112,15 @@ fun AppNavigation(
                         val selected = currentDestination?.hierarchy?.any { it.route == item.route } == true
                         val title = stringResource(item.titleResId)
                         NavigationBarItem(
-                            icon = { Icon(item.icon, contentDescription = title) },
+                            icon = {
+                                when {
+                                    item.icon != null -> Icon(item.icon, contentDescription = title)
+                                    item.drawableResId != null -> Icon(
+                                        painter = painterResource(id = item.drawableResId),
+                                        contentDescription = title
+                                    )
+                                }
+                            },
                             label = { Text(title) },
                             selected = selected,
                             onClick = {
@@ -136,6 +149,17 @@ fun AppNavigation(
                 HomeScreen(
                     navigateToCreateTask = { navController.navigate(Destinations.CREATE_TASK) },
                     navigateToTaskDetail = { taskId -> navController.navigate(Destinations.taskDetailRoute(taskId)) }
+                )
+            }
+            composable(Destinations.FOCUS) {
+                FocusScreen(
+                    showBackButton = false,
+                    onTaskCompleted = {
+                        navController.currentBackStackEntry?.savedStateHandle?.set(
+                            "snackbar_message",
+                            context.getString(R.string.msg_task_completed)
+                        )
+                    }
                 )
             }
             composable(Destinations.CALENDAR) {

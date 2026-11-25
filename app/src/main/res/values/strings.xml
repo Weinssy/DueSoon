@@ -205,7 +205,9 @@
     <string name="action_start_focus">Mulai Fokus</string>
     <string name="focus_tagline">Fokus menyelesaikan tugas ini dengan tenang</string>
     <string name="focus_completed_title">Sesi Fokus Selesai!</string>
-    <string name="focus_completed_message">Kerja bagus. Luangkan sejenak untuk istirahat atau selesaikan tugas ini.</string>
+    <string name="focus_completed_message">Kerja bagus. Waktunya istirahat sejenak sebelum sesi berikutnya.</string>
+    <string name="focus_break_completed_title">Istirahat Selesai</string>
+    <string name="focus_break_completed_message">Siap melanjutkan sesi fokus berikutnya.</string>
     <string name="action_add_5_minutes">+5 Menit</string>
     <string name="action_pause">Jeda</string>
     <string name="action_resume">Lanjut</string>
@@ -213,4 +215,60 @@
     <string name="focus_preset_15">15m</string>
     <string name="focus_preset_25">25m</string>
     <string name="focus_preset_50">50m</string>
+    <string name="focus_mode_focus">Fokus</string>
+    <string name="focus_mode_short_break">Istirahat</string>
+    <string name="focus_mode_long_break">Panjang</string>
+    <string name="focus_mode_focus_label">Sesi Fokus</string>
+    <string name="focus_mode_short_break_label">Istirahat Singkat</string>
+    <string name="focus_mode_long_break_label">Istirahat Panjang</string>
+    <string name="focus_cycle_label">Siklus</string>
+    <string name="focus_today_counter">Hari ini: %1$d sesi (%2$d mnt)</string>
+    <string name="focus_action_skip">Lewati sesi</string>
+    <string name="focus_target_label">Target Fokus</string>
+    <string name="focus_target_empty_title">Tautkan Tugas (Opsional)</string>
+    <string name="focus_target_empty_subtitle">Catat menit fokus langsung pada tugas yang dikerjakan</string>
+    <string name="focus_action_pick_task">Pilih</string>
+    <string name="focus_action_unlink_task">Lepas tautan tugas</string>
+    <string name="focus_task_logged_summary">Tercatat %1$d sesi · %2$d menit fokus</string>
+    <string name="focus_picker_title">Pilih Target Tugas</string>
+    <string name="focus_picker_empty">Belum ada tugas aktif. Anda tetap bisa menjalankan sesi fokus bebas.</string>
+    <string name="focus_stats_title">Statistik Fokus</string>
+    <string name="focus_stat_week">Minggu Ini</string>
+    <string name="focus_stat_streak">Streak</string>
+    <string name="focus_stat_streak_sub">beruntun</string>
+    <string name="focus_stat_avg">Rata-rata</string>
+    <string name="focus_stat_avg_sub">7 hari</string>
+    <string name="focus_stats_empty">Selesaikan satu sesi fokus untuk mulai mencatat statistik belajar Anda.</string>
+    <string name="focus_chart_7days_title">7 Hari Terakhir (menit)</string>
+    <string name="focus_course_stats_title">Distribusi Kategori / Mata Kuliah</string>
+    <string name="focus_settings_title">Pengaturan Pomodoro</string>
+    <string name="focus_settings_focus_min">Durasi Fokus (menit)</string>
+    <string name="focus_settings_short_break_min">Istirahat Singkat (menit)</string>
+    <string name="focus_settings_long_break_min">Istirahat Panjang (menit)</string>
+    <string name="focus_settings_auto_start">Mulai otomatis sesi berikutnya</string>
+    <string name="focus_settings_sound">Bunyi penanda selesai</string>
+
+    <!-- Fokus Kuliah Import -->
+    <string name="settings_import_fk_title">Impor dari Fokus Kuliah</string>
+    <string name="settings_import_fk_subtitle">Gabungkan tugas &amp; riwayat sesi dari berkas JSON Fokus Kuliah</string>
+    <string name="dialog_import_fk_title">Impor Cadangan Fokus Kuliah</string>
+    <string name="dialog_import_fk_message">Ditemukan %1$d tugas dan %2$d sesi fokus dari cadangan Fokus Kuliah. Gabungkan ke data DueSoon saat ini?</string>
+
+    <!-- In-App Update -->
+    <string name="settings_check_update_title">Pembaruan Aplikasi</string>
+    <string name="settings_check_update_subtitle">Versi terpasang v%1$s · Sumber: GitHub Releases</string>
+    <string name="update_checking_subtitle">Memeriksa versi terbaru di GitHub…</string>
+    <string name="update_action_check">Periksa</string>
+    <string name="update_up_to_date_message">DueSoon v%1$s sudah versi terbaru.</string>
+    <string name="update_available_title">Pembaruan Tersedia (v%1$s)</string>
+    <string name="update_no_changelog">Tidak ada catatan rilis.</string>
+    <string name="update_action_download_install">Unduh &amp; Pasang</string>
+    <string name="update_action_open_release">Buka Halaman Rilis</string>
+    <string name="update_downloading_title">Mengunduh DueSoon v%1$s…</string>
+    <string name="update_ready_title">Pembaruan Siap Dipasang</string>
+    <string name="update_ready_message">APK DueSoon v%1$s selesai diunduh. Pasang sekarang untuk memperbarui aplikasi?</string>
+    <string name="update_action_install_now">Pasang Sekarang</string>
+    <string name="update_permission_title">Izinkan Pemasangan Aplikasi</string>
+    <string name="update_permission_message">Aktifkan izin \"Instal aplikasi yang tidak dikenal\" untuk DueSoon agar pembaruan APK dapat dipasang langsung.</string>
+    <string name="update_action_open_settings">Buka Pengaturan</string>
 </resources>

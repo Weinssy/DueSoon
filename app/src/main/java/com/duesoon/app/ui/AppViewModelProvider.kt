@@ -5,14 +5,17 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.duesoon.app.BuildConfig
 import com.duesoon.app.DueSoonApplication
 import com.duesoon.app.ui.calendar.CalendarViewModel
+import com.duesoon.app.ui.focus.FocusViewModel
 import com.duesoon.app.ui.home.HomeViewModel
+import com.duesoon.app.ui.settings.SettingsViewModel
 import com.duesoon.app.ui.task.CreateTaskViewModel
 import com.duesoon.app.ui.task.EditTaskViewModel
 import com.duesoon.app.ui.task.TaskDetailViewModel
 import com.duesoon.app.ui.tasks.TasksViewModel
-import com.duesoon.app.ui.settings.SettingsViewModel
+
 object AppViewModelProvider {
     val Factory = viewModelFactory {
         initializer {
@@ -40,17 +43,24 @@ object AppViewModelProvider {
             CalendarViewModel(dueSoonApplication().container.taskRepository)
         }
         initializer {
+            val container = dueSoonApplication().container
             SettingsViewModel(
-                dueSoonApplication().container.userPreferencesRepository,
-                dueSoonApplication().container.taskRepository,
-                dueSoonApplication().container.notificationScheduler,
-                dueSoonApplication().container.backupRestoreCoordinator
+                userPreferencesRepository = container.userPreferencesRepository,
+                taskRepository = container.taskRepository,
+                notificationScheduler = container.notificationScheduler,
+                backupRestoreCoordinator = container.backupRestoreCoordinator,
+                fokusKuliahImportCoordinator = container.fokusKuliahImportCoordinator,
+                appUpdateRepository = container.appUpdateRepository,
+                currentVersionName = BuildConfig.VERSION_NAME
             )
         }
         initializer {
-            com.duesoon.app.ui.focus.FocusViewModel(
-                this.createSavedStateHandle(),
-                dueSoonApplication().container.taskRepository
+            val container = dueSoonApplication().container
+            FocusViewModel(
+                savedStateHandle = this.createSavedStateHandle(),
+                repository = container.taskRepository,
+                focusRepository = container.focusRepository,
+                userPreferencesRepository = container.userPreferencesRepository
             )
         }
     }

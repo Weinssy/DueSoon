@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 import com.duesoon.app.domain.model.AccentPalette
+import com.duesoon.app.domain.model.PomodoroSettings
 import com.duesoon.app.domain.model.VisualDensity
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -18,10 +19,24 @@ data class UserPreferencesState(
     val accentPalette: AccentPalette = AccentPalette.INDIGO,
     val visualDensity: VisualDensity = VisualDensity.COMFORTABLE,
     val hapticsEnabled: Boolean = true,
-    val alarmReminderEnabled: Boolean = false
-)
+    val alarmReminderEnabled: Boolean = false,
+    val pomodoroFocusMinutes: Int = PomodoroSettings.DEFAULT_FOCUS_MINUTES,
+    val pomodoroShortBreakMinutes: Int = PomodoroSettings.DEFAULT_SHORT_BREAK_MINUTES,
+    val pomodoroLongBreakMinutes: Int = PomodoroSettings.DEFAULT_LONG_BREAK_MINUTES,
+    val pomodoroAutoStart: Boolean = false,
+    val pomodoroSoundEnabled: Boolean = true
+) {
+    val pomodoroSettings: PomodoroSettings
+        get() = PomodoroSettings(
+            focusMinutes = pomodoroFocusMinutes,
+            shortBreakMinutes = pomodoroShortBreakMinutes,
+            longBreakMinutes = pomodoroLongBreakMinutes,
+            autoStartNext = pomodoroAutoStart,
+            soundEnabled = pomodoroSoundEnabled
+        )
+}
 
-class UserPreferencesRepository(private val context: Context) {
+open class UserPreferencesRepository(private val context: Context) {
     private val dataStore = context.dataStore
     
     private object PreferencesKeys {
@@ -31,9 +46,14 @@ class UserPreferencesRepository(private val context: Context) {
         val VISUAL_DENSITY = stringPreferencesKey("visual_density")
         val HAPTIC_FEEDBACK_ENABLED = booleanPreferencesKey("haptic_feedback_enabled")
         val ALARM_REMINDER_ENABLED = booleanPreferencesKey("alarm_reminder_enabled")
+        val POMODORO_FOCUS_MINUTES = intPreferencesKey("pomodoro_focus_minutes")
+        val POMODORO_SHORT_BREAK_MINUTES = intPreferencesKey("pomodoro_short_break_minutes")
+        val POMODORO_LONG_BREAK_MINUTES = intPreferencesKey("pomodoro_long_break_minutes")
+        val POMODORO_AUTO_START = booleanPreferencesKey("pomodoro_auto_start")
+        val POMODORO_SOUND_ENABLED = booleanPreferencesKey("pomodoro_sound_enabled")
     }
 
-    val userPreferencesFlow: Flow<UserPreferencesState> = dataStore.data.map { preferences ->
+    open val userPreferencesFlow: Flow<UserPreferencesState> = dataStore.data.map { preferences ->
         val theme = preferences[PreferencesKeys.THEME] ?: "SYSTEM"
         val notificationsEnabled = preferences[PreferencesKeys.NOTIFICATIONS_ENABLED] ?: true
         
@@ -53,8 +73,31 @@ class UserPreferencesRepository(private val context: Context) {
         
         val hapticsEnabled = preferences[PreferencesKeys.HAPTIC_FEEDBACK_ENABLED] ?: true
         val alarmReminderEnabled = preferences[PreferencesKeys.ALARM_REMINDER_ENABLED] ?: false
+        val pomodoroFocusMinutes = PomodoroSettings.sanitizeFocusMinutes(
+            preferences[PreferencesKeys.POMODORO_FOCUS_MINUTES] ?: PomodoroSettings.DEFAULT_FOCUS_MINUTES
+        )
+        val pomodoroShortBreakMinutes = PomodoroSettings.sanitizeBreakMinutes(
+            preferences[PreferencesKeys.POMODORO_SHORT_BREAK_MINUTES] ?: PomodoroSettings.DEFAULT_SHORT_BREAK_MINUTES
+        )
+        val pomodoroLongBreakMinutes = PomodoroSettings.sanitizeBreakMinutes(
+            preferences[PreferencesKeys.POMODORO_LONG_BREAK_MINUTES] ?: PomodoroSettings.DEFAULT_LONG_BREAK_MINUTES
+        )
+        val pomodoroAutoStart = preferences[PreferencesKeys.POMODORO_AUTO_START] ?: false
+        val pomodoroSoundEnabled = preferences[PreferencesKeys.POMODORO_SOUND_ENABLED] ?: true
 
-        UserPreferencesState(theme, notificationsEnabled, accentPalette, visualDensity, hapticsEnabled, alarmReminderEnabled)
+        UserPreferencesState(
+            theme = theme,
+            notificationsEnabled = notificationsEnabled,
+            accentPalette = accentPalette,
+            visualDensity = visualDensity,
+            hapticsEnabled = hapticsEnabled,
+            alarmReminderEnabled = alarmReminderEnabled,
+            pomodoroFocusMinutes = pomodoroFocusMinutes,
+            pomodoroShortBreakMinutes = pomodoroShortBreakMinutes,
+            pomodoroLongBreakMinutes = pomodoroLongBreakMinutes,
+            pomodoroAutoStart = pomodoroAutoStart,
+            pomodoroSoundEnabled = pomodoroSoundEnabled
+        )
     }
 
     suspend fun updateTheme(theme: String) {
@@ -87,9 +130,22 @@ class UserPreferencesRepository(private val context: Context) {
         }
     }
 
-    suspend fun updateAlarmReminderEnabled(enabled: Boolean) {
+    open suspend fun updateAlarmReminderEnabled(enabled: Boolean) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.ALARM_REMINDER_ENABLED] = enabled
+        }
+    }
+
+    open suspend fun updatePomodoroSettings(settings: PomodoroSettings) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.POMODORO_FOCUS_MINUTES] =
+                PomodoroSettings.sanitizeFocusMinutes(settings.focusMinutes)
+            preferences[PreferencesKeys.POMODORO_SHORT_BREAK_MINUTES] =
+                PomodoroSettings.sanitizeBreakMinutes(settings.shortBreakMinutes)
+            preferences[PreferencesKeys.POMODORO_LONG_BREAK_MINUTES] =
+                PomodoroSettings.sanitizeBreakMinutes(settings.longBreakMinutes)
+            preferences[PreferencesKeys.POMODORO_AUTO_START] = settings.autoStartNext
+            preferences[PreferencesKeys.POMODORO_SOUND_ENABLED] = settings.soundEnabled
         }
     }
 }

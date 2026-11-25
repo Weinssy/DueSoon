@@ -11,11 +11,3 @@ enum class VisualDensity {
     COMFORTABLE,
     COMPACT
 }
-
-data class UserPreferencesState(
-    val theme: String = "SYSTEM",
-    val notificationsEnabled: Boolean = true,
-    val accentPalette: AccentPalette = AccentPalette.INDIGO,
-    val visualDensity: VisualDensity = VisualDensity.COMFORTABLE,
-    val hapticsEnabled: Boolean = true
-)

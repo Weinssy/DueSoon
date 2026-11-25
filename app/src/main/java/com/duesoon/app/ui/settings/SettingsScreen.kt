@@ -27,6 +27,11 @@ import android.provider.Settings
 import android.net.Uri
 import android.app.NotificationManager
 import android.content.Context
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
+import com.duesoon.app.data.update.ApkInstallLaunchResult
+import com.duesoon.app.data.update.ApkInstaller
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -40,11 +45,14 @@ fun SettingsScreen(
     var showThemeMenu by remember { mutableStateOf(false) }
     var showPaletteMenu by remember { mutableStateOf(false) }
     var showDensityMenu by remember { mutableStateOf(false) }
+    var showUnknownSourcesDialog by remember { mutableStateOf(false) }
 
     val backupState by viewModel.backupUiState.collectAsState()
+    val updateState by viewModel.updateUiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
     val context = androidx.compose.ui.platform.LocalContext.current
-    
+
     LaunchedEffect(backupState) {
         when (val state = backupState) {
             is BackupUiState.Success -> {
@@ -57,6 +65,170 @@ fun SettingsScreen(
             }
             else -> {}
         }
+    }
+
+    LaunchedEffect(updateState) {
+        when (val state = updateState) {
+            is UpdateUiState.UpToDate -> {
+                snackbarHostState.showSnackbar(
+                    context.getString(R.string.update_up_to_date_message, state.currentVersion)
+                )
+                viewModel.resetUpdateState()
+            }
+            is UpdateUiState.Error -> {
+                snackbarHostState.showSnackbar(state.message)
+                viewModel.resetUpdateState()
+            }
+            else -> {}
+        }
+    }
+
+    if (showUnknownSourcesDialog) {
+        AlertDialog(
+            onDismissRequest = { showUnknownSourcesDialog = false },
+            title = { Text(stringResource(R.string.update_permission_title)) },
+            text = { Text(stringResource(R.string.update_permission_message)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    showUnknownSourcesDialog = false
+                    context.startActivity(ApkInstaller.createUnknownSourcesIntent(context))
+                }) {
+                    Text(stringResource(R.string.update_action_open_settings))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showUnknownSourcesDialog = false }) {
+                    Text(stringResource(R.string.action_cancel))
+                }
+            }
+        )
+    }
+
+    when (val state = updateState) {
+        is UpdateUiState.UpdateAvailable -> {
+            val release = state.release
+            val sizeLabel = release.apkSizeBytes?.let { formatBytes(it) }
+            AlertDialog(
+                onDismissRequest = { viewModel.resetUpdateState() },
+                title = { Text(stringResource(R.string.update_available_title, release.versionName)) },
+                text = {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(max = 280.dp)
+                            .verticalScroll(rememberScrollState()),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Text(
+                            text = buildString {
+                                append("Versi saat ini: v${BuildConfig.VERSION_NAME} → v${release.versionName}")
+                                if (sizeLabel != null) append(" ($sizeLabel)")
+                            },
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        val notes = release.releaseNotes.ifBlank {
+                            stringResource(R.string.update_no_changelog)
+                        }
+                        Text(
+                            text = notes,
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                },
+                confirmButton = {
+                    if (!release.apkDownloadUrl.isNullOrBlank()) {
+                        TextButton(onClick = { viewModel.startUpdateDownload() }) {
+                            Text(stringResource(R.string.update_action_download_install))
+                        }
+                    } else {
+                        TextButton(onClick = {
+                            viewModel.resetUpdateState()
+                            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(release.htmlUrl))
+                            context.startActivity(browserIntent)
+                        }) {
+                            Text(stringResource(R.string.update_action_open_release))
+                        }
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { viewModel.resetUpdateState() }) {
+                        Text(stringResource(R.string.action_cancel))
+                    }
+                }
+            )
+        }
+        is UpdateUiState.Downloading -> {
+            AlertDialog(
+                onDismissRequest = { /* keep visible while downloading */ },
+                title = { Text(stringResource(R.string.update_downloading_title, state.release.versionName)) },
+                text = {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        val pct = state.progressPercent
+                        if (pct != null) {
+                            LinearProgressIndicator(
+                                progress = { pct / 100f },
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                            val detail = if (state.totalBytes > 0L) {
+                                "$pct% (${formatBytes(state.bytesDownloaded)} / ${formatBytes(state.totalBytes)})"
+                            } else {
+                                "$pct%"
+                            }
+                            Text(text = detail, style = MaterialTheme.typography.bodySmall)
+                        } else {
+                            LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                            Text(
+                                text = formatBytes(state.bytesDownloaded),
+                                style = MaterialTheme.typography.bodySmall
+                            )
+                        }
+                    }
+                },
+                confirmButton = {},
+                dismissButton = {
+                    TextButton(onClick = { viewModel.cancelUpdateDownload() }) {
+                        Text(stringResource(R.string.action_cancel))
+                    }
+                }
+            )
+        }
+        is UpdateUiState.ReadyToInstall -> {
+            AlertDialog(
+                onDismissRequest = { viewModel.resetUpdateState() },
+                title = { Text(stringResource(R.string.update_ready_title)) },
+                text = { Text(stringResource(R.string.update_ready_message, state.release.versionName)) },
+                confirmButton = {
+                    TextButton(onClick = {
+                        when (val result = ApkInstaller.launchInstall(context, state.apkFilePath)) {
+                            is ApkInstallLaunchResult.Launched -> {
+                                viewModel.resetUpdateState()
+                            }
+                            is ApkInstallLaunchResult.NeedsUnknownSourcesPermission -> {
+                                showUnknownSourcesDialog = true
+                            }
+                            is ApkInstallLaunchResult.Error -> {
+                                viewModel.resetUpdateState()
+                                coroutineScope.launch {
+                                    snackbarHostState.showSnackbar(result.message)
+                                }
+                            }
+                        }
+                    }) {
+                        Text(stringResource(R.string.update_action_install_now))
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { viewModel.resetUpdateState() }) {
+                        Text(stringResource(R.string.action_cancel))
+                    }
+                }
+            )
+        }
+        else -> {}
     }
 
     if (showClearDialog) {
@@ -267,6 +439,39 @@ fun SettingsScreen(
             )
             HorizontalDivider()
 
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_check_update_title)) },
+                supportingContent = {
+                    Text(
+                        if (updateState is UpdateUiState.Checking) {
+                            stringResource(R.string.update_checking_subtitle)
+                        } else {
+                            stringResource(R.string.settings_check_update_subtitle, BuildConfig.VERSION_NAME)
+                        }
+                    )
+                },
+                leadingContent = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_system_update),
+                        contentDescription = null
+                    )
+                },
+                trailingContent = {
+                    if (updateState is UpdateUiState.Checking) {
+                        CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
+                    } else {
+                        OutlinedButton(onClick = { viewModel.checkForUpdates() }) {
+                            Text(stringResource(R.string.update_action_check))
+                        }
+                    }
+                },
+                modifier = Modifier.clickable(
+                    enabled = updateState !is UpdateUiState.Checking && updateState !is UpdateUiState.Downloading,
+                    onClick = { viewModel.checkForUpdates() }
+                )
+            )
+            HorizontalDivider()
+
             // --- Data & Backup ---
             
             val exportLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
@@ -291,6 +496,41 @@ fun SettingsScreen(
                 if (uri != null) {
                     viewModel.prepareRestore(uri)
                 }
+            }
+
+            val fokusKuliahImportLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
+                androidx.activity.result.contract.ActivityResultContracts.OpenDocument()
+            ) { uri ->
+                if (uri != null) {
+                    viewModel.prepareFokusKuliahImport(uri)
+                }
+            }
+
+            if (backupState is BackupUiState.AwaitingFokusKuliahImportConfirmation) {
+                val state = backupState as BackupUiState.AwaitingFokusKuliahImportConfirmation
+                AlertDialog(
+                    onDismissRequest = { viewModel.cancelConfirmation() },
+                    title = { Text(stringResource(R.string.dialog_import_fk_title)) },
+                    text = {
+                        Text(
+                            stringResource(
+                                R.string.dialog_import_fk_message,
+                                state.parsed.tasks.size,
+                                state.parsed.focusSessions.size
+                            )
+                        )
+                    },
+                    confirmButton = {
+                        TextButton(onClick = { viewModel.executeFokusKuliahImport() }) {
+                            Text(stringResource(R.string.action_import))
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = { viewModel.cancelConfirmation() }) {
+                            Text(stringResource(R.string.action_cancel))
+                        }
+                    }
+                )
             }
 
             if (backupState is BackupUiState.AwaitingImportConfirmation) {
@@ -368,13 +608,30 @@ fun SettingsScreen(
                     onClick = { restoreLauncher.launch(arrayOf("application/json")) }
                 )
             )
+
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_import_fk_title)) },
+                supportingContent = { Text(stringResource(R.string.settings_import_fk_subtitle)) },
+                modifier = Modifier.clickable(
+                    enabled = backupState !is BackupUiState.Loading,
+                    onClick = { fokusKuliahImportLauncher.launch(arrayOf("application/json")) }
+                )
+            )
             HorizontalDivider()
 
-            Box(modifier = Modifier.fillMaxWidth().padding(16.dp), contentAlignment = androidx.compose.ui.Alignment.Center) {
+            Box(modifier = Modifier.fillMaxWidth().padding(16.dp), contentAlignment = Alignment.Center) {
                 if (backupState is BackupUiState.Loading) {
                     CircularProgressIndicator(modifier = Modifier.size(24.dp))
                 }
             }
         }
     }
+}
+
+private fun formatBytes(bytes: Long): String {
+    if (bytes < 1024L) return "$bytes B"
+    val kb = bytes / 1024.0
+    if (kb < 1024.0) return "%.1f KB".format(kb)
+    val mb = kb / 1024.0
+    return "%.1f MB".format(mb)
 }
