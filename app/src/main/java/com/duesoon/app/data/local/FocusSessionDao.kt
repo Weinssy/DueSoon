@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -28,4 +29,12 @@ interface FocusSessionDao {
 
     @Query("DELETE FROM focus_sessions")
     suspend fun deleteAll()
+
+    @Transaction
+    suspend fun replaceAllSessions(sessions: List<FocusSessionEntity>) {
+        deleteAll()
+        if (sessions.isNotEmpty()) {
+            insertAll(sessions)
+        }
+    }
 }

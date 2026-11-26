@@ -3,11 +3,14 @@ package com.duesoon.app.data.backup
 import android.content.Context
 import android.net.Uri
 import androidx.room.Room
+import androidx.room.withTransaction
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.duesoon.app.data.local.AppDatabase
+import com.duesoon.app.data.repository.FocusRepository
 import com.duesoon.app.data.repository.TaskRepository
 import com.duesoon.app.data.repository.UserPreferencesRepository
+import com.duesoon.app.domain.model.FocusSession
 import com.duesoon.app.domain.model.Priority
 import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.domain.model.Task
@@ -33,6 +36,7 @@ class BackupRestoreIntegrationTest {
 
     private lateinit var db: AppDatabase
     private lateinit var repository: TaskRepository
+    private lateinit var focusRepository: FocusRepository
     private lateinit var userPrefsRepo: UserPreferencesRepository
     private lateinit var coordinator: BackupRestoreCoordinator
     private lateinit var fakeStorage: FakeSafBackupStorage
@@ -50,14 +54,17 @@ class BackupRestoreIntegrationTest {
             notificationScheduler = fakeScheduler,
             userPreferencesRepository = userPrefsRepo
         )
+        focusRepository = FocusRepository(db.focusSessionDao())
         fakeStorage = FakeSafBackupStorage()
 
         coordinator = BackupRestoreCoordinator(
             taskRepository = repository,
             backupStorage = fakeStorage,
-            appVersion = "1.3.0",
+            appVersion = "1.9.7",
             notificationScheduler = fakeScheduler,
-            userPreferencesRepository = userPrefsRepo
+            userPreferencesRepository = userPrefsRepo,
+            focusRepository = focusRepository,
+            runInTransaction = { block -> db.withTransaction { block() } }
         )
     }
 
@@ -77,9 +84,19 @@ class BackupRestoreIntegrationTest {
             deadline = System.currentTimeMillis() + 100000,
             reminderType = ReminderType.SMART,
             isRecurring = false,
-            recurrenceInterval = null
+            recurrenceRule = null
         )
         repository.insertTask(task)
+        focusRepository.recordSession(
+            FocusSession(
+                taskId = 1L,
+                taskTitle = "Export Me",
+                courseOrCategory = "Algoritma",
+                durationMinutes = 25,
+                dateKey = "2026-11-26",
+                completedAt = 1000L
+            )
+        )
 
         val uri = Uri.parse("content://fake/export")
         val result = coordinator.exportBackup(uri)
@@ -89,6 +106,8 @@ class BackupRestoreIntegrationTest {
         
         assertTrue("JSON should contain schemaVersion 1", jsonOutput.contains("\"schemaVersion\": 1"))
         assertTrue("JSON should contain the task title", jsonOutput.contains("\"title\": \"Export Me\""))
+        assertTrue("JSON should contain focusSessions", jsonOutput.contains("\"focusSessions\""))
+        assertTrue("JSON should contain courseOrCategory", jsonOutput.contains("\"Algoritma\""))
     }
 
     // --- 2. Import Tests ---

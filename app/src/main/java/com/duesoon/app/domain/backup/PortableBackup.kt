@@ -7,5 +7,6 @@ data class PortableBackup(
     val schemaVersion: Int = 1,
     val appVersion: String,
     val exportedAt: Long,
-    val tasks: List<PortableTask>
+    val tasks: List<PortableTask>,
+    val focusSessions: List<PortableFocusSession> = emptyList()
 )

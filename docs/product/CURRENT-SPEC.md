@@ -1,8 +1,8 @@
 # DueSoon — Current Product Specification
 
 ## Overview
-**Current Version:** 1.9.0 (Active Development)  
-**Status:** In Development (Based on v1.8.0 stable baseline)  
+**Current Version:** 1.9.7 (Active Development; latest published release: v1.9.6)  
+**Status:** Active Development (Room v5, Portable Backup v1, Fokus Kuliah Integration, In-App Update)  
 **Positioning:** DueSoon is a minimal, local-first Android deadline reminder app designed to help users stay aware of upcoming deadlines without the complexity of traditional project management tools.  
 **Tagline:** Know what needs your attention next.
 
@@ -50,6 +50,14 @@
 | Widget Interactivity | Released | v1.6.0 | Task completion via widget |
 | Quick Add | Released | v1.6.0 | Launcher shortcut to create task |
 | Dynamic Theming & Haptics | Released | v1.9.0 | Custom accents, visual density, widget haptics |
+| Alarm Reminders | Released | v1.9.1–v1.9.3 | Optional full-screen alarm & Mark as Done action |
+| Pomodoro Focus Tab & Stats | Released | v1.9.5–v1.9.6 | Full Pomodoro cycle, task target, 7-day chart, streak, Room `focus_sessions` |
+| Fokus Kuliah JSON Importer | Released | v1.9.6 | Imports tasks, focus history, and settings from `fokus-kuliah` web backups |
+| GitHub Releases In-App Update | Released | v1.9.6 | Checks GitHub Releases, downloads APK, installs via `FileProvider` |
+| Pomodoro Foreground Service | In Dev | v1.9.7 | `PomodoroTimerService` (`specialUse`) + persisted timer state |
+| Course Autocomplete & Filter | In Dev | v1.9.7 | Custom course text input, suggestions, and Home filter chips |
+| Campus Paper & Ink Theme | In Dev | v1.9.7 | Warm paper/terracotta/sage palette (`AccentPalette.CAMPUS_PAPER`) |
+| Focus Session Backup/Restore | In Dev | v1.9.7 | `focusSessions` included in portable JSON v1 (backward compatible) |
 
 ## Current Task Model
 Based on the actual `Task` domain model.
@@ -158,16 +166,19 @@ DueSoon v1.3.0 introduces a portable JSON format (`schemaVersion: 1`).
 - v1.6.0 Widgets & Quick Actions
 - v1.7.0 Recurring & Reminder Engine 2.0
 - v1.8.0 Search & Archive Hardening
-- v1.9.0 Custom Themes & Visual Density
+- v1.9.0–v1.9.5 Custom Themes, Alarm Reminders, Glance Widget Overhaul, Basic Focus Timer
+- v1.9.6 Fokus Kuliah Native Integration & GitHub Releases In-App Update
 
-**Future:**
-- AI assistance
-- Cloud sync
-- Multi-device support
+**In Development (v1.9.7):**
+- Pomodoro Foreground Service & persisted background timer
+- Course autocomplete & Home course/category filter
+- Campus Paper & Ink (`Kertas & Tinta Kampus`) theme palette
+- Portable Backup/Restore support for `focus_sessions`
+- GitHub Actions CI & automated APK release pipeline
 
-**Explicitly Out of Scope:**
+**Explicitly Out of Scope (unless requested):**
 - Accounts / Login
-- Cloud Sync (for v1.3.0)
+- Cloud Sync
 - Cross-device real-time sync
 
 ## Evolution from PRD v1.0

@@ -1,11 +1,13 @@
 package com.duesoon.app.data.backup
 
 import android.net.Uri
+import com.duesoon.app.data.repository.FocusRepository
 import com.duesoon.app.data.repository.TaskRepository
 import com.duesoon.app.domain.backup.PortableBackup
 import com.duesoon.app.domain.backup.BackupSerializer
 import com.duesoon.app.domain.backup.ValidationMode
 import com.duesoon.app.domain.backup.ValidatedPortableBackup
+import com.duesoon.app.domain.model.FocusSession
 import com.duesoon.app.domain.model.Priority
 import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.domain.model.Task
@@ -29,6 +31,7 @@ class BackupRestoreCoordinatorTest {
     private lateinit var coordinator: BackupRestoreCoordinator
     private lateinit var fakeStorage: FakeBackupStorage
     private lateinit var mockTaskRepo: TaskRepository
+    private lateinit var mockFocusRepo: FocusRepository
     private lateinit var mockScheduler: com.duesoon.app.notification.NotificationScheduler
     private lateinit var mockPrefsRepo: com.duesoon.app.data.repository.UserPreferencesRepository
 
@@ -44,6 +47,7 @@ class BackupRestoreCoordinatorTest {
     fun setup() {
         fakeStorage = FakeBackupStorage()
         mockTaskRepo = mock(TaskRepository::class.java)
+        mockFocusRepo = mock(FocusRepository::class.java)
         
         mockScheduler = mock(com.duesoon.app.notification.NotificationScheduler::class.java)
         mockPrefsRepo = mock(com.duesoon.app.data.repository.UserPreferencesRepository::class.java)
@@ -51,13 +55,17 @@ class BackupRestoreCoordinatorTest {
             flowOf(com.duesoon.app.data.repository.UserPreferencesState(notificationsEnabled = true))
         )
         `when`(mockTaskRepo.observeTasks()).thenReturn(flowOf(emptyList()))
+        runBlocking {
+            `when`(mockFocusRepo.getAllSessions()).thenReturn(emptyList())
+        }
 
         coordinator = BackupRestoreCoordinator(
             taskRepository = mockTaskRepo,
             backupStorage = fakeStorage,
-            appVersion = "1.2.0",
+            appVersion = "1.9.7",
             notificationScheduler = mockScheduler,
-            userPreferencesRepository = mockPrefsRepo
+            userPreferencesRepository = mockPrefsRepo,
+            focusRepository = mockFocusRepo
         )
     }
 
@@ -89,9 +97,43 @@ class BackupRestoreCoordinatorTest {
         val decoded = BackupSerializer.json.decodeFromString<PortableBackup>(jsonWritten)
         
         assertEquals(1, decoded.schemaVersion)
-        assertEquals("1.2.0", decoded.appVersion)
+        assertEquals("1.9.7", decoded.appVersion)
         assertEquals(1, decoded.tasks.size)
         assertEquals("Test Task", decoded.tasks[0].title)
+    }
+
+    @Test
+    fun testExportAndRestore_includesFocusSessions() = runBlocking {
+        val sessions = listOf(
+            FocusSession(
+                id = 3L,
+                taskId = 1L,
+                taskTitle = "Test Task",
+                courseOrCategory = "Basis Data",
+                durationMinutes = 25,
+                dateKey = "2026-11-26",
+                completedAt = 9000L
+            )
+        )
+        `when`(mockFocusRepo.getAllSessions()).thenReturn(sessions)
+
+        val uri = mock(Uri::class.java)
+        val exportResult = coordinator.exportBackup(uri)
+        assertTrue(exportResult is BackupResult.Success)
+
+        val jsonWritten = fakeStorage.outputStream.toString(Charsets.UTF_8.name())
+        val decoded = BackupSerializer.json.decodeFromString<PortableBackup>(jsonWritten)
+        assertEquals(1, decoded.focusSessions.size)
+        assertEquals("Basis Data", decoded.focusSessions[0].courseOrCategory)
+
+        val validatedBackup = ValidatedPortableBackup(
+            exportedAt = 12345L,
+            tasks = emptyList(),
+            focusSessions = sessions
+        )
+        val restoreResult = coordinator.executeRestore(validatedBackup)
+        assertTrue(restoreResult is BackupResult.Success)
+        org.mockito.Mockito.verify(mockFocusRepo).replaceAllSessions(sessions)
     }
 
     @Test

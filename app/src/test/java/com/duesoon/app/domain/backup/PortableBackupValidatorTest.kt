@@ -163,4 +163,57 @@ class PortableBackupValidatorTest {
         val resultRestore = PortableBackupValidator.validate(backup, ValidationMode.RESTORE)
         assertTrue((resultRestore as ValidationResult.Failure).errors.contains(BackupValidationError.EmptyBackup))
     }
+
+    @Test
+    fun `valid focusSessions pass validation and preserve or reset IDs by mode`() {
+        val backup = createValidBackup().copy(
+            focusSessions = listOf(
+                PortableFocusSession(
+                    id = 42L,
+                    taskId = 1L,
+                    taskTitle = "Skripsi",
+                    courseOrCategory = "Kuliah",
+                    durationMinutes = 25,
+                    dateKey = "2026-11-26",
+                    completedAt = 5000L
+                )
+            )
+        )
+
+        val importResult = PortableBackupValidator.validate(backup, ValidationMode.IMPORT)
+        assertTrue(importResult is ValidationResult.Success)
+        val importedSession = (importResult as ValidationResult.Success).validatedBackup.focusSessions.single()
+        assertEquals(0L, importedSession.id)
+        assertEquals(null, importedSession.taskId)
+        assertEquals("Kuliah", importedSession.courseOrCategory)
+
+        val restoreResult = PortableBackupValidator.validate(backup, ValidationMode.RESTORE)
+        assertTrue(restoreResult is ValidationResult.Success)
+        val restoredSession = (restoreResult as ValidationResult.Success).validatedBackup.focusSessions.single()
+        assertEquals(42L, restoredSession.id)
+        assertEquals(1L, restoredSession.taskId)
+    }
+
+    @Test
+    fun `invalid focusSession duration or dateKey fails validation`() {
+        val invalidDuration = createValidBackup().copy(
+            focusSessions = listOf(
+                PortableFocusSession(id = 1L, durationMinutes = 0, dateKey = "2026-11-26", completedAt = 1000L)
+            )
+        )
+        val res1 = PortableBackupValidator.validate(invalidDuration, ValidationMode.IMPORT)
+        assertTrue((res1 as ValidationResult.Failure).errors.any {
+            it is BackupValidationError.InvalidField && it.fieldName == "focusSessions.durationMinutes"
+        })
+
+        val invalidDate = createValidBackup().copy(
+            focusSessions = listOf(
+                PortableFocusSession(id = 1L, durationMinutes = 25, dateKey = "2026-99-99", completedAt = 1000L)
+            )
+        )
+        val res2 = PortableBackupValidator.validate(invalidDate, ValidationMode.IMPORT)
+        assertTrue((res2 as ValidationResult.Failure).errors.any {
+            it is BackupValidationError.InvalidField && it.fieldName == "focusSessions.dateKey"
+        })
+    }
 }

@@ -105,6 +105,7 @@ fun EditTaskScreen(
             CategorySelector(
                 selectedCategory = uiState.category,
                 onCategorySelected = viewModel::updateCategory,
+                suggestions = uiState.categorySuggestions,
                 modifier = Modifier.fillMaxWidth()
             )
 

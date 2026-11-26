@@ -308,6 +308,7 @@ fun SettingsScreen(
                         AccentPalette.EMERALD -> stringResource(R.string.accent_emerald)
                         AccentPalette.AMBER -> stringResource(R.string.accent_amber)
                         AccentPalette.ROSE -> stringResource(R.string.accent_rose)
+                        AccentPalette.CAMPUS_PAPER -> stringResource(R.string.accent_campus_paper)
                     }
                     Text(paletteName)
                 },
@@ -328,6 +329,7 @@ fun SettingsScreen(
                                             AccentPalette.EMERALD -> stringResource(R.string.accent_emerald)
                                             AccentPalette.AMBER -> stringResource(R.string.accent_amber)
                                             AccentPalette.ROSE -> stringResource(R.string.accent_rose)
+                                            AccentPalette.CAMPUS_PAPER -> stringResource(R.string.accent_campus_paper)
                                         }
                                         Text(pName) 
                                     },
@@ -538,7 +540,18 @@ fun SettingsScreen(
                 AlertDialog(
                     onDismissRequest = { viewModel.cancelConfirmation() },
                     title = { Text(stringResource(R.string.dialog_import_title)) },
-                    text = { Text(stringResource(R.string.dialog_import_message, state.backup.tasks.size)) },
+                    text = {
+                        val msg = if (state.backup.focusSessions.isNotEmpty()) {
+                            stringResource(
+                                R.string.dialog_import_with_focus_message,
+                                state.backup.tasks.size,
+                                state.backup.focusSessions.size
+                            )
+                        } else {
+                            stringResource(R.string.dialog_import_message, state.backup.tasks.size)
+                        }
+                        Text(msg)
+                    },
                     confirmButton = {
                         TextButton(onClick = { viewModel.executeImport() }) {
                             Text(stringResource(R.string.action_import))
@@ -557,7 +570,18 @@ fun SettingsScreen(
                 AlertDialog(
                     onDismissRequest = { viewModel.cancelConfirmation() },
                     title = { Text(stringResource(R.string.dialog_restore_title)) },
-                    text = { Text(stringResource(R.string.dialog_restore_message, state.backup.tasks.size)) },
+                    text = {
+                        val msg = if (state.backup.focusSessions.isNotEmpty()) {
+                            stringResource(
+                                R.string.dialog_restore_with_focus_message,
+                                state.backup.tasks.size,
+                                state.backup.focusSessions.size
+                            )
+                        } else {
+                            stringResource(R.string.dialog_restore_message, state.backup.tasks.size)
+                        }
+                        Text(msg)
+                    },
                     confirmButton = {
                         TextButton(onClick = { viewModel.executeRestore() }) {
                             Text(stringResource(R.string.action_restore), color = MaterialTheme.colorScheme.error)

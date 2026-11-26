@@ -15,16 +15,23 @@ import com.duesoon.app.domain.model.toCategoryPreset
 @Composable
 fun CategoryChip(category: String?, modifier: Modifier = Modifier) {
     if (category.isNullOrBlank()) return
-    val preset = category.toCategoryPreset()
-    val chipColor = preset?.color ?: Color(0xFF6B7280)
-    val displayText = if (preset != null) stringResource(preset.labelResId) else category
+    val preset = category.trim().toCategoryPreset()
+    val containerColor = preset?.color?.copy(alpha = 0.85f)
+        ?: MaterialTheme.colorScheme.secondaryContainer
+    val textColor = if (preset != null) {
+        Color.White
+    } else {
+        MaterialTheme.colorScheme.onSecondaryContainer
+    }
+    val displayText = if (preset != null) stringResource(preset.labelResId) else category.trim()
+
     Text(
         text = displayText,
         style = MaterialTheme.typography.labelSmall,
-        color = Color.White,
+        color = textColor,
         modifier = modifier
             .background(
-                color = chipColor.copy(alpha = 0.85f),
+                color = containerColor,
                 shape = RoundedCornerShape(6.dp)
             )
             .padding(horizontal = 8.dp, vertical = 3.dp)

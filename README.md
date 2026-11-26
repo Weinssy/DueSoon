@@ -2,119 +2,70 @@
 
 > Tahu apa yang perlu menjadi perhatian Anda berikutnya.
 
-DueSoon adalah aplikasi pengingat deadline Android yang minimal, local-first, dan fokus pada satu tujuan utama: membantu Anda mengetahui tugas mana yang paling penting untuk ditangani selanjutnya.
+DueSoon adalah aplikasi pengingat deadline Android dan pendamping fokus belajar yang minimal, **local-first**, dan tenang: membantu Anda memprioritaskan tenggat terdekat sekaligus menjalani sesi Pomodoro terarah langsung di satu tempat.
 
-Aplikasi ini dirancang agar tetap tenang, jelas, cepat, andal, dan bebas dari kompleksitas yang tidak perlu. Semua data disimpan secara lokal di perangkat Anda, dengan fokus pada prioritas deadline dan manajemen tugas yang sederhana.
+Semua data tugas dan riwayat sesi fokus disimpan secara lokal di perangkat (Room SQLite + DataStore). Tidak ada akun, tidak ada pelacakan, dan koneksi internet hanya digunakan *on-demand* saat Anda memeriksa pembaruan aplikasi di Pengaturan.
 
-## Prinsip produk
+## Prinsip Produk
 
-"Deadline harus jelas. Yang lain harus tetap tenang."
+> "Deadline harus jelas. Yang lain harus tetap tenang."
 
-DueSoon tidak membebani pengguna dengan fitur yang tidak relevan. Tidak ada akun, tidak ada sinkronisasi cloud, dan tidak ada kebutuhan untuk mengelola ekosistem yang rumit. Fokus utama aplikasi ini adalah membantu Anda tetap aware terhadap tenggat waktu yang paling dekat.
+## Fitur Utama
 
-## Fitur utama
-
+### Manajemen Tugas & Pengingat
 - Membuat, mengedit, menandai selesai, dan menghapus tugas
-- Deadline opsional
-- Status tugas seperti: Mendekati deadline, Perlu perhatian hari ini, Terlambat
-- Smart Reminder
-- Reminder kustom
-- Notifikasi lokal
-- Tampilan beranda, daftar tugas, dan kalender
-- Pencarian dan penyaringan tugas
-- Pengurutan tugas yang sederhana dan konsisten
-- Tugas berulang
-- Fitur snooze
-- Backup dan ekspor data lokal
-- Impor dan restore data secara aman
-- Fokus pada data lokal dan keamanan saat pemulihan data
+- Deadline opsional dengan status urgensi otomatis (*Terlambat*, *Hari Ini*, *Mendekati Deadline*)
+- Kategori preset (`Kuliah`, `Kerja`, `Pribadi`, `Lainnya`) serta dukungan **nama mata kuliah kustom** dengan saran otomatis dan filter di Beranda
+- Smart Reminder multi-tahap, Alarm layar penuh opsional, Snooze (`10 mnt`, `1 jam`, `Besok`), serta tugas berulang (*Harian*, *Mingguan*, *Bulanan*)
+- Tampilan Beranda (pencarian judul/mata kuliah + filter), Kalender dengan indikator kepadatan tugas, dan Widget Jetpack Glance di layar utama
 
-## Stack teknologi
+### Tab Fokus & Statistik Belajar (Integrasi Fokus Kuliah)
+- **Timer Pomodoro Siklus Penuh:** Mode *Fokus*, *Istirahat Singkat*, dan *Istirahat Panjang* otomatis setiap 4 sesi fokus
+- **Foreground Service & Timer Berbasis Timestamp:** Tetap berjalan akurat di latar belakang dengan notifikasi persisten (kontrol *Jeda/Lanjut*, *Lewati*, *Reset*) dan notifikasi selesai saat layar terkunci atau app di background
+- **Tautan Target Tugas:** Pilih, ganti, atau selesaikan tugas langsung dari tab Fokus
+- **Statistik Fokus Lokal:** Total menit & sesi minggu ini, *streak* harian beruntun, rata-rata 7 hari, grafik batang 7 hari terakhir, dan distribusi fokus per mata kuliah/kategori
+- **Tema "Kertas & Tinta Kampus":** Palet warna hangat (kertas `#F6F2EA`, tinta terakota `#B8432E`, sage `#1F6E58`) di Pengaturan Tampilan
 
-- Kotlin
-- Jetpack Compose
-- Material 3
-- Room
-- Coroutines
-- Flow / StateFlow
-- Navigation Compose
-- DataStore
-- Android Notification APIs
-- WorkManager
-- Gradle Kotlin DSL
+### Keamanan Data & Pembaruan Aplikasi
+- **Backup & Restore Portabel (`schemaVersion = 1`):** Ekspor, Impor (merge), dan Pulihkan (replace atomik via transaksi Room) mencakup tugas dan riwayat `focus_sessions` melalui Android Storage Access Framework (SAF)
+- **Impor Cadangan Fokus Kuliah:** Mengimpor berkas ekspor JSON dari web [fokus-kuliah](https://github.com/Weinssy/fokus-kuliah) (tugas, riwayat sesi, dan pengaturan Pomodoro) langsung ke DueSoon
+- **In-App Update (GitHub Releases):** Cek pembaruan, lihat catatan rilis, unduh APK dengan indikator progres, dan pasang langsung melalui `FileProvider` dari menu **Pengaturan → Pembaruan Aplikasi**
+
+## Stack Teknologi
+
+- Kotlin, Jetpack Compose, Material 3
+- Room Database (Schema v5, migrasi `1→2→3→4→5`)
+- Coroutines, Flow / StateFlow, Navigation Compose
+- Jetpack DataStore Preferences
+- Jetpack Glance AppWidget
+- Android Notification APIs, AlarmManager & Foreground Service (`specialUse`)
+- Kotlinx Serialization & OkHttp (untuk pemeriksaan/unduhan rilis GitHub)
+- Gradle Kotlin DSL + GitHub Actions CI/CD
 
 ## Arsitektur
 
-UI → ViewModel → Repository → Room
-
-Pendekatan arsitektur ini menjaga pemisahan tanggung jawab agar logika bisnis tetap terjaga dari UI dan akses data tetap konsisten melalui repository.
-
-## Status proyek
-
-Saat ini, fokus pengembangan DueSoon berada pada versi v1.3.0 dengan tema:
-
-- Backup & Data Safety
-- Ekspor data portable dalam format JSON
-- Import data dari file backup
-- Restore data dengan validasi yang aman
-- Transaction Room yang aman
-- Reconciliation notifikasi setelah operasi database berhasil
-
-Ini menandakan bahwa proyek saat ini lebih menekankan pada keandalan data, keamanan restore, dan integritas data lokal dibandingkan fitur-fitur yang bersifat cloud atau multi-device.
-
-## Prinsip lokal-first dan keamanan data
-
-DueSoon tetap berorientasi pada perangkat lokal. Data pengguna tidak dipaksa untuk disinkronkan ke layanan eksternal, dan aplikasi dirancang agar tetap dapat berfungsi tanpa akun atau koneksi internet.
-
-Pada tahap saat ini, fokus utama adalah:
-
-- menjaga data tetap aman dan dapat dipulihkan
-- memvalidasi seluruh backup sebelum restore
-- memastikan operasi impor/restore tidak mengubah data secara parsial
-- menjaga notifikasi tetap konsisten dengan tindakan pengguna
-
-## Cara menjalankan
-
-1. Clone repositori ini.
-2. Buka project di Android Studio.
-3. Hubungkan perangkat Android atau emulator.
-4. Jalankan aplikasi dari modul `app`.
-
-Pastikan Anda sudah menyiapkan lingkungan Android Studio dan SDK yang sesuai.
-
-## Struktur project
-
 ```text
-DueSoon/
-├─ app/
-│  ├─ src/
-│  └─ build.gradle.kts
-├─ docs/
-├─ gradle/
-├─ build.gradle.kts
-├─ gradlew
-├─ gradlew.bat
-├─ settings.gradle.kts
-├─ LICENSE
-├─ README.md
-└─ prd.md
+UI (Compose) → ViewModel → Repository / Coordinator → Room & DataStore
 ```
 
-## Roadmap saat ini
+- `PomodoroTimerCoordinator` + `PomodoroTimerService` menjaga timer tetap sinkron antara UI dan latar belakang.
+- `BackupRestoreCoordinator` & `FokusKuliahImportCoordinator` menjaga validasi terpisah dari lapisan penyimpanan Room dan rekonsiliasi notifikasi.
 
-DueSoon saat ini berfokus pada stabilitas data dan pengalaman pengelolaan deadline yang minimal, dengan prioritas pengembangan pada:
+## Status Versi
 
-- backup dan ekspor data
-- validasi import/restore
-- perlindungan data dari operasi yang tidak aman
-- notifikasi lokal yang konsisten
-- pengalaman pengelolaan tugas yang tetap simpel dan cepat
+- **Versi Kode Saat Ini:** `v1.9.7` (`versionCode = 17`)
+- **Rilis Terpublikasi Terakhir:** `v1.9.6` ([GitHub Releases](https://github.com/Weinssy/DueSoon/releases))
+
+## Cara Menjalankan
+
+1. Clone repositori ini.
+2. Buka project di Android Studio (JDK 17, Android SDK 34).
+3. Jalankan unit test atau build debug APK:
+   ```bash
+   ./gradlew testDebugUnitTest compileDebugAndroidTestKotlin assembleDebug
+   ```
+4. Untuk build release bertanda tangan, salin `keystore.properties.example` menjadi `keystore.properties` lalu isi kredensial keystore Anda.
 
 ## Lisensi
 
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).
-
-## Deskripsi GitHub yang direkomendasikan
-
-Aplikasi pengingat deadline Android yang minimal, local-first, dan fokus pada tugas yang paling perlu ditangani berikutnya.
-

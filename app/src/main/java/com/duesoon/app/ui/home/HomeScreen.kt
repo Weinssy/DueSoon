@@ -7,12 +7,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -47,21 +49,31 @@ fun HomeScreen(
     viewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val tasks by viewModel.tasks.collectAsState()
-    
+    val categories by viewModel.categories.collectAsState()
+    val selectedCategory by viewModel.selectedCategory.collectAsState()
+
     var isSearching by remember { mutableStateOf(false) }
     var searchQuery by remember { mutableStateOf("") }
 
-    val filteredTasks = if (searchQuery.isNotBlank()) {
-        tasks.filter { it.title.contains(searchQuery, ignoreCase = true) }
-    } else {
-        tasks
+    val activeSelectedCategory = selectedCategory?.takeIf { sel ->
+        categories.any { it.equals(sel, ignoreCase = true) }
+    }
+
+    val filteredTasks = tasks.filter { task ->
+        val matchesCategory = activeSelectedCategory == null ||
+            task.category?.trim().equals(activeSelectedCategory, ignoreCase = true)
+        val matchesQuery = searchQuery.isBlank() ||
+            task.title.contains(searchQuery, ignoreCase = true) ||
+            (task.category?.contains(searchQuery, ignoreCase = true) == true) ||
+            (task.description?.contains(searchQuery, ignoreCase = true) == true)
+        matchesCategory && matchesQuery
     }
 
     Scaffold(
         modifier = modifier,
         topBar = {
             TopAppBar(
-                title = { 
+                title = {
                     if (isSearching) {
                         TextField(
                             value = searchQuery,
@@ -83,7 +95,7 @@ fun HomeScreen(
                 },
                 actions = {
                     if (isSearching) {
-                        IconButton(onClick = { 
+                        IconButton(onClick = {
                             isSearching = false
                             searchQuery = ""
                         }) {
@@ -111,6 +123,31 @@ fun HomeScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
+            if (categories.isNotEmpty()) {
+                LazyRow(
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    item {
+                        FilterChip(
+                            selected = activeSelectedCategory == null,
+                            onClick = { viewModel.selectCategory(null) },
+                            label = { Text(stringResource(R.string.filter_category_all)) }
+                        )
+                    }
+                    items(categories, key = { it.lowercase() }) { category ->
+                        val isSelected = activeSelectedCategory.equals(category, ignoreCase = true)
+                        FilterChip(
+                            selected = isSelected,
+                            onClick = {
+                                viewModel.selectCategory(if (isSelected) null else category)
+                            },
+                            label = { Text(category) }
+                        )
+                    }
+                }
+            }
+
             LazyColumn(
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -118,15 +155,26 @@ fun HomeScreen(
             ) {
                 if (filteredTasks.isEmpty()) {
                     item {
+                        val isFiltered = activeSelectedCategory != null || searchQuery.isNotBlank()
                         EmptyState(
-                            title = stringResource(R.string.empty_home_title),
-                            message = stringResource(R.string.empty_home_message),
+                            title = if (isFiltered) {
+                                stringResource(R.string.empty_tasks_title)
+                            } else {
+                                stringResource(R.string.empty_home_title)
+                            },
+                            message = if (activeSelectedCategory != null) {
+                                stringResource(R.string.empty_tasks_category_message)
+                            } else if (searchQuery.isNotBlank()) {
+                                stringResource(R.string.empty_tasks_search_message)
+                            } else {
+                                stringResource(R.string.empty_home_message)
+                            },
                             modifier = Modifier.fillParentMaxSize()
                         )
                     }
                 } else {
                     items(
-                        items = filteredTasks, 
+                        items = filteredTasks,
                         key = { it.id },
                         contentType = { "task_item" }
                     ) { task ->

@@ -14,7 +14,6 @@ import com.duesoon.app.ui.settings.SettingsViewModel
 import com.duesoon.app.ui.task.CreateTaskViewModel
 import com.duesoon.app.ui.task.EditTaskViewModel
 import com.duesoon.app.ui.task.TaskDetailViewModel
-import com.duesoon.app.ui.tasks.TasksViewModel
 
 object AppViewModelProvider {
     val Factory = viewModelFactory {
@@ -37,9 +36,6 @@ object AppViewModelProvider {
             )
         }
         initializer {
-            TasksViewModel(dueSoonApplication().container.taskRepository)
-        }
-        initializer {
             CalendarViewModel(dueSoonApplication().container.taskRepository)
         }
         initializer {
@@ -60,7 +56,8 @@ object AppViewModelProvider {
                 savedStateHandle = this.createSavedStateHandle(),
                 repository = container.taskRepository,
                 focusRepository = container.focusRepository,
-                userPreferencesRepository = container.userPreferencesRepository
+                userPreferencesRepository = container.userPreferencesRepository,
+                sharedCoordinator = container.pomodoroTimerCoordinator
             )
         }
     }

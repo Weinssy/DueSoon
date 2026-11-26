@@ -32,7 +32,11 @@
     <string name="label_title">Judul</string>
     <string name="label_description_optional">Deskripsi (Opsional)</string>
     <string name="label_deadline">Tenggat</string>
-    <string name="label_category_optional">Kategori (Opsional)</string>
+    <string name="label_category_optional">Kategori / Mata Kuliah (Opsional)</string>
+    <string name="label_course_or_category_input">Nama kategori atau mata kuliah</string>
+    <string name="placeholder_course_or_category">cth: Basis Data, Kalkulus, Kuliah</string>
+    <string name="label_course_suggestions">Saran mata kuliah sebelumnya:</string>
+    <string name="cd_clear_category">Hapus kategori</string>
     <string name="error_title_empty">Judul tidak boleh kosong.</string>
 
     <!-- Filters (Status & Category) -->
@@ -94,7 +98,8 @@
     <string name="empty_calendar_title">Hari Bebas</string>
     <string name="empty_calendar_message">Tidak ada tenggat pada tanggal ini.</string>
     <string name="empty_tasks_title">Tidak ada tugas ditemukan</string>
-    <string name="empty_tasks_category_message">Coba pilih kategori yang berbeda.</string>
+    <string name="empty_tasks_category_message">Coba pilih kategori atau mata kuliah yang berbeda.</string>
+    <string name="empty_tasks_search_message">Tidak ada tugas yang cocok dengan kata kunci pencarian.</string>
     <string name="empty_tasks_free_message">Nikmati waktu luang Anda!</string>
 
     <!-- Dialogs -->
@@ -125,6 +130,7 @@
     <string name="accent_emerald">Emerald</string>
     <string name="accent_amber">Amber</string>
     <string name="accent_rose">Rose</string>
+    <string name="accent_campus_paper">Kertas &amp; Tinta Kampus</string>
 
     <string name="settings_theme_title">Tema Aplikasi</string>
     <string name="settings_theme_change">Ubah</string>
@@ -141,15 +147,17 @@
     <!-- Data & Backup -->
     <string name="settings_section_data">Data &amp; Backup</string>
     <string name="settings_export_title">Ekspor Backup</string>
-    <string name="settings_export_subtitle">Simpan data tugas ke file JSON</string>
+    <string name="settings_export_subtitle">Simpan data tugas &amp; riwayat fokus ke file JSON</string>
     <string name="settings_import_title">Impor Data</string>
-    <string name="settings_import_subtitle">Tambahkan tugas dari file backup ke data saat ini</string>
+    <string name="settings_import_subtitle">Tambahkan tugas &amp; riwayat fokus dari file backup</string>
     <string name="settings_restore_title">Pulihkan Backup</string>
     <string name="settings_restore_subtitle">Ganti seluruh data saat ini dengan file backup</string>
     <string name="dialog_import_title">Impor Tugas</string>
     <string name="dialog_import_message">Apakah Anda ingin mengimpor %1$d tugas baru ke dalam data saat ini?</string>
+    <string name="dialog_import_with_focus_message">Apakah Anda ingin mengimpor %1$d tugas dan %2$d sesi fokus ke dalam data saat ini?</string>
     <string name="dialog_restore_title">Pulihkan Data (Berbahaya)</string>
     <string name="dialog_restore_message">Tindakan ini akan menghapus permanen seluruh data Anda saat ini dan menggantinya dengan %1$d tugas dari backup. Lanjutkan?</string>
+    <string name="dialog_restore_with_focus_message">Tindakan ini akan menghapus permanen seluruh data Anda saat ini dan menggantinya dengan %1$d tugas serta %2$d sesi fokus dari backup. Lanjutkan?</string>
     <string name="action_import">Impor</string>
     <string name="action_restore">Pulihkan</string>
 
@@ -247,6 +255,15 @@
     <string name="focus_settings_long_break_min">Istirahat Panjang (menit)</string>
     <string name="focus_settings_auto_start">Mulai otomatis sesi berikutnya</string>
     <string name="focus_settings_sound">Bunyi penanda selesai</string>
+    <string name="focus_notif_channel_ongoing_name">Timer Pomodoro Berjalan</string>
+    <string name="focus_notif_channel_ongoing_desc">Menampilkan hitung mundur sesi fokus atau istirahat yang sedang aktif</string>
+    <string name="focus_notif_channel_complete_name">Sesi Pomodoro Selesai</string>
+    <string name="focus_notif_channel_complete_desc">Memberi tahu saat sesi fokus atau istirahat selesai di latar belakang</string>
+    <string name="focus_notif_channel_complete_silent_name">Sesi Pomodoro Selesai (Senyap)</string>
+    <string name="focus_notif_paused">Dijeda</string>
+    <string name="focus_notif_running_subtitle">Ketuk untuk membuka tab Fokus</string>
+    <string name="focus_notif_action_skip">Lewati</string>
+    <string name="focus_notif_next_phase">Tahap berikutnya: %1$s</string>
 
     <!-- Fokus Kuliah Import -->
     <string name="settings_import_fk_title">Impor dari Fokus Kuliah</string>

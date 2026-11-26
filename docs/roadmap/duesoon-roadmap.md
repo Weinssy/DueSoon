@@ -48,7 +48,6 @@ v1.7.0  ✅
 ├── Advanced recurring
 └── Reminder engine improvements
 │
-│
 ▼
 v1.8.0  ✅
 │
@@ -57,15 +56,32 @@ v1.8.0  ✅
 └── Clean Data Separation
 │
 ▼
-v2.0.0  ✅
+v1.9.0 – v1.9.5  ✅
 │
-├── Optional account & E2EE
-├── Optional cloud sync
-└── Cross-device conflict resolution
+├── Custom Themes, Visual Density & Haptics
+├── Alarm Reminder & Full-Screen Intent
+├── Dynamic Glance Widget Overhaul
+└── Basic Task-Scoped Focus Timer
 │
 ▼
-v2.1.0
+v1.9.6  ✅
 │
-├── Desktop / Web Client
-├── Real-time Collaboration (Shared Lists)
-└── Natural Language Task Creation (AI)
+├── Native Fokus Kuliah Integration (Full Pomodoro Tab + 7-Day & Streak Stats)
+├── Room v5 Migration (focus_sessions) & Fokus Kuliah JSON Importer
+└── GitHub Releases In-App Update (Settings)
+│
+▼
+v1.9.7  🚧 (Current Development)
+│
+├── Pomodoro Foreground Service & Persistent Background Notification
+├── Course Autocomplete & Home Category/Course Filter
+├── "Kertas & Tinta Kampus" Theme Palette
+├── Portable Backup/Restore for focus_sessions
+├── AndroidTest Compilation Fix & Dead Code Cleanup
+└── GitHub Actions CI & Release APK Automation
+│
+▼
+Future (Optional / Unscheduled)
+│
+├── Optional E2EE Cloud Sync
+└── Desktop / Web Companion Sync

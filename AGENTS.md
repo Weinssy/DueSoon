@@ -188,21 +188,22 @@ Current core scope includes:
 - task completion
 - title/description
 - deadline
-- category
+- category & course suggestions/filtering
 - priority
 - Smart Reminder
 - Custom Reminder
-- local notifications
-- Home
-- Tasks
+- local notifications & full-screen alarm reminders
+- Home (search + course/category filters)
+- Focus (Pomodoro cycle, foreground timer service, task linking, 7-day & streak statistics)
 - Calendar
-- Settings
+- Settings (appearance, Campus Paper & Ink theme, backup/import/restore, Fokus Kuliah JSON import, GitHub Releases In-App Update)
 - search
 - filtering
 - sorting
 - recurring tasks
 - snooze
-- local backup/export/import/restore work for v1.3
+- home screen Glance widget
+- local backup/export/import/restore (tasks & focus_sessions, portable schema v1)
 
 Do not introduce unrelated product areas such as:
 
@@ -212,10 +213,7 @@ Do not introduce unrelated product areas such as:
 - social features
 - gamification
 - AI
-- analytics dashboards
-- habit tracking
-- Pomodoro
-- statistics
+- third-party analytics/tracking
 
 unless explicitly requested.
 
@@ -223,23 +221,21 @@ unless explicitly requested.
 
 Current development target:
 
-DueSoon v1.3.0
+DueSoon v1.9.7
 
-Primary v1.3 focus:
+Primary focus:
 
-Backup & Data Safety
+Local-First Productivity (Task Deadlines + Native Fokus Kuliah Pomodoro & Statistics + GitHub Releases In-App Update)
 
-Planned areas:
+Core safety invariants:
 
-- portable JSON export
-- backup
-- import
-- restore
-- validation
-- safe Room transactions
-- notification reconciliation
+- portable JSON export/import/restore (`schemaVersion == 1`, backward/forward compatible)
+- validation before destructive restore
+- atomic Room transactions across `tasks` and `focus_sessions`
+- notification reconciliation after database operations
+- on-demand GitHub Releases In-App Update (`INTERNET` used only for checking/downloading APK updates, no task data leaves the device)
 
-Room schema and portable backup schema are separate concepts.
+Room schema (`v5`) and portable backup schema (`v1`) are separate concepts.
 
 Never assume:
 

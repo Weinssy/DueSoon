@@ -1,6 +1,7 @@
 package com.duesoon.app.di
 
 import android.content.Context
+import androidx.room.withTransaction
 import com.duesoon.app.BuildConfig
 import com.duesoon.app.data.backup.BackupRestoreCoordinator
 import com.duesoon.app.data.backup.BackupStorage
@@ -14,8 +15,13 @@ import com.duesoon.app.data.repository.UserPreferencesRepository
 import com.duesoon.app.data.update.GitHubAppUpdateRepository
 import com.duesoon.app.domain.update.AppUpdateRepository
 import com.duesoon.app.domain.usecase.CompleteTaskUseCase
+import com.duesoon.app.focus.AndroidPomodoroServiceBridge
+import com.duesoon.app.focus.PomodoroTimerCoordinator
 import com.duesoon.app.notification.AndroidNotificationScheduler
 import com.duesoon.app.notification.NotificationScheduler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 
 interface AppContainer {
     val taskRepository: TaskRepository
@@ -26,11 +32,18 @@ interface AppContainer {
     val backupRestoreCoordinator: BackupRestoreCoordinator
     val fokusKuliahImportCoordinator: FokusKuliahImportCoordinator
     val appUpdateRepository: AppUpdateRepository
+    val pomodoroTimerCoordinator: PomodoroTimerCoordinator
     val completeTaskUseCase: CompleteTaskUseCase
     val taskDao: TaskDao
 }
 
 class DefaultAppContainer(private val context: Context) : AppContainer {
+    private val appScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+
+    private val database: AppDatabase by lazy {
+        AppDatabase.getDatabase(context)
+    }
+
     override val notificationScheduler: NotificationScheduler by lazy {
         AndroidNotificationScheduler(context)
     }
@@ -41,7 +54,7 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
 
     override val taskRepository: TaskRepository by lazy {
         TaskRepository(
-            AppDatabase.getDatabase(context).taskDao(),
+            database.taskDao(),
             notificationScheduler,
             userPreferencesRepository,
             context
@@ -49,7 +62,7 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
     }
 
     override val focusRepository: FocusRepository by lazy {
-        FocusRepository(AppDatabase.getDatabase(context).focusSessionDao())
+        FocusRepository(database.focusSessionDao())
     }
 
     override val backupStorage: BackupStorage by lazy {
@@ -62,7 +75,9 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
             backupStorage = backupStorage,
             appVersion = BuildConfig.VERSION_NAME,
             notificationScheduler = notificationScheduler,
-            userPreferencesRepository = userPreferencesRepository
+            userPreferencesRepository = userPreferencesRepository,
+            focusRepository = focusRepository,
+            runInTransaction = { block -> database.withTransaction { block() } }
         )
     }
 
@@ -83,11 +98,21 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         )
     }
 
+    override val pomodoroTimerCoordinator: PomodoroTimerCoordinator by lazy {
+        PomodoroTimerCoordinator(
+            scope = appScope,
+            taskRepository = taskRepository,
+            focusRepository = focusRepository,
+            userPreferencesRepository = userPreferencesRepository,
+            serviceBridge = AndroidPomodoroServiceBridge(context)
+        )
+    }
+
     override val completeTaskUseCase: CompleteTaskUseCase by lazy {
         CompleteTaskUseCase(taskRepository)
     }
 
     override val taskDao: TaskDao by lazy {
-        AppDatabase.getDatabase(context).taskDao()
+        database.taskDao()
     }
 }

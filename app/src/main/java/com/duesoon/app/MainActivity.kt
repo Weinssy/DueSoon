@@ -23,15 +23,17 @@ import com.duesoon.app.ui.theme.LocalVisualDensity
 class MainActivity : ComponentActivity() {
     companion object {
         const val ACTION_QUICK_ADD = "com.duesoon.app.action.QUICK_ADD"
+        const val ACTION_OPEN_FOCUS = "com.duesoon.app.action.OPEN_FOCUS"
     }
 
     private val _quickAddTrigger = kotlinx.coroutines.flow.MutableStateFlow(false)
+    private val _openFocusTrigger = kotlinx.coroutines.flow.MutableStateFlow(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         
-        checkQuickAddIntent(intent)
+        checkIntentActions(intent)
         
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ActivityCompat.requestPermissions(
@@ -47,6 +49,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val userPreferences by userPreferencesRepository.userPreferencesFlow.collectAsState(initial = UserPreferencesState())
             val triggerQuickAdd by _quickAddTrigger.collectAsState()
+            val triggerOpenFocus by _openFocusTrigger.collectAsState()
             
             val isDarkTheme = when (userPreferences.theme) {
                 "LIGHT" -> false
@@ -65,7 +68,9 @@ class MainActivity : ComponentActivity() {
                     ) {
                         AppNavigation(
                             quickAddTrigger = triggerQuickAdd,
-                            onQuickAddHandled = { _quickAddTrigger.value = false }
+                            onQuickAddHandled = { _quickAddTrigger.value = false },
+                            openFocusTrigger = triggerOpenFocus,
+                            onOpenFocusHandled = { _openFocusTrigger.value = false }
                         )
                     }
                 }
@@ -75,12 +80,15 @@ class MainActivity : ComponentActivity() {
 
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
-        checkQuickAddIntent(intent)
+        checkIntentActions(intent)
     }
 
-    private fun checkQuickAddIntent(intent: android.content.Intent?) {
+    private fun checkIntentActions(intent: android.content.Intent?) {
         if (intent?.action == ACTION_QUICK_ADD || intent?.getBooleanExtra("quick_add", false) == true) {
             _quickAddTrigger.value = true
+        }
+        if (intent?.action == ACTION_OPEN_FOCUS || intent?.getBooleanExtra("open_focus", false) == true) {
+            _openFocusTrigger.value = true
         }
     }
 }

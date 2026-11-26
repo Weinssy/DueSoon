@@ -1,9 +1,12 @@
 package com.duesoon.app.domain.backup
 
+import com.duesoon.app.domain.model.FocusSession
 import com.duesoon.app.domain.model.Priority
-import com.duesoon.app.domain.util.RecurrenceRuleParser
 import com.duesoon.app.domain.model.ReminderType
 import com.duesoon.app.domain.model.Task
+import com.duesoon.app.domain.util.RecurrenceRuleParser
+import java.time.LocalDate
+import java.time.format.DateTimeParseException
 
 enum class ValidationMode {
     IMPORT,
@@ -41,8 +44,7 @@ object PortableBackupValidator {
         }
 
         // 3. Empty List Decision
-        // PRD explicitly rejects empty import. For restore, we also reject empty for safety (OPEN DECISION).
-        if (backup.tasks.isEmpty()) {
+        if (backup.tasks.isEmpty() && backup.focusSessions.isEmpty()) {
             errors.add(BackupValidationError.EmptyBackup)
             return ValidationResult.Failure(errors) // Fast fail if empty
         }
@@ -52,7 +54,8 @@ object PortableBackupValidator {
 
         // 4. Task Validation
         for ((index, portableTask) in backup.tasks.withIndex()) {
-            
+            val taskErrorsStart = errors.size
+
             // Title Validation
             val normalizedTitle = portableTask.title.trim()
             if (normalizedTitle.isEmpty()) {
@@ -107,11 +110,66 @@ object PortableBackupValidator {
                 }
             }
 
-            // If no errors so far for this task (meaning enum parsing won't throw), map to Domain
-            if (errors.isEmpty()) {
+            if (errors.size == taskErrorsStart) {
                 validatedTasks.add(
                     PortableTaskMapper.toDomainTask(
-                        portableTask.copy(title = normalizedTitle) // Normalize title
+                        portableTask.copy(title = normalizedTitle)
+                    )
+                )
+            }
+        }
+
+        // 5. Focus Session Validation
+        val validatedSessions = mutableListOf<FocusSession>()
+        val seenSessionIds = mutableSetOf<Long>()
+
+        for ((index, portableSession) in backup.focusSessions.withIndex()) {
+            val sessionErrorsStart = errors.size
+
+            if (portableSession.durationMinutes <= 0) {
+                errors.add(
+                    BackupValidationError.InvalidField(
+                        index,
+                        "focusSessions.durationMinutes",
+                        "Duration minutes must be positive"
+                    )
+                )
+            }
+
+            val trimmedDateKey = portableSession.dateKey.trim()
+            if (!isValidIsoDateKey(trimmedDateKey)) {
+                errors.add(
+                    BackupValidationError.InvalidField(
+                        index,
+                        "focusSessions.dateKey",
+                        "dateKey must be a valid YYYY-MM-DD date"
+                    )
+                )
+            }
+
+            if (portableSession.completedAt < 0) {
+                errors.add(
+                    BackupValidationError.InvalidTimestamp(
+                        index,
+                        "focusSessions.completedAt",
+                        "Timestamp cannot be negative"
+                    )
+                )
+            }
+
+            if (mode == ValidationMode.RESTORE && portableSession.id > 0L) {
+                if (!seenSessionIds.add(portableSession.id)) {
+                    errors.add(BackupValidationError.DuplicateId(portableSession.id))
+                }
+            } else if (mode == ValidationMode.RESTORE && portableSession.id <= 0L) {
+                errors.add(BackupValidationError.InvalidId(index, "Focus session ID must be positive for restore"))
+            }
+
+            if (errors.size == sessionErrorsStart) {
+                validatedSessions.add(
+                    PortableFocusSessionMapper.toDomain(
+                        portableSession.copy(dateKey = trimmedDateKey),
+                        mode
                     )
                 )
             }
@@ -121,7 +179,8 @@ object PortableBackupValidator {
             ValidationResult.Success(
                 ValidatedPortableBackup(
                     exportedAt = backup.exportedAt,
-                    tasks = validatedTasks
+                    tasks = validatedTasks,
+                    focusSessions = validatedSessions
                 )
             )
         } else {
@@ -149,5 +208,15 @@ object PortableBackupValidator {
 
     private fun isValidRecurrenceInterval(value: String): Boolean {
         return RecurrenceRuleParser.deserialize(value) != null
+    }
+
+    private fun isValidIsoDateKey(value: String): Boolean {
+        if (!Regex("""^\d{4}-\d{2}-\d{2}$""").matches(value)) return false
+        return try {
+            LocalDate.parse(value)
+            true
+        } catch (e: DateTimeParseException) {
+            false
+        }
     }
 }

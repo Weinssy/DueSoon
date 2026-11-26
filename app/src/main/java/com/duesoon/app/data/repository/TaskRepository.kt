@@ -108,9 +108,12 @@ open class TaskRepository(
     }
 
     suspend fun restoreTasks(tasks: List<Task>) {
-        if (tasks.isEmpty()) return
-        val entities = tasks.map { it.toEntity() }
-        taskDao.replaceAllTasks(entities)
+        if (tasks.isEmpty()) {
+            taskDao.deleteAllTasks()
+        } else {
+            val entities = tasks.map { it.toEntity() }
+            taskDao.replaceAllTasks(entities)
+        }
         DueSoonWidgetUpdater.update(context)
     }
 }

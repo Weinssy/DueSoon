@@ -76,7 +76,9 @@ val bottomNavItems = listOf(
 fun AppNavigation(
     navController: NavHostController = rememberNavController(),
     quickAddTrigger: Boolean = false,
-    onQuickAddHandled: () -> Unit = {}
+    onQuickAddHandled: () -> Unit = {},
+    openFocusTrigger: Boolean = false,
+    onOpenFocusHandled: () -> Unit = {}
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -98,6 +100,19 @@ fun AppNavigation(
                 launchSingleTop = true
             }
             onQuickAddHandled()
+        }
+    }
+
+    LaunchedEffect(openFocusTrigger) {
+        if (openFocusTrigger) {
+            navController.navigate(Destinations.FOCUS) {
+                popUpTo(navController.graph.findStartDestination().id) {
+                    saveState = true
+                }
+                launchSingleTop = true
+                restoreState = true
+            }
+            onOpenFocusHandled()
         }
     }
 

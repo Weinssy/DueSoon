@@ -38,6 +38,11 @@ open class FocusRepository(
         focusSessionDao.insertAll(entities)
     }
 
+    open suspend fun replaceAllSessions(sessions: List<FocusSession>) {
+        val entities = sessions.map { it.toEntity() }
+        focusSessionDao.replaceAllSessions(entities)
+    }
+
     open suspend fun getAllSessions(): List<FocusSession> {
         return focusSessionDao.getAllSessions().map { it.toDomainModel() }
     }
