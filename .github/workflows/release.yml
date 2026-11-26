@@ -29,6 +29,7 @@ jobs:
         run: ./gradlew testDebugUnitTest compileDebugAndroidTestKotlin --console=plain
 
       - name: Configure release signing keystore
+        id: signing
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
@@ -36,8 +37,9 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
           if [ -z "$KEYSTORE_BASE64" ]; then
-            echo "ERROR: Secret KEYSTORE_BASE64 is required for signed release builds compatible with In-App Update."
-            exit 1
+            echo "::warning::KEYSTORE_BASE64 secret is not configured. Skipping CI APK signing & release publish (set KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD in repository secrets to enable)."
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
           echo "$KEYSTORE_BASE64" | base64 -d > app/release.keystore
           cat <<EOF > keystore.properties
@@ -46,11 +48,14 @@ jobs:
           KEY_ALIAS=$KEY_ALIAS
           KEY_PASSWORD=$KEY_PASSWORD
           EOF
+          echo "enabled=true" >> "$GITHUB_OUTPUT"
 
       - name: Build release APK
+        if: steps.signing.outputs.enabled == 'true'
         run: ./gradlew assembleRelease --console=plain
 
       - name: Locate release APK and notes
+        if: steps.signing.outputs.enabled == 'true'
         id: release_meta
         shell: bash
         run: |
@@ -63,6 +68,7 @@ jobs:
           fi
 
       - name: Publish GitHub Release
+        if: steps.signing.outputs.enabled == 'true'
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ steps.release_meta.outputs.apk_path }}
